@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "422461192815",
+    "firebase_url": "https://vio-telehealth.firebaseio.com",
+    "project_id": "vio-telehealth",
+    "storage_bucket": "vio-telehealth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:422461192815:android:e0f9dd4f407a3280adeb9a",
+        "android_client_info": {
+          "package_name": "com.boiler.plate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "422461192815-pdb4k69vfcbgv55br51ac27efnioshb0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLE_Nd2G2zvE8RbhxDx0xqYDiak4-2hOA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "422461192815-pdb4k69vfcbgv55br51ac27efnioshb0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "422461192815-eumglm1ml524pg7moclb1gci6kj3t102.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.boiler.plate"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:422461192815:android:09a12a779577feb8adeb9a",
+        "android_client_info": {
+          "package_name": "com.boiler.plate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "422461192815-pdb4k69vfcbgv55br51ac27efnioshb0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLE_Nd2G2zvE8RbhxDx0xqYDiak4-2hOA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "422461192815-pdb4k69vfcbgv55br51ac27efnioshb0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "422461192815-eumglm1ml524pg7moclb1gci6kj3t102.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.boiler.plate"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

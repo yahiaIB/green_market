@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>422461192815-eumglm1ml524pg7moclb1gci6kj3t102.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.422461192815-eumglm1ml524pg7moclb1gci6kj3t102</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDcdNgPXXlAe_nuya6rFp3ED232kOvNG4w</string>
+	<key>GCM_SENDER_ID</key>
+	<string>422461192815</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.boiler.plate</string>
+	<key>PROJECT_ID</key>
+	<string>vio-telehealth</string>
+	<key>STORAGE_BUCKET</key>
+	<string>vio-telehealth.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:422461192815:ios:a94dd3af390bd42fadeb9a</string>
+	<key>DATABASE_URL</key>
+	<string>https://vio-telehealth.firebaseio.com</string>
+</dict>
+</plist>

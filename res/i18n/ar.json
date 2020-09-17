@@ -1,0 +1,9 @@
+{
+  "boilerplate": "بويلر بلات"
+}
+
+
+{
+  "button_c_visable" : ["admin" , "user" , "guest"],
+  "button_c_action" : "admin user"
+}
