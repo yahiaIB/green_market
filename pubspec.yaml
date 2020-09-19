@@ -74,7 +74,6 @@ flutter:
   assets:
     - res/i18n/en.json
     - res/i18n/ar.json
-    - res/assets/images/
     - res/assets/
   # To add assets to your application, add an assets section, like this:
   # assets:
