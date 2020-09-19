@@ -1,4 +1,4 @@
-package com.boiler.plate;
+package com.belwa7da;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

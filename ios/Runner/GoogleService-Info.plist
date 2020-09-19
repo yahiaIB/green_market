@@ -13,11 +13,11 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.boiler.plate</string>
+	<string>com.belwa7da</string>
 	<key>PROJECT_ID</key>
-	<string>vio-telehealth</string>
+	<string>belwa7da</string>
 	<key>STORAGE_BUCKET</key>
-	<string>vio-telehealth.appspot.com</string>
+	<string>belwa7da.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
