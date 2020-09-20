@@ -4,10 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class UtilsFunctions {
+  static validation(value, bool valid) {
+    if (value.isEmpty) {
+      return "Please enter data";
+    } else {
+      if (valid == true) {
+        return null;
+      } else {
+        return "wrong data";
+      }
+    }
+  }
+
   static showSnackBar(
-      {String text,
-      Color color = Colors.red,
-      @required BuildContext context}) {
+      {String text, Color color = Colors.red, @required BuildContext context}) {
     Scaffold.of(context)
       ..hideCurrentSnackBar()
       ..showSnackBar(
