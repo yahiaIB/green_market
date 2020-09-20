@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.belwa7da">
+    package="com.boiler.plate">
 
     <!-- The INTERNET permission is required for development. Specifically,
          flutter needs it to communicate with the running application
@@ -24,7 +24,7 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="Belwa7da"
+        android:label="BoilerPlate"
         android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"

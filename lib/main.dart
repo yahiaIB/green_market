@@ -6,5 +6,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await PreferenceUtils.init();
 
-  runApp(App());
+  runApp(new MaterialApp(
+    home: App(),
+  ));
 }
