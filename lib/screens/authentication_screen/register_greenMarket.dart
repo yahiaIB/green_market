@@ -81,7 +81,7 @@ class _RegisterGreenMarketState extends State<RegisterGreenMarket> {
                             child: const Icon(Icons.person),
                           ),
                         ),
-                        keyboardType: TextInputType.name,
+                        keyboardType: TextInputType.text,
                         validator: (value) => UtilsFunctions.validation(
                             value, Validators.isValidUserName(value)),
                       ),
@@ -143,7 +143,7 @@ class _RegisterGreenMarketState extends State<RegisterGreenMarket> {
                       Material(
                         elevation: 5.0,
                         borderRadius: BorderRadius.circular(30.0),
-                        color: CustomColors.buttoncolor,
+                        color: CustomColors.buttonColor,
                         child: MaterialButton(
                           minWidth: MediaQuery.of(context).size.width,
                           padding: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),

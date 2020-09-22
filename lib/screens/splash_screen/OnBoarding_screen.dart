@@ -177,7 +177,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           ? LinearGradient(
                               colors: [
                                 CustomColors.primaryColor,
-                                CustomColors.buttoncolor
+                                CustomColors.buttonColor
                               ],
                               begin: FractionalOffset.topCenter,
                               end: FractionalOffset.bottomCenter,
@@ -199,7 +199,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           ? LinearGradient(
                               colors: [
                                 CustomColors.primaryColor,
-                                CustomColors.buttoncolor
+                                CustomColors.buttonColor
                               ],
                               begin: FractionalOffset.topCenter,
                               end: FractionalOffset.bottomCenter,
@@ -221,7 +221,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           ? LinearGradient(
                               colors: [
                                 CustomColors.primaryColor,
-                                CustomColors.buttoncolor
+                                CustomColors.buttonColor
                               ],
                               begin: FractionalOffset.topCenter,
                               end: FractionalOffset.bottomCenter,

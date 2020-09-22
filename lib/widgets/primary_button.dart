@@ -1,5 +1,5 @@
-import 'package:Vio_Telehealth/theme/custom_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:Vio_Telehealth/theme/custom_colors.dart';
 
 class PrimaryButton extends StatelessWidget {
   final Function buttonAction;
@@ -11,7 +11,7 @@ class PrimaryButton extends StatelessWidget {
   Icon icon;
 
   PrimaryButton(this.buttonAction, this.text,
-      {this.textSize = 16, this.paddingRightLeft = 15, this.paddingTopBottom = 15 , this.color =CustomColors.buttonColor,this.icon });
+      {this.textSize = 16, this.paddingRightLeft = 15, this.paddingTopBottom = 15 , this.color =  CustomColors.buttonColor,this.icon });
 
   @override
   Widget build(BuildContext context) {

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class CustomColors {
   //TODO Define your colors here
   const CustomColors();
-  static final Color buttoncolor = Color(0xfffa5e62);
+  static const Color buttonColor = Color(0xfffa5e62);
   static final Color background = Color(0xfff8f8f8);
   static final Color primaryColorLight = ColorHex("#E5183B");
   static final Color thirdColorLight = ColorHex("#ff8e33");

@@ -123,7 +123,7 @@ class _LoginGeenMarketState extends State<LoginGeenMarket> {
                       Material(
                         elevation: 5.0,
                         borderRadius: BorderRadius.circular(30.0),
-                        color: CustomColors.buttoncolor,
+                        color: CustomColors.buttonColor,
                         child: MaterialButton(
                           minWidth: MediaQuery.of(context).size.width,
                           padding: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
@@ -165,7 +165,7 @@ class _LoginGeenMarketState extends State<LoginGeenMarket> {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        backgroundColor: CustomColors.buttoncolor,
+        backgroundColor: CustomColors.buttonColor,
         icon: Icon(Icons.arrow_forward),
         onPressed: () {},
         label: Text("Skip"),
