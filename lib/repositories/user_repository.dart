@@ -11,8 +11,7 @@ import 'package:intl/intl.dart';
 
 class UserRepository {
   Future<User> profile({String userId}) async {
-    final response =
-        await HttpClient.getInstance().get(EndPoints.profile(userId));
+    final response = await HttpClient.getInstance().get(EndPoints.profile(userId));
     User user = User().fromJson(response.data);
     return user;
   }
@@ -28,5 +27,4 @@ class UserRepository {
       throw e;
     }
   }
-
 }

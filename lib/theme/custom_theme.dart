@@ -8,8 +8,8 @@ class CustomTheme {
       brightness: Brightness.light,
       primaryColor: CustomColors.primaryColor,
       accentColor: CustomColors.accentColor,
-      backgroundColor: Colors.white,
-      bottomAppBarColor: Colors.white,
+      backgroundColor: CustomColors.backgroundScreenColor,
+      bottomAppBarColor: CustomColors.backgroundScreenColor,
       appBarTheme: AppBarTheme(color: CustomColors.primaryColor),
       textTheme: CustomTextStyle.textThemeLight);
 
