@@ -82,10 +82,10 @@ class AuthenticationViewModel extends BaseViewModel {
                      child: const Text('Go to login'),
                      onPressed: () async {
                       bool isLogined = await Navigator.push(
-                           context,
-                           new MaterialPageRoute(
-                               builder: (BuildContext context) =>
-                               new Login()));
+                          context, new MaterialPageRoute(
+                               builder: (BuildContext context) => new Login()
+                              )
+                      );
                        Navigator.of(context).pop(isLogined);
                      },
                    ),

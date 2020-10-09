@@ -1,4 +1,3 @@
-import 'package:Vio_Telehealth/screens/home_screen/home%20(1).dart';
 import 'package:Vio_Telehealth/screens/home_screen/widgets/mainButton.dart';
 import 'package:Vio_Telehealth/utils/preference_utils.dart';
 import 'package:Vio_Telehealth/view_models/app_status_model.dart';
@@ -76,9 +75,9 @@ class _LoginState extends State<Login> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: (){
+
           Provider.of<AuthenticationViewModel>(context, listen: false).skip();
           Provider.of<AppStatusViewModel>(context, listen: false).setStatus(AppStatus.Authenticated);
-
 //          Navigator.push(
 //            context,
 //            MaterialPageRoute(builder: (context) => Home()),

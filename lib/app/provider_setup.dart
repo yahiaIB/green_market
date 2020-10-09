@@ -1,3 +1,4 @@
+import 'package:Vio_Telehealth/models/cart.dart';
 import 'package:Vio_Telehealth/view_models/app_model.dart';
 import '../screens/authentication_screen/authentication_model.dart';
 import '../view_models/app_lang.dart';
@@ -12,4 +13,5 @@ List<SingleChildWidget> providers = [
   ChangeNotifierProvider(create: (_) => AppStatusViewModel()..init()),
   ChangeNotifierProvider(create: (_) => AuthenticationViewModel()),
   ChangeNotifierProvider(create: (_) => AppViewModel()),
+  // ChangeNotifierProvider(create: (_) => Cart()),
 ];

@@ -15,31 +15,26 @@ class PrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(25.0),
-      child: Container(
-        child: FlatButton(
-          onPressed:() {buttonAction();},
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(35)),
-          padding: EdgeInsets.only(
-              top: paddingTopBottom,
-              bottom: paddingTopBottom,
-              right: paddingRightLeft,
-              left: paddingRightLeft),
-          color: color,
-          textColor: Colors.white,
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              icon != null? icon:SizedBox(),
-              icon != null? SizedBox(width: 5,):SizedBox(),
-              Text(
-                text,
-                style: TextStyle(fontSize: textSize),
-              ),
-            ],
+    return MaterialButton(
+      onPressed:() {buttonAction();},
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(35)),
+      padding: EdgeInsets.only(
+          top: paddingTopBottom,
+          bottom: paddingTopBottom,
+          right: paddingRightLeft,
+          left: paddingRightLeft),
+      color: color,
+      textColor: Colors.white,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          icon != null? icon:SizedBox(),
+          icon != null? SizedBox(width: 5,):SizedBox(),
+          Text(
+            text,
+            style: TextStyle(fontSize: textSize),
           ),
-        ),
+        ],
       ),
     );
   }
