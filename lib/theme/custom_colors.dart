@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class CustomColors {
   //TODO Define your colors here
   const CustomColors();
-
+  static const Color buttonColor = Color(0xfffa5e62);
+  static final Color background = Color(0xfff8f8f8);
   static final Color primaryColorLight = ColorHex("#E5183B");
   static final Color thirdColorLight = ColorHex("#ff8e33");
 
@@ -19,17 +20,15 @@ class CustomColors {
   static final Color bluelogo = ColorHex("#04599c");
   static final Color yellow = ColorHex("#F8BA3E");
 
-
-  static final Map<String , Color> profitTransferStatusColor = {
+  static final Map<String, Color> profitTransferStatusColor = {
     "requested": Colors.blueAccent,
     "rejected": Colors.red,
     "approved": Colors.green,
-    "completed": Color.fromRGBO(245 ,56 ,146, 1),
+    "completed": Color.fromRGBO(245, 56, 146, 1),
     "canceled": Colors.grey,
   };
 
-
-  static final Map<String , Color> doctorSessionStatus = {
+  static final Map<String, Color> doctorSessionStatus = {
     "unavailable": Colors.grey,
     "in-session": Colors.red,
     "available": Colors.green,
@@ -56,7 +55,6 @@ class CustomColors {
     800: const Color(0xFF76af60),
     900: const Color(0xFF64a24d)
   };
-
 }
 
 class ColorHex extends Color {
@@ -70,4 +68,3 @@ class ColorHex extends Color {
     return int.parse(hexColor, radix: 16);
   }
 }
-

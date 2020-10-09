@@ -3,7 +3,6 @@ import 'package:Vio_Telehealth/theme/custom_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
 class OnBoardingScreen extends StatefulWidget {
   final Function skip;
 
@@ -38,7 +37,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           color: Colors.white,
           child: Container(
             child: PageView(
-
               controller: _pageController,
               onPageChanged: (int page) {
                 _currentPage = page;
@@ -49,13 +47,20 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     image: 'res/assets/images/firstOpenApp.png',
                     body: Column(
                       children: <Widget>[
-                        CheckItem(textContent: AppLocalizations.of(context).translate('save_your_time'),),
-                        SizedBox(height: 10,),
-                        CheckItem(textContent: AppLocalizations.of(context).translate('keep_comfort'),),
+                        CheckItem(
+                          textContent: AppLocalizations.of(context)
+                              .translate('save_your_time'),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        CheckItem(
+                          textContent: AppLocalizations.of(context)
+                              .translate('keep_comfort'),
+                        ),
                       ],
                     ),
-                    index: 1
-                ),
+                    index: 1),
               ],
             ),
           ),
@@ -64,11 +69,16 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           width: MediaQuery.of(context).size.width,
           height: 120,
           decoration: new BoxDecoration(
-              color: Colors.white,
+            color: Colors.white,
           ),
           child: Stack(
             children: <Widget>[
-              Image.asset("res/assets/images/wave.png" ,width: MediaQuery.of(context).size.width, fit: BoxFit.cover, alignment: Alignment.topLeft,),
+              Image.asset(
+                "res/assets/images/wave.png",
+                width: MediaQuery.of(context).size.width,
+                fit: BoxFit.cover,
+                alignment: Alignment.topLeft,
+              ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
@@ -90,11 +100,13 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       ),
                       FlatButton(
                         onPressed: () {
-                          if(_currentPage == 0){
+                          if (_currentPage == 0) {
                             widget.skip();
                             return;
                           }
-                          _pageController.animateToPage(_currentPage + 1, duration: Duration(milliseconds: 400), curve: Curves.linear);
+                          _pageController.animateToPage(_currentPage + 1,
+                              duration: Duration(milliseconds: 400),
+                              curve: Curves.linear);
                           setState(() {});
                         },
                         splashColor: Colors.white,
@@ -111,7 +123,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   ),
                 ],
               ),
-
             ],
           ),
         ));
@@ -123,7 +134,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     int index,
   }) {
     return Container(
-      padding: EdgeInsets.only(left: 30,right: 30,top: 40),
+      padding: EdgeInsets.only(left: 30, right: 30, top: 40),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -146,10 +157,11 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               SizedBox(height: 20),
               body,
               SizedBox(height: 40),
-
             ],
           ),
-          SizedBox(height: 60,),
+          SizedBox(
+            height: 60,
+          ),
           Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -159,44 +171,63 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   width: index == 1 ? 15 : 12,
                   height: index == 1 ? 15 : 12,
                   decoration: BoxDecoration(
-                    color: index == 1 ? null : Color.fromRGBO(110, 120, 233, .6),
-                    gradient: index == 1 ? LinearGradient(
-                      colors: [CustomColors.primaryColor ,CustomColors.buttonColor],
-                        begin: FractionalOffset.topCenter,
-                        end: FractionalOffset.bottomCenter,
-                    ) : null,
-                    shape: BoxShape.circle
-                  ),
+                      color:
+                          index == 1 ? null : Color.fromRGBO(110, 120, 233, .6),
+                      gradient: index == 1
+                          ? LinearGradient(
+                              colors: [
+                                CustomColors.primaryColor,
+                                CustomColors.buttonColor
+                              ],
+                              begin: FractionalOffset.topCenter,
+                              end: FractionalOffset.bottomCenter,
+                            )
+                          : null,
+                      shape: BoxShape.circle),
                 ),
-                SizedBox(width: 7,),
+                SizedBox(
+                  width: 7,
+                ),
                 Container(
                   margin: EdgeInsets.only(bottom: 30),
                   width: index == 2 ? 15 : 12,
                   height: index == 2 ? 15 : 12,
                   decoration: BoxDecoration(
-                      color: index == 2 ? null : Color.fromRGBO(110, 120, 233, .6),
-                      gradient: index == 2 ? LinearGradient(
-                        colors: [CustomColors.primaryColor ,CustomColors.buttonColor],
-                        begin: FractionalOffset.topCenter,
-                        end: FractionalOffset.bottomCenter,
-                      ) : null,
-                      shape: BoxShape.circle
-                  ),
+                      color:
+                          index == 2 ? null : Color.fromRGBO(110, 120, 233, .6),
+                      gradient: index == 2
+                          ? LinearGradient(
+                              colors: [
+                                CustomColors.primaryColor,
+                                CustomColors.buttonColor
+                              ],
+                              begin: FractionalOffset.topCenter,
+                              end: FractionalOffset.bottomCenter,
+                            )
+                          : null,
+                      shape: BoxShape.circle),
                 ),
-                SizedBox(width: 7,),
+                SizedBox(
+                  width: 7,
+                ),
                 Container(
                   margin: EdgeInsets.only(bottom: 30),
                   width: index == 3 ? 15 : 12,
                   height: index == 3 ? 15 : 12,
                   decoration: BoxDecoration(
-                      color: index == 3 ? null : Color.fromRGBO(110, 120, 233, .6),
-                      gradient: index == 3 ? LinearGradient(
-                        colors: [CustomColors.primaryColor ,CustomColors.buttonColor],
-                        begin: FractionalOffset.topCenter,
-                        end: FractionalOffset.bottomCenter,
-                      ) : null,
-                      shape: BoxShape.circle
-                  ),
+                      color:
+                          index == 3 ? null : Color.fromRGBO(110, 120, 233, .6),
+                      gradient: index == 3
+                          ? LinearGradient(
+                              colors: [
+                                CustomColors.primaryColor,
+                                CustomColors.buttonColor
+                              ],
+                              begin: FractionalOffset.topCenter,
+                              end: FractionalOffset.bottomCenter,
+                            )
+                          : null,
+                      shape: BoxShape.circle),
                 ),
               ],
             ),
@@ -207,7 +238,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   }
 }
 
-
 class CheckItem extends StatelessWidget {
   const CheckItem({@required this.textContent});
   final String textContent;
@@ -216,14 +246,17 @@ class CheckItem extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Image.asset("res/assets/images/check.png", width: 20,),
+        Image.asset(
+          "res/assets/images/check.png",
+          width: 20,
+        ),
         SizedBox(
           width: 10,
         ),
         Expanded(
           child: Text(
-              textContent,
-              maxLines: 4,
+            textContent,
+            maxLines: 4,
 //              style: contentTextStyle
           ),
         ),

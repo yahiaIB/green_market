@@ -5,9 +5,9 @@ import '../../screens/splash_screen/widgets/splash_widget.dart';
 import '../../view_models/app_status_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../authentication_screen/login_greenMarket.dart';
 
 class SplashScreen extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Consumer<AppStatusViewModel>(
@@ -19,9 +19,9 @@ class SplashScreen extends StatelessWidget {
             screen = Home();
             break;
           case AppStatus.Unauthenticated:
-            screen = Login();
+            screen = LoginGeenMarket();
             break;
-            case AppStatus.Uninitialized:
+          case AppStatus.Uninitialized:
             screen = SplashWidget();
             break;
           default:
