@@ -84,6 +84,7 @@ flutter:
     - res/i18n/en.json
     - res/i18n/ar.json
     - res/assets/
+    - assets/
     - res/assets/images/
     
     

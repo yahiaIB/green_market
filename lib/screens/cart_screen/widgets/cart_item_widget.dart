@@ -4,6 +4,8 @@ import 'package:Vio_Telehealth/view_models/item_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
+
+// how do you StatelessWidget and change the data ?????
 class CartItem extends StatelessWidget {
   final ItemViewModel item;
   const CartItem({@required this.item}) ;

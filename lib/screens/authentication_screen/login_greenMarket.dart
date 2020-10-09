@@ -1,8 +1,10 @@
 import 'package:Vio_Telehealth/app/routes.dart';
+import 'package:Vio_Telehealth/view_models/app_status_model.dart';
 import 'package:flutter/material.dart';
 import 'package:Vio_Telehealth/utils/validators.dart';
 import 'package:Vio_Telehealth/theme/custom_colors.dart';
 import 'package:Vio_Telehealth/utils/utils_functions.dart';
+import 'package:provider/provider.dart';
 
 class LoginGeenMarket extends StatefulWidget {
   @override
@@ -167,7 +169,10 @@ class _LoginGeenMarketState extends State<LoginGeenMarket> {
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: CustomColors.buttonColor,
         icon: Icon(Icons.arrow_forward),
-        onPressed: () {},
+        onPressed: () {
+          AppStatusViewModel  appStatusViewModel = Provider.of<AppStatusViewModel>(context,listen: false);
+          appStatusViewModel.setStatus(AppStatus.Authenticated);
+        },
         label: Text("Skip"),
       ),
     );

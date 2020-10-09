@@ -38,6 +38,13 @@ class _CartScreenState extends State<CartScreen> {
       'unitValue': 1.0,
       'unitChange': 0.25
     }),
+    new ItemViewModel({
+      'name': "cucumber",
+      'image': "res/assets/images/cucumber.png",
+      'price': 6.0,
+      'unitValue': 1.0,
+      'unitChange': 0.25
+    }),
   ];
 
   @override

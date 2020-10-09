@@ -36,7 +36,6 @@ class CustomColors {
 
   //you can used also color without define ColorHex
   //may add 0xFF + hexa code of color like
-  static const Color buttonColor = Color.fromRGBO(245, 56, 146, 1);
   static const Color primaryColor =Colors.white;
   static const Color primaryColorDark = Color(0xFF1f5bf7);
   static const Color accentColor = Color(0xFF7b4ee0);
