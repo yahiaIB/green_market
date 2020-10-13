@@ -1,8 +1,14 @@
+import 'package:Vio_Telehealth/app/routes.dart';
 import 'package:Vio_Telehealth/helpers/app_localizations.dart';
+import 'package:Vio_Telehealth/view_models/app_model.dart';
+import 'package:Vio_Telehealth/view_models/app_status_model.dart';
 import 'package:flutter/material.dart';
 import 'package:Vio_Telehealth/utils/validators.dart';
 import 'package:Vio_Telehealth/utils/utils_functions.dart';
 import 'package:Vio_Telehealth/theme/custom_colors.dart';
+import 'package:provider/provider.dart';
+
+import 'authentication_model.dart';
 
 class RegisterGreenMarket extends StatefulWidget {
   @override
@@ -36,11 +42,23 @@ class _RegisterGreenMarketState extends State<RegisterGreenMarket> {
   }
 
   void register() {
+    AppViewModel appModel = Provider.of<AppViewModel>(context, listen: false);
+
+    AuthenticationViewModel authenticationModel =
+        Provider.of<AuthenticationViewModel>(context, listen: false);
+
     Map data = {};
     data["email"] = emailController.text;
     data["password"] = passwordController.text;
     data["fullName"] = fullNameController.text;
     data["phoneNumber"] = phoneNumberController.text;
+    print(data);
+    appModel.register(data);
+    AppStatusViewModel appStatusViewModel =
+        Provider.of<AppStatusViewModel>(context, listen: false);
+    authenticationModel.saveUser(appModel.user);
+    appStatusViewModel.setStatus(AppStatus.Authenticated);
+    Navigator.pop(context);
   }
 
   @override
@@ -74,6 +92,7 @@ class _RegisterGreenMarketState extends State<RegisterGreenMarket> {
                         height: 10,
                       ),
                       TextFormField(
+                        controller: fullNameController,
                         decoration: new InputDecoration(
                           focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.black54)),
@@ -99,6 +118,7 @@ class _RegisterGreenMarketState extends State<RegisterGreenMarket> {
                         height: 10,
                       ),
                       TextFormField(
+                        controller: phoneNumberController,
                         decoration: new InputDecoration(
                           focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.black54)),
@@ -124,6 +144,7 @@ class _RegisterGreenMarketState extends State<RegisterGreenMarket> {
                         height: 10,
                       ),
                       TextFormField(
+                        controller: emailController,
                         decoration: new InputDecoration(
                           focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.black54)),
@@ -149,6 +170,7 @@ class _RegisterGreenMarketState extends State<RegisterGreenMarket> {
                         height: 10,
                       ),
                       new TextFormField(
+                        controller: passwordController,
                         decoration: new InputDecoration(
                             focusedBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(color: Colors.black54)),

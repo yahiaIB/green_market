@@ -1,13 +1,15 @@
 import 'dart:convert';
-import 'dart:io';
 import 'package:Vio_Telehealth/config/constants.dart';
-
+import 'package:Vio_Telehealth/screens/authentication_screen/authentication_model.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
 import '../utils/preference_utils.dart';
 import '../web_services/socket.dart';
 import '../models/user.dart';
 import './base_model.dart';
 import '../repositories/user_repository.dart';
 import '../models/address.dart';
+import 'app_status_model.dart';
 
 class AppViewModel extends BaseViewModel {
   User _user;
@@ -22,6 +24,7 @@ class AppViewModel extends BaseViewModel {
     print('init has called');
     initPreferenceUtils();
     var userData = preferenceUtils.getData(PreferenceUtils.UserKey);
+    print(userData);
     if (userData != null) {
       _user = User().fromJson(json.decode(userData));
     }
@@ -60,6 +63,32 @@ class AppViewModel extends BaseViewModel {
   void setUser(User user) {
     _user = user;
     notifyListeners();
+  }
+
+  register(Map userData) {
+    if (_user == null) {
+      _user = User(
+          fullName: userData["fullName"],
+          mobile: userData["phoneNumber"],
+          email: userData["email"],
+          password: userData["password"],
+          sId: "123");
+      notifyListeners();
+      return _user;
+    }
+  }
+
+  login(Map userData) {
+    if (_user == null) {
+      _user = User(
+          fullName: "Montaser helmy",
+          mobile: "01156379617",
+          email: userData["email"],
+          password: userData["password"],
+          sId: "123");
+      notifyListeners();
+      return _user;
+    }
   }
 
   void editPersonalDetails(String fullName, String mobile) {

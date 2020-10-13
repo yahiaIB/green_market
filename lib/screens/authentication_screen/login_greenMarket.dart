@@ -1,11 +1,14 @@
 import 'package:Vio_Telehealth/app/routes.dart';
 import 'package:Vio_Telehealth/helpers/app_localizations.dart';
+import 'package:Vio_Telehealth/view_models/app_model.dart';
 import 'package:Vio_Telehealth/view_models/app_status_model.dart';
 import 'package:flutter/material.dart';
 import 'package:Vio_Telehealth/utils/validators.dart';
 import 'package:Vio_Telehealth/theme/custom_colors.dart';
 import 'package:Vio_Telehealth/utils/utils_functions.dart';
 import 'package:provider/provider.dart';
+
+import 'authentication_model.dart';
 
 class LoginGeenMarket extends StatefulWidget {
   @override
@@ -35,9 +38,20 @@ class _LoginGeenMarketState extends State<LoginGeenMarket> {
   }
 
   void login() {
+    AppViewModel appModel = Provider.of<AppViewModel>(context, listen: false);
+
+    AuthenticationViewModel authenticationModel =
+        Provider.of<AuthenticationViewModel>(context, listen: false);
+
     Map data = {};
     data["email"] = emailController.text;
     data["password"] = passwordController.text;
+
+    appModel.login(data);
+    AppStatusViewModel appStatusViewModel =
+        Provider.of<AppStatusViewModel>(context, listen: false);
+    authenticationModel.saveUser(appModel.user);
+    appStatusViewModel.setStatus(AppStatus.Authenticated);
   }
 
   @override

@@ -4,6 +4,8 @@ import 'package:Vio_Telehealth/generated/json/base/json_filed.dart';
 class User with JsonConvert<User> {
   @JSONField(name: "_id")
   String sId;
+  @JSONField(name: "password")
+  String password;
   UserWallet wallet;
   List<String> patients;
   @JSONField(name: "notify_patients_when_free")
@@ -60,7 +62,13 @@ class User with JsonConvert<User> {
   @JSONField(name: "bank_details")
   UserBankDetails bankDetails;
 
-  User({this.fullName, this.mobile, this.email});
+  User(
+      {this.fullName,
+      this.mobile,
+      this.email,
+      this.roles,
+      this.password,
+      this.sId});
 }
 
 class UserWallet with JsonConvert<UserWallet> {

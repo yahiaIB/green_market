@@ -1,13 +1,16 @@
 import 'package:Vio_Telehealth/helpers/app_localizations.dart';
+import 'package:Vio_Telehealth/screens/authentication_screen/authentication_model.dart';
 import 'package:Vio_Telehealth/screens/profile_screen/constants/profile_constants.dart';
 import 'package:Vio_Telehealth/screens/profile_screen/widgets/profile_list_item.dart';
 import 'package:Vio_Telehealth/view_models/app_lang.dart';
+import 'package:Vio_Telehealth/view_models/app_status_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:Vio_Telehealth/app/routes.dart';
 import 'package:provider/provider.dart';
 import 'package:Vio_Telehealth/view_models/app_model.dart';
+import 'package:Vio_Telehealth/utils/preference_utils.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -24,6 +27,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
+  }
+
+  void logout() {
+    AuthenticationViewModel authenticationViewModel =
+        Provider.of<AuthenticationViewModel>(context, listen: false);
+
+    AppStatusViewModel appStatusModel =
+        Provider.of<AppStatusViewModel>(context, listen: false);
+
+    appStatusModel.setStatus(AppStatus.Unauthenticated);
+    authenticationViewModel.logOut();
   }
 
   @override
@@ -151,6 +165,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 text: AppLocalizations.of(context).translate('Logout'),
                 hasNavigation: false,
                 color: false,
+                function: () {
+                  logout();
+                },
               ),
             ],
           ),

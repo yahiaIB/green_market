@@ -129,7 +129,7 @@ userFromJson(User data, Map<String, dynamic> json) {
   if (json['experience_in_years'] != null) {
     data.experienceInYears = json['experience_in_years']?.toString();
   }
-  if (json['first_name'] != null) {
+  if (json['full_name'] != null) {
     data.fullName = json['full_name']?.toString();
   }
   if (json['gender'] != null) {
