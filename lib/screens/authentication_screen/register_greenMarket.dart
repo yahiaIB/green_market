@@ -1,5 +1,5 @@
+import 'package:Vio_Telehealth/helpers/app_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:Vio_Telehealth/utils/validators.dart';
 import 'package:Vio_Telehealth/utils/utils_functions.dart';
 import 'package:Vio_Telehealth/theme/custom_colors.dart';
@@ -54,17 +54,17 @@ class _RegisterGreenMarketState extends State<RegisterGreenMarket> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              //Image.asset("assets/3695813.jpg"),
               Image.asset("assets/3681093.jpg"),
               Container(
-                padding: EdgeInsets.only(left: 30, right: 30, top: 20),
+                padding:
+                    EdgeInsets.only(left: 30, right: 30, top: 20, bottom: 20),
                 child: Form(
                   key: _formkey,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Sign Up",
+                      Text(AppLocalizations.of(context).translate("Sign Up"),
                           style: TextStyle(
                             fontSize: 35,
                             color: Color(0xff393951),
@@ -75,67 +75,113 @@ class _RegisterGreenMarketState extends State<RegisterGreenMarket> {
                       ),
                       TextFormField(
                         decoration: new InputDecoration(
-                          labelText: "Full Name",
+                          focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.black54)),
+                          labelText: AppLocalizations.of(context)
+                              .translate("Full Name"),
+                          labelStyle: TextStyle(color: Colors.black54),
                           icon: const Padding(
                             padding: const EdgeInsets.only(top: 15.0),
-                            child: const Icon(Icons.person),
+                            child: const Icon(
+                              Icons.person,
+                              color: Colors.black54,
+                            ),
                           ),
                         ),
                         keyboardType: TextInputType.text,
                         validator: (value) => UtilsFunctions.validation(
-                            value, Validators.isValidUserName(value)),
+                            value,
+                            Validators.isValidUserName(value),
+                            AppLocalizations.of(context)
+                                .translate("please enter your name")),
                       ),
                       SizedBox(
                         height: 10,
                       ),
                       TextFormField(
                         decoration: new InputDecoration(
-                          labelText: "Enter Mobile Number",
+                          focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.black54)),
+                          labelText: AppLocalizations.of(context)
+                              .translate("Enter Mobile Number"),
+                          labelStyle: TextStyle(color: Colors.black54),
                           icon: const Padding(
                             padding: const EdgeInsets.only(top: 15.0),
-                            child: const Icon(Icons.phone),
+                            child: const Icon(
+                              Icons.phone,
+                              color: Colors.black54,
+                            ),
                           ),
                         ),
                         keyboardType: TextInputType.phone,
                         validator: (value) => UtilsFunctions.validation(
-                            value, Validators.isValidMobile(value)),
+                            value,
+                            Validators.isValidMobile(value),
+                            AppLocalizations.of(context)
+                                .translate("please enter your mobile number")),
                       ),
                       SizedBox(
                         height: 10,
                       ),
                       TextFormField(
                         decoration: new InputDecoration(
-                          labelText: "Enter Email",
+                          focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.black54)),
+                          labelText: AppLocalizations.of(context)
+                              .translate("Enter Email"),
+                          labelStyle: TextStyle(color: Colors.black54),
                           icon: const Padding(
                             padding: const EdgeInsets.only(top: 15.0),
-                            child: const Icon(Icons.email),
+                            child: const Icon(
+                              Icons.email,
+                              color: Colors.black54,
+                            ),
                           ),
                         ),
                         keyboardType: TextInputType.emailAddress,
                         validator: (value) => UtilsFunctions.validation(
-                            value, Validators.isValidEmail(value)),
+                            value,
+                            Validators.isValidEmail(value),
+                            AppLocalizations.of(context)
+                                .translate("please enter your Email")),
                       ),
                       SizedBox(
                         height: 10,
                       ),
                       new TextFormField(
                         decoration: new InputDecoration(
-                            labelText: "Enter Password",
+                            focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.black54)),
+                            labelText: AppLocalizations.of(context)
+                                .translate("Enter Password"),
+                            labelStyle: TextStyle(color: Colors.black54),
                             suffixIcon: IconButton(
                                 onPressed: () {
                                   toggleVisability();
                                 },
                                 icon: _isHidden
-                                    ? Icon(Icons.visibility_off)
-                                    : Icon(Icons.visibility)),
+                                    ? Icon(
+                                        Icons.visibility_off,
+                                        color: Colors.black54,
+                                      )
+                                    : Icon(
+                                        Icons.visibility,
+                                        color: Colors.black54,
+                                      )),
                             icon: const Padding(
                               padding: const EdgeInsets.only(top: 15.0),
-                              child: const Icon(Icons.lock),
+                              child: const Icon(
+                                Icons.lock,
+                                color: Colors.black54,
+                              ),
                             )),
                         obscureText: _isHidden,
                         keyboardType: TextInputType.text,
                         validator: (value) => UtilsFunctions.validation(
-                            value, Validators.isValidPassword(value)),
+                            value,
+                            Validators.isValidPassword(value),
+                            AppLocalizations.of(context)
+                                .translate("please enter your password")),
                       ),
                       SizedBox(
                         height: 60,
@@ -152,7 +198,8 @@ class _RegisterGreenMarketState extends State<RegisterGreenMarket> {
                               register();
                             }
                           },
-                          child: Text("Sign Up",
+                          child: Text(
+                              AppLocalizations.of(context).translate("Sign Up"),
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 20,
@@ -165,7 +212,9 @@ class _RegisterGreenMarketState extends State<RegisterGreenMarket> {
                       ),
                       Center(
                         child: GestureDetector(
-                          child: Text("Do you have account?",
+                          child: Text(
+                              AppLocalizations.of(context)
+                                  .translate("Do you have account?"),
                               style: TextStyle(
                                 fontSize: 17,
                                 color: Colors.black38,
