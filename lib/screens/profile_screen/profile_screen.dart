@@ -20,7 +20,7 @@ class ProfileScreen extends StatelessWidget {
             children: <Widget>[
               CircleAvatar(
                 radius: kSpacingUnit * 10.0,
-                backgroundImage: AssetImage('res/assets/images/m.png'),
+                backgroundImage: AssetImage("res/assets/images/3.png"),
               ),
             ],
           ),
@@ -36,20 +36,6 @@ class ProfileScreen extends StatelessWidget {
           style: kCaptionTextStyle,
         ),
         SizedBox(height: kSpacingUnit * 2.0),
-        /* Container(
-            height: kSpacingUnit.w * 4,
-            width: kSpacingUnit.w * 20,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(kSpacingUnit.w * 3),
-              color: Theme.of(context).accentColor,
-            ),
-            child: Center(
-              child: Text(
-                'Upgrade to PRO',
-                style: kButtonTextStyle,
-              ),
-            ),
-          ),*/
       ],
     );
 

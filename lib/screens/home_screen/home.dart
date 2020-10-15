@@ -1,3 +1,6 @@
+import 'package:Vio_Telehealth/config/constants.dart';
+import 'package:Vio_Telehealth/models/category.dart';
+import 'package:Vio_Telehealth/models/item.dart';
 import 'package:Vio_Telehealth/screens/cart_screen/cart_screen.dart';
 import 'package:Vio_Telehealth/screens/products_screen/products_screen.dart';
 import 'package:Vio_Telehealth/screens/profile_screen/profile_screen.dart';
@@ -6,6 +9,7 @@ import 'package:Vio_Telehealth/view_models/category_view_model.dart';
 import 'package:Vio_Telehealth/view_models/item_view_model.dart';
 import 'package:flutter/material.dart';
 
+
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
@@ -13,46 +17,9 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> with SingleTickerProviderStateMixin{
   int _selectedIndex = 0;
-  TabController _tabController;
 
-  final List<ItemViewModel> cartItems =[
-    new ItemViewModel({'name':"tomato",'image':"res/assets/images/tomato.png",'price':5.0,'unitValue':1.0,'unitChange':0.25}),
-    new ItemViewModel({'name':"banana",'image':"res/assets/images/banana.png",'price':15.0,'unitValue':1.0,'unitChange':0.25}),
-    new ItemViewModel({'name':"cucumber",'image':"res/assets/images/cucumber.png",'price':6.0,'unitValue':1.0,'unitChange':0.25}),
-  ];
-
-  final List<ItemViewModel> vegetablesItems =[
-    new ItemViewModel({'name':"tomato",'image':"res/assets/images/tomato.png",'price':5.0,'unitValue':1.0,'unitChange':0.25}),
-    new ItemViewModel({'name':"potato",'image':"res/assets/images/potato.png",'price':8.0,'unitValue':1.0,'unitChange':0.25}),
-    new ItemViewModel({'name':"cucumber",'image':"res/assets/images/cucumber.png",'price':6.0,'unitValue':1.0,'unitChange':0.25}),
-  ];
-
-
-  List<ItemViewModel> fruitsItems =[
-    new ItemViewModel({'name':"orange",'image':"res/assets/images/orange.png",'price':10.0,'unitValue':1.0,'unitChange':0.25}),
-    new ItemViewModel({'name':"banana",'image':"res/assets/images/banana.png",'price':15.0,'unitValue':1.0,'unitChange':0.25}),
-  ];
-  List<CategoryViewModel> categories;
-
-
-  @override
-  void initState() {
-    super.initState();
-    categories =[
-    new CategoryViewModel({'name':"vegetables",'items':vegetablesItems}),
-    new CategoryViewModel({'name':"fruits",'items':fruitsItems}),
-    ];
-    _tabController = new TabController(vsync: this, length: categories.length);
-  }
-
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
-  }
-
-  List<Widget> _widgetOptions() => <Widget>[
-    Products(categories:  categories),
+  List<Widget> _widgetOptions=[
+    Products(),
     CartScreen(),
     ProfileScreen(),
   ];
@@ -67,7 +34,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin{
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        child: _widgetOptions().elementAt(_selectedIndex),
+        child: _widgetOptions[_selectedIndex],
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
