@@ -1,3 +1,4 @@
+import 'package:Vio_Telehealth/helpers/app_localizations.dart';
 import 'package:Vio_Telehealth/screens/cart_screen/cart_screen.dart';
 import 'package:Vio_Telehealth/screens/products_screen/products_screen.dart';
 import 'package:Vio_Telehealth/screens/profile_screen/profile_screen.dart';
@@ -11,36 +12,82 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> with SingleTickerProviderStateMixin{
+class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   int _selectedIndex = 0;
   TabController _tabController;
 
-  final List<ItemViewModel> cartItems =[
-    new ItemViewModel({'name':"tomato",'image':"res/assets/images/tomato.png",'price':5.0,'unitValue':1.0,'unitChange':0.25}),
-    new ItemViewModel({'name':"banana",'image':"res/assets/images/banana.png",'price':15.0,'unitValue':1.0,'unitChange':0.25}),
-    new ItemViewModel({'name':"cucumber",'image':"res/assets/images/cucumber.png",'price':6.0,'unitValue':1.0,'unitChange':0.25}),
+  final List<ItemViewModel> cartItems = [
+    new ItemViewModel({
+      'name': "tomato",
+      'image': "res/assets/images/tomato.png",
+      'price': 5.0,
+      'unitValue': 1.0,
+      'unitChange': 0.25
+    }),
+    new ItemViewModel({
+      'name': "banana",
+      'image': "res/assets/images/banana.png",
+      'price': 15.0,
+      'unitValue': 1.0,
+      'unitChange': 0.25
+    }),
+    new ItemViewModel({
+      'name': "cucumber",
+      'image': "res/assets/images/cucumber.png",
+      'price': 6.0,
+      'unitValue': 1.0,
+      'unitChange': 0.25
+    }),
   ];
 
-  final List<ItemViewModel> vegetablesItems =[
-    new ItemViewModel({'name':"tomato",'image':"res/assets/images/tomato.png",'price':5.0,'unitValue':1.0,'unitChange':0.25}),
-    new ItemViewModel({'name':"potato",'image':"res/assets/images/potato.png",'price':8.0,'unitValue':1.0,'unitChange':0.25}),
-    new ItemViewModel({'name':"cucumber",'image':"res/assets/images/cucumber.png",'price':6.0,'unitValue':1.0,'unitChange':0.25}),
+  final List<ItemViewModel> vegetablesItems = [
+    new ItemViewModel({
+      'name': "tomato",
+      'image': "res/assets/images/tomato.png",
+      'price': 5.0,
+      'unitValue': 1.0,
+      'unitChange': 0.25
+    }),
+    new ItemViewModel({
+      'name': "potato",
+      'image': "res/assets/images/potato.png",
+      'price': 8.0,
+      'unitValue': 1.0,
+      'unitChange': 0.25
+    }),
+    new ItemViewModel({
+      'name': "cucumber",
+      'image': "res/assets/images/cucumber.png",
+      'price': 6.0,
+      'unitValue': 1.0,
+      'unitChange': 0.25
+    }),
   ];
 
-
-  List<ItemViewModel> fruitsItems =[
-    new ItemViewModel({'name':"orange",'image':"res/assets/images/orange.png",'price':10.0,'unitValue':1.0,'unitChange':0.25}),
-    new ItemViewModel({'name':"banana",'image':"res/assets/images/banana.png",'price':15.0,'unitValue':1.0,'unitChange':0.25}),
+  List<ItemViewModel> fruitsItems = [
+    new ItemViewModel({
+      'name': "orange",
+      'image': "res/assets/images/orange.png",
+      'price': 10.0,
+      'unitValue': 1.0,
+      'unitChange': 0.25
+    }),
+    new ItemViewModel({
+      'name': "banana",
+      'image': "res/assets/images/banana.png",
+      'price': 15.0,
+      'unitValue': 1.0,
+      'unitChange': 0.25
+    }),
   ];
   List<CategoryViewModel> categories;
-
 
   @override
   void initState() {
     super.initState();
-    categories =[
-    new CategoryViewModel({'name':"vegetables",'items':vegetablesItems}),
-    new CategoryViewModel({'name':"fruits",'items':fruitsItems}),
+    categories = [
+      new CategoryViewModel({'name': "vegetables", 'items': vegetablesItems}),
+      new CategoryViewModel({'name': "fruits", 'items': fruitsItems}),
     ];
     _tabController = new TabController(vsync: this, length: categories.length);
   }
@@ -52,10 +99,10 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin{
   }
 
   List<Widget> _widgetOptions() => <Widget>[
-    Products(categories:  categories),
-    CartScreen(),
-    ProfileScreen(),
-  ];
+        Products(categories: categories),
+        CartScreen(),
+        ProfileScreen(),
+      ];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -90,18 +137,18 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin{
             topRight: Radius.circular(30.0),
           ),
           child: BottomNavigationBar(
-            items: const <BottomNavigationBarItem>[
+            items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: Icon(Icons.home),
-                title: Text('Home'),
+                title: Text(AppLocalizations.of(context).translate("Home")),
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.shopping_basket),
-                title: Text('Cart'),
+                title: Text(AppLocalizations.of(context).translate("Cart")),
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.person),
-                title: Text('Profile'),
+                title: Text(AppLocalizations.of(context).translate("Profile")),
               ),
             ],
             currentIndex: _selectedIndex,

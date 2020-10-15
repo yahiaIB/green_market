@@ -1,10 +1,14 @@
 import 'package:Vio_Telehealth/app/routes.dart';
+import 'package:Vio_Telehealth/helpers/app_localizations.dart';
+import 'package:Vio_Telehealth/view_models/app_model.dart';
 import 'package:Vio_Telehealth/view_models/app_status_model.dart';
 import 'package:flutter/material.dart';
 import 'package:Vio_Telehealth/utils/validators.dart';
 import 'package:Vio_Telehealth/theme/custom_colors.dart';
 import 'package:Vio_Telehealth/utils/utils_functions.dart';
 import 'package:provider/provider.dart';
+
+import 'authentication_model.dart';
 
 class LoginGeenMarket extends StatefulWidget {
   @override
@@ -34,9 +38,20 @@ class _LoginGeenMarketState extends State<LoginGeenMarket> {
   }
 
   void login() {
+    AppViewModel appModel = Provider.of<AppViewModel>(context, listen: false);
+
+    AuthenticationViewModel authenticationModel =
+        Provider.of<AuthenticationViewModel>(context, listen: false);
+
     Map data = {};
     data["email"] = emailController.text;
     data["password"] = passwordController.text;
+
+    appModel.login(data);
+    AppStatusViewModel appStatusViewModel =
+        Provider.of<AppStatusViewModel>(context, listen: false);
+    authenticationModel.saveUser(appModel.user);
+    appStatusViewModel.setStatus(AppStatus.Authenticated);
   }
 
   @override
@@ -53,14 +68,15 @@ class _LoginGeenMarketState extends State<LoginGeenMarket> {
               //Image.asset("assets/3695813.jpg"),
               Image.asset("assets/3681093.jpg"),
               Container(
-                padding: EdgeInsets.only(left: 30, right: 30, top: 20),
+                padding:
+                    EdgeInsets.only(left: 30, right: 30, top: 20, bottom: 20),
                 child: Form(
                   key: _formkey,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Sign In",
+                      Text(AppLocalizations.of(context).translate("Sign In"),
                           style: TextStyle(
                             fontSize: 35,
                             color: Color(0xff393951),
@@ -72,15 +88,25 @@ class _LoginGeenMarketState extends State<LoginGeenMarket> {
                       TextFormField(
                         controller: emailController,
                         decoration: new InputDecoration(
-                          labelText: "Enter Email",
+                          focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.black54)),
+                          labelText: AppLocalizations.of(context)
+                              .translate("Enter Email"),
+                          labelStyle: TextStyle(color: Colors.black54),
                           icon: const Padding(
                             padding: const EdgeInsets.only(top: 15.0),
-                            child: const Icon(Icons.email),
+                            child: const Icon(
+                              Icons.email,
+                              color: Colors.black54,
+                            ),
                           ),
                         ),
                         keyboardType: TextInputType.emailAddress,
                         validator: (value) => UtilsFunctions.validation(
-                            value, Validators.isValidEmail(value)),
+                            value,
+                            Validators.isValidEmail(value),
+                            AppLocalizations.of(context)
+                                .translate("please enter your Email")),
                       ),
                       SizedBox(
                         height: 20,
@@ -88,22 +114,34 @@ class _LoginGeenMarketState extends State<LoginGeenMarket> {
                       new TextFormField(
                         controller: passwordController,
                         decoration: new InputDecoration(
-                            labelText: "Enter Password",
+                            focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Colors.black54)),
+                            labelText: AppLocalizations.of(context)
+                                .translate("Enter Password"),
+                            labelStyle: TextStyle(color: Colors.black54),
                             suffixIcon: IconButton(
                                 onPressed: () {
                                   toggleVisability();
                                 },
                                 icon: _isHidden
-                                    ? Icon(Icons.visibility_off)
-                                    : Icon(Icons.visibility)),
+                                    ? Icon(Icons.visibility_off,
+                                        color: Colors.black54)
+                                    : Icon(Icons.visibility,
+                                        color: Colors.black54)),
                             icon: const Padding(
                               padding: const EdgeInsets.only(top: 15.0),
-                              child: const Icon(Icons.lock),
+                              child: const Icon(
+                                Icons.lock,
+                                color: Colors.black54,
+                              ),
                             )),
                         obscureText: _isHidden,
                         keyboardType: TextInputType.text,
                         validator: (value) => UtilsFunctions.validation(
-                            value, Validators.isValidPassword(value)),
+                            value,
+                            Validators.isValidPassword(value),
+                            AppLocalizations.of(context)
+                                .translate("Please enter your password")),
                       ),
                       SizedBox(
                         height: 20,
@@ -111,12 +149,20 @@ class _LoginGeenMarketState extends State<LoginGeenMarket> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Text("Forget Password?",
-                              style: TextStyle(
-                                fontSize: 17,
-                                color: Colors.black38,
-                                fontWeight: FontWeight.bold,
-                              )),
+                          GestureDetector(
+                            child: Text(
+                                AppLocalizations.of(context)
+                                    .translate("Forget Password?"),
+                                style: TextStyle(
+                                  fontSize: 17,
+                                  color: Colors.black38,
+                                  fontWeight: FontWeight.bold,
+                                )),
+                            onTap: () {
+                              Navigator.pushNamed(
+                                  context, Routes.forgetPasswordScreen);
+                            },
+                          ),
                         ],
                       ),
                       SizedBox(
@@ -134,7 +180,8 @@ class _LoginGeenMarketState extends State<LoginGeenMarket> {
                               login();
                             }
                           },
-                          child: Text("Sign In",
+                          child: Text(
+                              AppLocalizations.of(context).translate("Sign In"),
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 20,
@@ -147,7 +194,9 @@ class _LoginGeenMarketState extends State<LoginGeenMarket> {
                       ),
                       Center(
                         child: GestureDetector(
-                          child: Text("Don't you have account?",
+                          child: Text(
+                              AppLocalizations.of(context)
+                                  .translate("Don't you have account?"),
                               style: TextStyle(
                                 fontSize: 17,
                                 color: Colors.black38,
@@ -170,10 +219,11 @@ class _LoginGeenMarketState extends State<LoginGeenMarket> {
         backgroundColor: CustomColors.buttonColor,
         icon: Icon(Icons.arrow_forward),
         onPressed: () {
-          AppStatusViewModel  appStatusViewModel = Provider.of<AppStatusViewModel>(context,listen: false);
+          AppStatusViewModel appStatusViewModel =
+              Provider.of<AppStatusViewModel>(context, listen: false);
           appStatusViewModel.setStatus(AppStatus.Authenticated);
         },
-        label: Text("Skip"),
+        label: Text(AppLocalizations.of(context).translate("Skip")),
       ),
     );
   }

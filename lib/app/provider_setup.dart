@@ -12,6 +12,6 @@ List<SingleChildWidget> providers = [
   ChangeNotifierProvider(create: (_) => AppTheme()..fetchTheme()),
   ChangeNotifierProvider(create: (_) => AppStatusViewModel()..init()),
   ChangeNotifierProvider(create: (_) => AuthenticationViewModel()),
-  ChangeNotifierProvider(create: (_) => AppViewModel()),
+  ChangeNotifierProvider(create: (_) => AppViewModel()..init()),
   // ChangeNotifierProvider(create: (_) => Cart()),
 ];

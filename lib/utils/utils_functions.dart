@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class UtilsFunctions {
-  static validation(value, bool valid) {
+  static validation(value, bool valid, String message) {
     if (value.isEmpty) {
-      return "Please enter data";
+      return message;
     } else {
       if (valid == true) {
         return null;

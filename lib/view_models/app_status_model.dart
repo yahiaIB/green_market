@@ -32,8 +32,10 @@ class AppStatusViewModel extends BaseViewModel {
     preferenceUtils = PreferenceUtils.getInstance();
     String userId = preferenceUtils.getData(PreferenceUtils.UserId);
     if (userId != null) {
-      User user = await _repository.profile(userId: userId);
-      preferenceUtils.saveStringData(PreferenceUtils.UserKey, json.encode(user.toJson()));
+      // User user = await _repository.profile(userId: userId);
+      // String userData = preferenceUtils.getData(PreferenceUtils.UserKey);
+      // preferenceUtils.saveStringData(
+      //     PreferenceUtils.UserKey, json.encode(userData.toJson()));
       setStatus(AppStatus.Authenticated);
     } else {
       Timer(Duration(seconds: 3), () => setStatus(AppStatus.Unauthenticated));
