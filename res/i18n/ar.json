@@ -1,3 +1,72 @@
 {
-  "boilerplate": "بويلر بلات"
+  "boilerplate": "بويلر بلات",
+  "Arabic":"عربى",
+  "English":"انجليزى",
+  "Sign In":"تسجيل الدخول",
+  "Enter Email":"ادخل البريد الالكتروني",
+  "please enter your Email": "من فضلك قم بادخال البريد الالكتروني",
+  "Enter Password": "ادخل كلمه السر",
+  "Please enter your password": "من فضلك قم بادخال كلمه السر",
+  "Forget Password?": "هل نسيت كلمه السر؟",
+  "Don't you have account?": "لا تمتلك حسابا؟",
+  "Skip": "تخطي",
+
+
+  "Sign Up": "انشاء حساب",
+  "Full Name": "الاسم بالكامل",
+  "please enter your name": "من فضلك قم بادخال اسمك",
+  "Enter Mobile Number": "ادخل رقم الهاتف",
+  "please enter your mobile number": "من فضلك قم بادخال رقم الهاتف",
+  "Do you have account?": "هل تمتلك حسابا؟",
+
+
+  "Personal Details": "المعلومات الشخصيه",
+  "Addresses": "العناوين",
+  "My orders": "طلباتي",
+  "Help & Support": "الدعم والمساعده",
+  "Choose language": "اختار لغه",
+  "Logout": "تسجيل الخروج",
+
+
+  "Edit personal details": "تعديل المعلومات الشخصيه",
+  "Phone number": "رقم الهاتف",
+  "Save": "حفظ",
+  "Photo Library": "معرض الصور",
+  "Camera": "الكاميرا",
+
+
+  "My addresses": "عناويني",
+  "City : ": "المدينه : ",
+  "Region : ": "المنطقه : ",
+  "Apartment : ": "رقم الشقه : ",
+  "Address : ": "العنوان : ",
+
+
+  "Add address": "اضافه عنوان",
+  "Edit address":"تعديل العنوان",
+  "Address Name": "اسم العنوان",
+  "please enter your address name": "من فضلك ادخل اسم العنوان",
+  "Choose City": "اختار المدينه",
+  "Choose Region": "اختار المنطقه",
+  "Apartment number": "رقم الشقه",
+  "please enter your apartment number": "من فضلك ادخل رقم الشقه",
+  "Description" : "العنوان بالتفصيل",
+  "please enter your address description": "من فضلك قم بادخال العنوان بالتفصيل",
+
+
+  "Order Number": "رقم الطلب",
+  "Status": "الحاله",
+  "Delivery Date": "تاريخ التوصيل",
+  "Delivery Time": "وقت التوصيل",
+  "Total": "الحساب",
+  "Address": "العنوان",
+
+
+  "Home": "الصفحه الرئيسيه",
+  "Cart": "عربة التسوق",
+  "Profile": "الصفحه الشخصيه",
+
+  "Enter your email": "ادخل بريدك الالكتروني",
+  "Continue": "متابعه",
+  "Enter verification code":"قم بادخال الكود"
 }

@@ -49,6 +49,7 @@ dependencies:
   line_awesome_flutter: ^1.0.1
   animated_theme_switcher: ^1.0.5
   flutter_vector_icons: ^0.2.1
+  pin_code_fields: 
 
 
 
@@ -84,7 +85,8 @@ flutter:
     - res/i18n/en.json
     - res/i18n/ar.json
     - res/assets/
-    - assets/
+    - assets/avatar.png
+    - assets/3681093.jpg
     - res/assets/images/
     
     

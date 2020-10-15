@@ -1,6 +1,4 @@
-import 'package:Vio_Telehealth/config/constants.dart';
-import 'package:Vio_Telehealth/models/category.dart';
-import 'package:Vio_Telehealth/models/item.dart';
+import 'package:Vio_Telehealth/helpers/app_localizations.dart';
 import 'package:Vio_Telehealth/screens/cart_screen/cart_screen.dart';
 import 'package:Vio_Telehealth/screens/products_screen/products_screen.dart';
 import 'package:Vio_Telehealth/screens/profile_screen/profile_screen.dart';
@@ -15,7 +13,7 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> with SingleTickerProviderStateMixin{
+class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   int _selectedIndex = 0;
 
   List<Widget> _widgetOptions=[
@@ -23,6 +21,19 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin{
     CartScreen(),
     ProfileScreen(),
   ];
+  TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = new TabController(vsync: this, length: categories.length);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
 
   void _onItemTapped(int index) {
     setState(() {
@@ -57,18 +68,18 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin{
             topRight: Radius.circular(30.0),
           ),
           child: BottomNavigationBar(
-            items: const <BottomNavigationBarItem>[
+            items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: Icon(Icons.home),
-                title: Text('Home'),
+                title: Text(AppLocalizations.of(context).translate("Home")),
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.shopping_basket),
-                title: Text('Cart'),
+                title: Text(AppLocalizations.of(context).translate("Cart")),
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.person),
-                title: Text('Profile'),
+                title: Text(AppLocalizations.of(context).translate("Profile")),
               ),
             ],
             currentIndex: _selectedIndex,

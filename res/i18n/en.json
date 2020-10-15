@@ -1,3 +1,72 @@
 {
-  "boilerplate": "Boiler Plate"
+  "boilerplate": "Boiler Plate",
+  "Arabic":"Arabic",
+  "English":"English",
+  "Sign In":"Sign In",
+  "Enter Email":"Enter Email",
+  "please enter your Email": "please enter your Email",
+  "Enter Password": "Enter Password",
+  "Please enter your password": "Please enter your password",
+  "Forget Password?": "Forget Password?",
+  "Don't you have account?": "Don't you have account?",
+  "Skip": "Skip",
+
+
+  "Sign Up": "Sign Up",
+  "Full Name": "Full Name",
+  "please enter your name": "please enter your name",
+  "Enter Mobile Number": "Enter Mobile Number",
+  "please enter your mobile number": "please enter your mobile number",
+  "Do you have account?": "Do you have account?",
+
+
+  "Personal Details": "Personal Details",
+  "Addresses": "Addresses",
+  "My orders": "My orders",
+  "Help & Support": "Help & Support",
+  "Choose language": "Choose language",
+  "Logout": "Logout",
+
+
+  "Edit personal details": "Edit personal details",
+  "Phone number": "Phone number",
+  "Save": "Save",
+  "Photo Library": "Photo Library",
+  "Camera": "Camera",
+
+
+  "My addresses": "My addresses",
+  "City : ": "City : ",
+  "Region : ": "Region : ",
+  "Apartment : ": "Apartment : ",
+  "Address : ": "Address : ",
+
+
+  "Add address": "Add address",
+  "Edit address":"Edit address",
+  "Address Name": "Address Name",
+  "please enter your address name": "please enter your address name",
+  "Choose City": "Choose City",
+  "Choose Region": "Choose Region",
+  "Apartment number": "Apartment number",
+  "please enter your apartment number": "please enter your apartment number",
+  "Description" : "Description",
+  "please enter your address description": "please enter your address description",
+
+
+  "Order Number": "Order Number",
+  "Status": "Status",
+  "Delivery Date": "Delivery Date",
+  "Delivery Time": "Delivery Time",
+  "Total": "Total",
+  "Address":"Address",
+
+
+  "Home": "Home",
+  "Cart": "Cart",
+  "Profile": "Profile",
+
+  "Enter your email": "Enter your email",
+  "Continue": "Continue",
+  "Enter verification code": "Enter verification code"
 }

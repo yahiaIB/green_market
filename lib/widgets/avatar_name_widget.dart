@@ -7,7 +7,7 @@ class AvatarNameWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<AppViewModel>(
-      builder: (context , appViewModel , child ) => Row(
+      builder: (context, appViewModel, child) => Row(
         children: <Widget>[
           CircleAvatar(
             backgroundColor: Colors.blue,
@@ -18,7 +18,8 @@ class AvatarNameWidget extends StatelessWidget {
             width: 10,
           ),
           Text(
-            AppLocalizations.of(context).translate("Hello") + ' ${appViewModel.user.firstName} !',
+            AppLocalizations.of(context).translate("Hello") +
+                ' ${appViewModel.user.fullName} !',
             style: TextStyle(
               color: Colors.black,
               fontSize: 24.0,
