@@ -21,19 +21,6 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     CartScreen(),
     ProfileScreen(),
   ];
-  TabController _tabController;
-
-  @override
-  void initState() {
-    super.initState();
-    _tabController = new TabController(vsync: this, length: categories.length);
-  }
-
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
-  }
 
   void _onItemTapped(int index) {
     setState(() {

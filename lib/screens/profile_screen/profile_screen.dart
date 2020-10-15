@@ -31,10 +31,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   void logout() {
     AuthenticationViewModel authenticationViewModel =
-        Provider.of<AuthenticationViewModel>(context, listen: false);
+    Provider.of<AuthenticationViewModel>(context, listen: false);
 
     AppStatusViewModel appStatusModel =
-        Provider.of<AppStatusViewModel>(context, listen: false);
+    Provider.of<AppStatusViewModel>(context, listen: false);
 
     appStatusModel.setStatus(AppStatus.Unauthenticated);
     authenticationViewModel.logOut();
@@ -50,7 +50,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         items.add(
           DropdownMenuItem(
             child:
-                Text(AppLocalizations.of(context).translate(listItem["name"])),
+            Text(AppLocalizations.of(context).translate(listItem["name"])),
             value: listItem["value"],
           ),
         );
@@ -59,140 +59,128 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
 
     return Consumer2<AppViewModel, AppLanguage>(
-      builder: (BuildContext context, AppViewModel appModel,
-              AppLanguage languageModel, Widget child) =>
-          Scaffold(
-        body: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              CircleAvatar(
-                radius: kSpacingUnit * 10.0,
-                backgroundImage: AssetImage("res/assets/images/3.png"),
-                ),
-              SizedBox(height: kSpacingUnit * 5.0),
-              Column(
-                children: <Widget>[
-                  Container(
-                    height: kSpacingUnit * 15.0,
-                    width: kSpacingUnit * 15.0,
-                    margin: EdgeInsets.only(top: kSpacingUnit * 3.0),
-                    child: Stack(
+        builder: (BuildContext context, AppViewModel appModel,
+            AppLanguage languageModel, Widget child) =>
+            Scaffold(
+              body: SingleChildScrollView(
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(height: kSpacingUnit * 5.0),
+                    Column(
                       children: <Widget>[
-                        CircleAvatar(
-                          radius: kSpacingUnit * 10.0,
-                          //backgroundImage: AssetImage('res/assets/images/m.png'),
+                        Container(
+                          height: kSpacingUnit * 15.0,
+                          width: kSpacingUnit * 15.0,
+                          margin: EdgeInsets.only(top: kSpacingUnit * 3.0),
+                          child: Stack(
+                            children: <Widget>[
+                              CircleAvatar(
+                                radius: kSpacingUnit * 10.0,
+                                //backgroundImage: AssetImage('res/assets/images/m.png'),
+                              ),
+                            ],
+                          ),
                         ),
+                        SizedBox(height: kSpacingUnit * 2.0),
+                        Text(
+                          '${appModel.user.fullName}',
+                          style: kTitleTextStyle,
+                        ),
+                        SizedBox(height: kSpacingUnit * 0.5),
+                        Text(
+                          '${appModel.user.mobile}',
+                          style: kCaptionTextStyle,
+                        ),
+                        SizedBox(height: kSpacingUnit * 2.0),
                       ],
                     ),
-                  ),
-                  SizedBox(height: kSpacingUnit * 2.0),
-                  Text(
-                    '${appModel.user.fullName}',
-                    style: kTitleTextStyle,
-                  ),
-                  SizedBox(height: kSpacingUnit * 0.5),
-                  Text(
-                    '${appModel.user.mobile}',
-                    style: kCaptionTextStyle,
-                  ),
-                  SizedBox(height: kSpacingUnit * 2.0),
-                ],
-              ),
-              ProfileListItem(
-                icon: LineAwesomeIcons.user_1,
-                text:
-                    AppLocalizations.of(context).translate('Personal Details'),
-                function: () {
-                  Navigator.pushNamed(context, Routes.personalDetails);
-                },
-              ),
-              ProfileListItem(
-                icon: LineAwesomeIcons.address_card,
-                text: AppLocalizations.of(context).translate('Addresses'),
-                function: () {
-                  Navigator.pushNamed(context, Routes.addresses);
-                },
-              ),
-              ProfileListItem(
-                icon: LineAwesomeIcons.history,
-                text: AppLocalizations.of(context).translate('My orders'),
-                function: () {
-                  Navigator.pushNamed(context, Routes.myOrders);
-                },
-              ),
-              ProfileListItem(
-                icon: LineAwesomeIcons.question_circle,
-                text: AppLocalizations.of(context).translate('Help & Support'),
-              ),
-              Padding(
-                  padding:
-                      const EdgeInsets.only(left: 35, right: 35, bottom: 15),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    padding: EdgeInsets.only(left: 20, right: 20),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(kSpacingUnit.w * 3),
-                      color: kLightSecondaryColor,
+                    ProfileListItem(
+                      icon: LineAwesomeIcons.user_1,
+                      text:
+                      AppLocalizations.of(context).translate(
+                          'Personal Details'),
+                      function: () {
+                        Navigator.pushNamed(context, Routes.personalDetails);
+                      },
                     ),
-                    child: Row(
-                      children: [
-                        Icon(LineAwesomeIcons.language),
-                        SizedBox(
-                          width: 15,
-                        ),
-                        Expanded(
-                          child: DropdownButtonFormField<String>(
-                              style: kTitleTextStyle.copyWith(
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.black),
-                              decoration: InputDecoration(
-                                  enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: kLightSecondaryColor))),
-                              icon: Icon(LineAwesomeIcons.angle_down),
-                              value: languageModel.appLocal.toString(),
-                              items:
-                                  buildDropDownMenuLanguage(_dropdownLanguage),
-                              validator: (value) => value == null
-                                  ? AppLocalizations.of(context)
-                                      .translate('Choose language')
-                                  : null,
-                              onChanged: (value) {
-                                languageModel.changeLanguage(value);
-                              }),
-                        ),
-                      ],
+                    ProfileListItem(
+                      icon: LineAwesomeIcons.address_card,
+                      text: AppLocalizations.of(context).translate('Addresses'),
+                      function: () {
+                        Navigator.pushNamed(context, Routes.addresses);
+                      },
                     ),
-                  )),
-              ProfileListItem(
-                icon: LineAwesomeIcons.alternate_sign_out,
-                text: AppLocalizations.of(context).translate('Logout'),
-                hasNavigation: false,
-                color: false,
-                function: () {
-                  logout();
-                },
+                    ProfileListItem(
+                      icon: LineAwesomeIcons.history,
+                      text: AppLocalizations.of(context).translate('My orders'),
+                      function: () {
+                        Navigator.pushNamed(context, Routes.myOrders);
+                      },
+                    ),
+                    ProfileListItem(
+                      icon: LineAwesomeIcons.question_circle,
+                      text: AppLocalizations.of(context).translate(
+                          'Help & Support'),
+                    ),
+                    Padding(
+                        padding:
+                        const EdgeInsets.only(left: 35, right: 35, bottom: 15),
+                        child: Container(
+                          width: MediaQuery
+                              .of(context)
+                              .size
+                              .width,
+                          padding: EdgeInsets.only(left: 20, right: 20),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                                kSpacingUnit.w * 3),
+                            color: kLightSecondaryColor,
+                          ),
+                          child: Row(
+                            children: [
+                              Icon(LineAwesomeIcons.language),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              Expanded(
+                                child: DropdownButtonFormField<String>(
+                                    style: kTitleTextStyle.copyWith(
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.black),
+                                    decoration: InputDecoration(
+                                        enabledBorder: UnderlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: kLightSecondaryColor))),
+                                    icon: Icon(LineAwesomeIcons.angle_down),
+                                    value: languageModel.appLocal.toString(),
+                                    items:
+                                    buildDropDownMenuLanguage(
+                                        _dropdownLanguage),
+                                    validator: (value) =>
+                                    value == null
+                                        ? AppLocalizations.of(context)
+                                        .translate('Choose language')
+                                        : null,
+                                    onChanged: (value) {
+                                      languageModel.changeLanguage(value);
+                                    }),
+                              ),
+                            ],
+                          ),
+                        )),
+                    ProfileListItem(
+                      icon: LineAwesomeIcons.alternate_sign_out,
+                      text: AppLocalizations.of(context).translate('Logout'),
+                      hasNavigation: false,
+                      color: false,
+                      function: () {
+                        logout();
+                      },
+                    ),
+                  ],
+                ),
               ),
-            ],
-          ),
-        ),
-      ],
+            )
     );
-
-    var header = Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Icon(
-          LineAwesomeIcons.arrow_left,
-          size: ScreenUtil().setSp(kSpacingUnit * 3.0),
-        ),
-        profileInfo,
-        //themeSwitcher,
-        SizedBox(width: kSpacingUnit * 3.0),
-      ],
-    );
-
- 
   }
 }
