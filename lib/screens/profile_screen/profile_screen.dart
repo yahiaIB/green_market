@@ -65,6 +65,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
+              CircleAvatar(
+                radius: kSpacingUnit * 10.0,
+                backgroundImage: AssetImage("res/assets/images/3.png"),
+                ),
               SizedBox(height: kSpacingUnit * 5.0),
               Column(
                 children: <Widget>[
@@ -172,7 +176,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ],
           ),
         ),
-      ),
+      ],
     );
+
+    var header = Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Icon(
+          LineAwesomeIcons.arrow_left,
+          size: ScreenUtil().setSp(kSpacingUnit * 3.0),
+        ),
+        profileInfo,
+        //themeSwitcher,
+        SizedBox(width: kSpacingUnit * 3.0),
+      ],
+    );
+
+ 
   }
 }

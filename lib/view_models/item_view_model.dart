@@ -1,45 +1,58 @@
+import 'package:Vio_Telehealth/config/constants.dart';
+import 'package:Vio_Telehealth/models/category.dart';
+import 'package:Vio_Telehealth/models/item.dart';
 import 'package:Vio_Telehealth/view_models/base_model.dart';
+import 'package:Vio_Telehealth/view_models/category_view_model.dart';
 
 class ItemViewModel extends BaseViewModel {
-  String _name;
-  String _image;
-  double _price;
-  double _unitValue;
-  double _unitChange ;
 
-  bool _selected = false;
+  List<Item> _items = Constants.items();
+  List<Category> _categoriesNames = Constants.categories();
+  List categoriesList = [];
 
-  ItemViewModel(dynamic obj){
-    _name = obj['name'];
-    _image = obj['image'];
-    _price= obj['price'];
-    _unitValue = obj['unitValue'];
-    _unitChange = obj['unitChange'];
+  List<Item> get getItems => _items;
+  List<Category> get getCategoriesNames => _categoriesNames;
+
+  void fetchCategoriesList(){
+    categoriesList = [];
+    _categoriesNames.forEach(
+            (category) {
+          categoriesList.add({"name": category.name,"items": splitCategories(_items,category.name)},);
+        }
+    );
   }
-  ItemViewModel.fromMap(Map<String,dynamic> data){
-    _name = data['name'];
-    _image = data['image'];
-    _price= data['price'];
-    _unitValue = data['unitValue'];
-    _unitChange = data['unitChange'];
 
-  }
-  Map<String, dynamic> toMap() => {'name' : _name,'image' : _image, 'price':_price, 'unitValue':_unitValue, 'unitChange':_unitChange};
 
-  String get name => _name;
-  String get image => _image;
-  double get price => _price;
-  double get unitValue => _unitValue;
-  double get unitChange => _unitChange;
 
-  bool get selected => _selected;
+  void setAmount({double value,int itemIndex,int categoryIndex}) {
+    print(value);
+    print(itemIndex);
 
-  void setSelected(bool value) {
-    _selected = value;
+    categoriesList[categoryIndex]["items"][itemIndex].amount = value;
     notifyListeners();
   }
-  void setUnitValue(double value) {
-    _unitValue = value;
+
+  void setSelectedAtCart({bool value,int itemIndex,int categoryIndex,int optionIndex}) {
+    categoriesList[categoryIndex]["items"][itemIndex].options[optionIndex].isSelectedAtCart = value;
+
     notifyListeners();
   }
+
+  void setSelectedOptionIndex({int optionIndex,int itemIndex,int categoryIndex}) {
+    categoriesList[categoryIndex]["items"][itemIndex].selectedOptionIndex = optionIndex;
+    notifyListeners();
+  }
+
+  List<Item> splitCategories(List<Item> items, String categoryName){
+    List<Item> list=[];
+    items.forEach(
+            (item) {
+          if(item.categoryName == categoryName){
+            list.add(item);
+          }
+        }
+    );
+    return list;
+  }
+
 }
