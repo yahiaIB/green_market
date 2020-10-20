@@ -16,13 +16,13 @@ class AuthenticationViewModel extends BaseViewModel {
 
   Future signIn({@required data}) async {
     try {
-//      var userId = await _repository.SignIn(mobile: mobile);
-      var pref = PreferenceUtils.getInstance();
-      pref.saveStringData(PreferenceUtils.UserRoles, data['user_name']);
-      return true;
+      setBusy(true);
+      var user = await _repository.SignIn(data: data);
+      setBusy(false);
+      return user;
     } catch (err) {
-      print(err);
-      return null;
+      setBusy(false);
+      throw handelError(e);
     }
   }
 
@@ -35,7 +35,7 @@ class AuthenticationViewModel extends BaseViewModel {
       return user;
     } catch (e) {
       setBusy(false);
-      throw handelErrorMessage(e);
+      throw handelError(e);
     }
   }
 
@@ -88,38 +88,40 @@ class AuthenticationViewModel extends BaseViewModel {
       if (userRoles != null && userRoles != Roles.guest) {
         _function();
       } else {
-       bool login =  await showDialog(context: context, barrierDismissible: false, // user must tap button!
-           builder: (BuildContext context) {
-             return Container(
-               child: new AlertDialog(
-                 title: new Text("You have to login first"),
-                 actions: <Widget>[
-                   new FlatButton(
-                     child: const Text('Go to login'),
-                     onPressed: () async {
-                      bool isLogined = await Navigator.push(
-                          context, new MaterialPageRoute(
-                               builder: (BuildContext context) => new Login()
-                              )
-                      );
-                       Navigator.of(context).pop(isLogined);
-                     },
-                   ),
-                   new FlatButton(
-                     child: const Text('NO'),
-                     onPressed: () {
-                       Navigator.of(context).pop(false);
-                     },
-                   ),
-                 ],
-               ),
-             );
-           });
-       if(login){
-         _function();
-       }
+        bool login = await showDialog(
+            context: context,
+            barrierDismissible: false,
+            // user must tap button!
+            builder: (BuildContext context) {
+              return Container(
+                child: new AlertDialog(
+                  title: new Text("You have to login first"),
+                  actions: <Widget>[
+                    new FlatButton(
+                      child: const Text('Go to login'),
+                      onPressed: () async {
+                        bool isLogined = await Navigator.push(
+                            context,
+                            new MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    new Login()));
+                        Navigator.of(context).pop(isLogined);
+                      },
+                    ),
+                    new FlatButton(
+                      child: const Text('NO'),
+                      onPressed: () {
+                        Navigator.of(context).pop(false);
+                      },
+                    ),
+                  ],
+                ),
+              );
+            });
+        if (login) {
+          _function();
+        }
       }
     } catch (e) {}
   }
-
 }

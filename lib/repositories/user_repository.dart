@@ -11,9 +11,9 @@ import 'package:intl/intl.dart';
 
 class UserRepository {
   Future<User> profile({String userId}) async {
-    final response = await HttpClient.getInstance().get(EndPoints.profile(userId));
-    User user = User().fromJson(response.data);
-    return user;
+//    final response = await HttpClient.getInstance().get(EndPoints.profile(userId));
+//    User user = User().fromJson(response.data);
+//    return user;
   }
 
   Future<void> serverUpdateUserFCMToken(userData,userId) async {
@@ -21,7 +21,7 @@ class UserRepository {
       var data = FormData.fromMap({
         "data": jsonEncode(userData),
       });
-      var response = await HttpClient.getInstance().put(EndPoints.updateUserProfile(userId), data: data);
+//      var response = await HttpClient.getInstance().put(EndPoints.updateUserProfile(userId), data: data);
       return true;
     } catch (e) {
       throw e;

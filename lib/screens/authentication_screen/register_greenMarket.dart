@@ -45,22 +45,26 @@ class _RegisterGreenMarketState extends State<RegisterGreenMarket> {
 
   void register() async {
     AppViewModel appModel = Provider.of<AppViewModel>(context, listen: false);
-    AuthenticationViewModel authenticationModel = Provider.of<AuthenticationViewModel>(context, listen: false);
-    AppStatusViewModel appStatusViewModel = Provider.of<AppStatusViewModel>(context, listen: false);
+    AuthenticationViewModel authenticationModel =
+        Provider.of<AuthenticationViewModel>(context, listen: false);
+    AppStatusViewModel appStatusViewModel =
+        Provider.of<AppStatusViewModel>(context, listen: false);
 
-    Map data = {};
-    data["email"] = emailController.text;
-    data["password"] = passwordController.text;
-    data["name"] = fullNameController.text;
-    data["mobile"] = phoneNumberController.text;
+    Map data = {
+      "email": emailController.text.trim(),
+      "password": passwordController.text.trim(),
+      "name": fullNameController.text.trim(),
+      "mobile": phoneNumberController.text.trim(),
+    };
     print(data);
-    try{
-      User registeredUser = await authenticationModel.signUp(userData :data);
+    try {
+      User registeredUser = await authenticationModel.signUp(userData: data);
       appModel.setUser(registeredUser);
       appStatusViewModel.setStatus(AppStatus.Authenticated);
       Navigator.pop(context);
-    }catch(e){
-      UtilsFunctions.showSnackBarWithScaffoldKey(scaffoldKey: AppKeys.registerScreenScaffoldKey,text: e.toString());
+    } catch (e) {
+      UtilsFunctions.showSnackBarWithScaffoldKey(
+          scaffoldKey: AppKeys.registerScreenScaffoldKey, text: e.toString());
     }
   }
 
@@ -213,27 +217,33 @@ class _RegisterGreenMarketState extends State<RegisterGreenMarket> {
                         height: 60,
                       ),
                       Consumer<AuthenticationViewModel>(
-                        builder:(context, authViewModel , child) => authViewModel.busy ? Center(child: CircularProgressIndicator()) : Material(
-                          elevation: 5.0,
-                          borderRadius: BorderRadius.circular(30.0),
-                          color: CustomColors.buttonColor,
-                          child: MaterialButton(
-                            minWidth: MediaQuery.of(context).size.width,
-                            padding: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
-                            onPressed: () {
-                              if (_formkey.currentState.validate()) {
-                                register();
-                              }
-                            },
-                            child: Text(
-                                AppLocalizations.of(context).translate("Sign Up"),
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold)),
-                          ),
-                        ),
+                        builder: (context, authViewModel, child) =>
+                            authViewModel.busy
+                                ? Center(child: CircularProgressIndicator())
+                                : Material(
+                                    elevation: 5.0,
+                                    borderRadius: BorderRadius.circular(30.0),
+                                    color: CustomColors.buttonColor,
+                                    child: MaterialButton(
+                                      minWidth:
+                                          MediaQuery.of(context).size.width,
+                                      padding: EdgeInsets.fromLTRB(
+                                          20.0, 20.0, 20.0, 20.0),
+                                      onPressed: () {
+                                        if (_formkey.currentState.validate()) {
+                                          register();
+                                        }
+                                      },
+                                      child: Text(
+                                          AppLocalizations.of(context)
+                                              .translate("Sign Up"),
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold)),
+                                    ),
+                                  ),
                       ),
                       SizedBox(
                         height: 60,

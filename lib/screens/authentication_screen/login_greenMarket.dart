@@ -1,5 +1,7 @@
+import 'package:Vio_Telehealth/app/app_keys.dart';
 import 'package:Vio_Telehealth/app/routes.dart';
 import 'package:Vio_Telehealth/helpers/app_localizations.dart';
+import 'package:Vio_Telehealth/models/user.dart';
 import 'package:Vio_Telehealth/view_models/app_model.dart';
 import 'package:Vio_Telehealth/view_models/app_status_model.dart';
 import 'package:flutter/material.dart';
@@ -37,26 +39,30 @@ class _LoginGeenMarketState extends State<LoginGeenMarket> {
     });
   }
 
-  void login() {
+  void login() async {
     AppViewModel appModel = Provider.of<AppViewModel>(context, listen: false);
+    AuthenticationViewModel authenticationModel = Provider.of<AuthenticationViewModel>(context, listen: false);
+    AppStatusViewModel appStatusViewModel = Provider.of<AppStatusViewModel>(context, listen: false);
 
-    AuthenticationViewModel authenticationModel =
-        Provider.of<AuthenticationViewModel>(context, listen: false);
+    Map data = {
+      "username":emailController.text,
+      "password":passwordController.text,
+    };
+    try{
+      User user = await authenticationModel.signIn(data :data);
+      appModel.setUser(user);
+      appStatusViewModel.setStatus(AppStatus.Authenticated);
+    }catch(e){
+      UtilsFunctions.showSnackBarWithScaffoldKey(
+          scaffoldKey: AppKeys.loginScreenScaffoldKey, text: e.toString());
+    }
 
-    Map data = {};
-    data["email"] = emailController.text;
-    data["password"] = passwordController.text;
-
-    appModel.login(data);
-    AppStatusViewModel appStatusViewModel =
-        Provider.of<AppStatusViewModel>(context, listen: false);
-    authenticationModel.saveUser(appModel.user);
-    appStatusViewModel.setStatus(AppStatus.Authenticated);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: AppKeys.loginScreenScaffoldKey,
       //backgroundColor: Color(0xffF5F3F0),
       backgroundColor: CustomColors.background,
       body: SingleChildScrollView(
@@ -168,25 +174,27 @@ class _LoginGeenMarketState extends State<LoginGeenMarket> {
                       SizedBox(
                         height: 80,
                       ),
-                      Material(
-                        elevation: 5.0,
-                        borderRadius: BorderRadius.circular(30.0),
-                        color: CustomColors.buttonColor,
-                        child: MaterialButton(
-                          minWidth: MediaQuery.of(context).size.width,
-                          padding: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
-                          onPressed: () {
-                            if (_formkey.currentState.validate()) {
-                              login();
-                            }
-                          },
-                          child: Text(
-                              AppLocalizations.of(context).translate("Sign In"),
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold)),
+                      Consumer<AuthenticationViewModel>(
+                        builder:(context,authViewModel,child)=> authViewModel.busy ? Center(child: CircularProgressIndicator(),) :Material(
+                          elevation: 5.0,
+                          borderRadius: BorderRadius.circular(30.0),
+                          color: CustomColors.buttonColor,
+                          child: MaterialButton(
+                            minWidth: MediaQuery.of(context).size.width,
+                            padding: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
+                            onPressed: () {
+                              if (_formkey.currentState.validate()) {
+                                login();
+                              }
+                            },
+                            child: Text(
+                                AppLocalizations.of(context).translate("Sign In"),
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold)),
+                          ),
                         ),
                       ),
                       SizedBox(
