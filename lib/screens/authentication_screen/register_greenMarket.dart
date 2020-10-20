@@ -1,5 +1,7 @@
+import 'package:Vio_Telehealth/app/app_keys.dart';
 import 'package:Vio_Telehealth/app/routes.dart';
 import 'package:Vio_Telehealth/helpers/app_localizations.dart';
+import 'package:Vio_Telehealth/models/user.dart';
 import 'package:Vio_Telehealth/view_models/app_model.dart';
 import 'package:Vio_Telehealth/view_models/app_status_model.dart';
 import 'package:flutter/material.dart';
@@ -41,29 +43,31 @@ class _RegisterGreenMarketState extends State<RegisterGreenMarket> {
     });
   }
 
-  void register() {
+  void register() async {
     AppViewModel appModel = Provider.of<AppViewModel>(context, listen: false);
-
-    AuthenticationViewModel authenticationModel =
-        Provider.of<AuthenticationViewModel>(context, listen: false);
+    AuthenticationViewModel authenticationModel = Provider.of<AuthenticationViewModel>(context, listen: false);
+    AppStatusViewModel appStatusViewModel = Provider.of<AppStatusViewModel>(context, listen: false);
 
     Map data = {};
     data["email"] = emailController.text;
     data["password"] = passwordController.text;
-    data["fullName"] = fullNameController.text;
-    data["phoneNumber"] = phoneNumberController.text;
+    data["name"] = fullNameController.text;
+    data["mobile"] = phoneNumberController.text;
     print(data);
-    appModel.register(data);
-    AppStatusViewModel appStatusViewModel =
-        Provider.of<AppStatusViewModel>(context, listen: false);
-    authenticationModel.saveUser(appModel.user);
-    appStatusViewModel.setStatus(AppStatus.Authenticated);
-    Navigator.pop(context);
+    try{
+      User registeredUser = await authenticationModel.signUp(userData :data);
+      appModel.setUser(registeredUser);
+      appStatusViewModel.setStatus(AppStatus.Authenticated);
+      Navigator.pop(context);
+    }catch(e){
+      UtilsFunctions.showSnackBarWithScaffoldKey(scaffoldKey: AppKeys.registerScreenScaffoldKey,text: e.toString());
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: AppKeys.registerScreenScaffoldKey,
       //backgroundColor: Color(0xffF5F3F0),
       backgroundColor: CustomColors.background,
       body: SingleChildScrollView(
@@ -208,25 +212,27 @@ class _RegisterGreenMarketState extends State<RegisterGreenMarket> {
                       SizedBox(
                         height: 60,
                       ),
-                      Material(
-                        elevation: 5.0,
-                        borderRadius: BorderRadius.circular(30.0),
-                        color: CustomColors.buttonColor,
-                        child: MaterialButton(
-                          minWidth: MediaQuery.of(context).size.width,
-                          padding: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
-                          onPressed: () {
-                            if (_formkey.currentState.validate()) {
-                              register();
-                            }
-                          },
-                          child: Text(
-                              AppLocalizations.of(context).translate("Sign Up"),
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold)),
+                      Consumer<AuthenticationViewModel>(
+                        builder:(context, authViewModel , child) => authViewModel.busy ? Center(child: CircularProgressIndicator()) : Material(
+                          elevation: 5.0,
+                          borderRadius: BorderRadius.circular(30.0),
+                          color: CustomColors.buttonColor,
+                          child: MaterialButton(
+                            minWidth: MediaQuery.of(context).size.width,
+                            padding: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
+                            onPressed: () {
+                              if (_formkey.currentState.validate()) {
+                                register();
+                              }
+                            },
+                            child: Text(
+                                AppLocalizations.of(context).translate("Sign Up"),
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold)),
+                          ),
                         ),
                       ),
                       SizedBox(

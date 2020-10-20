@@ -26,6 +26,19 @@ class AuthenticationViewModel extends BaseViewModel {
     }
   }
 
+  Future signUp({@required userData}) async {
+//    status = AppStatus.Authenticating;
+    setBusy(true);
+    try {
+      User user = await _repository.serverSignUp(userData);
+      setBusy(false);
+      return user;
+    } catch (e) {
+      setBusy(false);
+      throw handelErrorMessage(e);
+    }
+  }
+
   Future skip() async {
     try {
 //      var userId = await _repository.SignIn(mobile: mobile);
@@ -51,11 +64,13 @@ class AuthenticationViewModel extends BaseViewModel {
     }
   }
 
-  void logOut() {
-    var pref = PreferenceUtils.getInstance();
+  void logOut() async {
+    var pref = await PreferenceUtils.getInstance();
     pref.removeWithKey(PreferenceUtils.UserKey);
     pref.removeWithKey(PreferenceUtils.UserToken);
     pref.removeWithKey(PreferenceUtils.UserId);
+    pref.removeWithKey(PreferenceUtils.UserRoles);
+    pref.clearAll();
   }
 
   void saveUser(User user) {
@@ -63,6 +78,7 @@ class AuthenticationViewModel extends BaseViewModel {
     pref.saveStringData(PreferenceUtils.UserKey, json.encode(user.toJson()));
     // pref.saveStringData(PreferenceUtils.UserToken, user.token);
     pref.saveStringData(PreferenceUtils.UserId, user.sId);
+    pref.saveStringData(PreferenceUtils.UserRoles, user.roles[0]);
   }
 
   authenticate(Function _function, context) async {

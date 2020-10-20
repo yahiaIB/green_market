@@ -31,14 +31,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   void logout() {
-    AuthenticationViewModel authenticationViewModel =
-        Provider.of<AuthenticationViewModel>(context, listen: false);
-
-    AppStatusViewModel appStatusModel =
-        Provider.of<AppStatusViewModel>(context, listen: false);
-
-    appStatusModel.setStatus(AppStatus.Unauthenticated);
+    AuthenticationViewModel authenticationViewModel = Provider.of<AuthenticationViewModel>(context, listen: false);
+    AppStatusViewModel appStatusModel = Provider.of<AppStatusViewModel>(context, listen: false);
+    AppViewModel appViewModel = Provider.of<AppViewModel>(context, listen: false);
     authenticationViewModel.logOut();
+    appViewModel.setGuestUser();
+    appStatusModel.setStatus(AppStatus.Unauthenticated);
   }
 
   @override

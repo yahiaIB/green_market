@@ -22,7 +22,8 @@ class HttpClient {
             .add(InterceptorsWrapper(onRequest: (RequestOptions options) {
           var token = PreferenceUtils.getInstance().getData(PreferenceUtils.UserToken);
           if (token != null) {
-            options.headers['Authorization'] = token;
+//            options.headers['Authorization'] = "Bearer " +token;
+//            options.headers['Authorization'] = token;
           }
           return options;
         }))

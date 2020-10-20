@@ -29,13 +29,7 @@ class AppViewModel extends BaseViewModel {
       _user = User().fromJson(json.decode(userData));
     }
     if (_user == null) {
-      User newUser = User();
-      newUser.name = "Montaser helmy";
-      newUser.password = "123456789";
-      newUser.mobile=  "+201156379617";
-      newUser.email=  "montaserhelmy@gmail.com";
-
-      _user = newUser;
+      setGuestUser();
       // _user = User(
       //     fullName: "Montaser helmy",
       //     mobile: "01156379617",
@@ -73,23 +67,13 @@ class AppViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  register(Map userData) {
-    if (_user == null) {
-      _user.name = userData["fullName"];
-      _user.mobile = userData["phoneNumber"];
-      _user.email = userData["email"];
-      _user.password = userData["password"];
-
-      // _user = User(
-      //     name: userData["fullName"],
-      //     mobile: userData["phoneNumber"],
-      //     email: userData["email"],
-      //     password: userData["password"],
-      //     sId: "123");
-
-      notifyListeners();
-      return _user;
-    }
+  void setGuestUser() {
+    User newUser = User();
+    newUser.name = "Blwa7da";
+    newUser.password = "1234567r";
+    newUser.mobile=  "+201156379617";
+    newUser.email=  "blwa7da@gmail.com";
+    _user = newUser;
   }
 
   login(Map userData) {

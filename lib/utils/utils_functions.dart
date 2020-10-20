@@ -36,6 +36,18 @@ class UtilsFunctions {
       );
   }
 
+  static showSnackBarWithScaffoldKey(
+      {String text, Color color = Colors.red, @required scaffoldKey}) {
+    scaffoldKey.currentState.showSnackBar(
+        SnackBar(
+          content: Text(
+            text, style: TextStyle(fontSize: 12.0),
+          ),
+          backgroundColor: color,
+        ),
+      );
+  }
+
 //  void launchCall(String number) async {
 //    var url = number;
 //    if (await canLaunch(url)) {

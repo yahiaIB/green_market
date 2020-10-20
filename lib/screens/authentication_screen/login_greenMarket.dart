@@ -219,8 +219,11 @@ class _LoginGeenMarketState extends State<LoginGeenMarket> {
         backgroundColor: CustomColors.buttonColor,
         icon: Icon(Icons.arrow_forward),
         onPressed: () {
-          AppStatusViewModel appStatusViewModel =
-              Provider.of<AppStatusViewModel>(context, listen: false);
+          AppStatusViewModel appStatusViewModel = Provider.of<AppStatusViewModel>(context, listen: false);
+          AuthenticationViewModel authenticationViewModel = Provider.of<AuthenticationViewModel>(context, listen: false);
+          AppViewModel appViewModel = Provider.of<AppViewModel>(context, listen: false);
+          authenticationViewModel.skip();
+          appViewModel.setGuestUser();
           appStatusViewModel.setStatus(AppStatus.Authenticated);
         },
         label: Text(AppLocalizations.of(context).translate("Skip")),
