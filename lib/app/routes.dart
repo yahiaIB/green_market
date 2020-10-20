@@ -1,3 +1,4 @@
+import 'package:Vio_Telehealth/models/user.dart';
 import 'package:Vio_Telehealth/screens/authentication_screen/newPasswordScreen.dart';
 import 'package:Vio_Telehealth/screens/authentication_screen/register_greenMarket.dart';
 import 'package:Vio_Telehealth/screens/home_screen/main_home_screen.dart';
@@ -51,7 +52,7 @@ class Routes {
       case personalDetails:
         return MaterialPageRoute(builder: (_) => PersonalDetails());
       case myOrders:
-        return MaterialPageRoute(builder: (_) => MyOreders());
+        return MaterialPageRoute(builder: (_) => MyOrders());
       case editPersonalDetails:
         var personalData = settings.arguments as Map;
         String fullName =
@@ -62,7 +63,7 @@ class Routes {
       case addAddress:
         var data = settings.arguments as Map;
         int index = data != null ? data["index"] : null;
-        AddressInfo addressInfo = data != null ? data["address"] : null;
+        UserAddress addressInfo = data != null ? data["address"] : null;
         return MaterialPageRoute(
             builder: (_) => AddAddress(
                   index: index,

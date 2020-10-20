@@ -1,5 +1,6 @@
 import 'package:Vio_Telehealth/helpers/app_localizations.dart';
 import 'package:Vio_Telehealth/models/address.dart';
+import 'package:Vio_Telehealth/models/user.dart';
 import 'package:Vio_Telehealth/view_models/app_model.dart';
 import 'package:flutter/material.dart';
 import 'package:Vio_Telehealth/utils/validators.dart';
@@ -11,7 +12,7 @@ import 'package:Vio_Telehealth/models/address.dart';
 
 class AddAddress extends StatefulWidget {
   int index;
-  AddressInfo addressInfo;
+  UserAddress addressInfo;
   AddAddress({this.index, this.addressInfo});
   @override
   _AddAddressState createState() => _AddAddressState();
@@ -32,10 +33,10 @@ class _AddAddressState extends State<AddAddress> {
     _dropdownMenuCities = buildDropDownMenuCities(_dropdownCities);
     _dropdownMenuRegion = buildDropDownMenuItems(_dropdownRegion);
     if (widget.index != null) {
-      addressNameController.text = widget.addressInfo.addressName;
+      addressNameController.text = widget.addressInfo.name;
       apartmentController.text = widget.addressInfo.apartment.toString();
       descriptionController.text = widget.addressInfo.description;
-      _selectedCity = widget.addressInfo.city;
+      _selectedCity = widget.addressInfo.area;
       _selectedRegion = widget.addressInfo.region;
     }
   }
@@ -84,23 +85,39 @@ class _AddAddressState extends State<AddAddress> {
 
   void addAddress() {
     AppViewModel appModel = Provider.of<AppViewModel>(context, listen: false);
+    UserAddress newAddress;
+    newAddress.name = addressNameController.text;
+    newAddress.apartment = apartmentController.text;
+    newAddress.description = descriptionController.text;
+    newAddress.area = _selectedCity;
 
     if (widget.index != null) {
       appModel.editAddress(
-          widget.index,
-          AddressInfo(
-              addressName: addressNameController.text,
-              apartment: int.parse(apartmentController.text),
-              city: _selectedCity,
-              description: descriptionController.text,
-              region: _selectedRegion));
+          widget.index,newAddress
+          // UserAddress(
+          //     addressName: addressNameController.text,
+          //     apartment: int.parse(apartmentController.text),
+          //     city: _selectedCity,
+          //     description: descriptionController.text,
+          //     region: _selectedRegion
+        //     )
+              );
     } else {
-      appModel.add_address(AddressInfo(
-          addressName: addressNameController.text,
-          apartment: int.parse(apartmentController.text),
-          city: _selectedCity,
-          description: descriptionController.text,
-          region: _selectedRegion));
+      UserAddress newAddress;
+      newAddress.name = addressNameController.text;
+      newAddress.apartment = apartmentController.text;
+      newAddress.description = descriptionController.text;
+      newAddress.area = _selectedCity;
+
+      appModel.addAddress(
+          newAddress
+          // UserAddress(
+          // addressName: addressNameController.text,
+          // apartment: int.parse(apartmentController.text),
+          // city: _selectedCity,
+          // description: descriptionController.text,
+          // region: _selectedRegion)
+      );
     }
 
     Navigator.pop(context);

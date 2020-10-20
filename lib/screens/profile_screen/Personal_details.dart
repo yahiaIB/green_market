@@ -77,15 +77,15 @@ class _PersonalDetailsState extends State<PersonalDetails> {
             Expanded(
               child: ListView(
                 children: <Widget>[
-                  Presonal_data(
-                    data: '${appModel.user.fullName}',
+                  PresonalDataCard(
+                    data: '${appModel.user.name}',
                     icon: Icons.person,
                   ),
-                  Presonal_data(
+                  PresonalDataCard(
                     data: '${appModel.user.mobile}',
                     icon: Icons.phone,
                   ),
-                  Presonal_data(
+                  PresonalDataCard(
                     data: '${appModel.user.email}',
                     icon: Icons.email,
                   ),
@@ -100,7 +100,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
             onPressed: () {
               Navigator.pushNamed(context, Routes.editPersonalDetails,
                   arguments: {
-                    "fullName": appModel.user.fullName,
+                    "fullName": appModel.user.name,
                     "mobile": appModel.user.mobile
                   });
             }),

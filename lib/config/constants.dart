@@ -117,4 +117,5 @@ class Constants {
    new Category(name: "Vegetables"),
    new Category(name: "Fruits"),
  ];
+ static String emptyCartImage() => "res/assets/images/empty_cart.png";
 }

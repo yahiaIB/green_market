@@ -12,6 +12,9 @@ class CustomColors {
   static final Color unselectedItemColor = Colors.black.withOpacity(0.3);
   // static final Color unselectedItemColor = ColorHex("#D2CFD6");
   static final Color backgroundScreenColor = ColorHex("#FAF9FE");
+  static final Color backgroundPrimaryProfileContainerColor = Colors.grey.withOpacity(0.2);
+  static final Color backgroundSecondaryProfileContainerColor = ColorHex("#F85558").withOpacity(0.05);
+
 
   static var red = ColorHex("#BC0D00");
   static final Color green = ColorHex("#518239");
@@ -36,7 +39,7 @@ class CustomColors {
 
   //you can used also color without define ColorHex
   //may add 0xFF + hexa code of color like
-  static const Color primaryColor =Colors.white;
+  static const Color primaryColor = Colors.white;
   static const Color primaryColorDark = Color(0xFF1f5bf7);
   static const Color accentColor = Color(0xFF7b4ee0);
   static const Color accentColorLight = Color(0xFF565656);

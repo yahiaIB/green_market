@@ -11,7 +11,7 @@ class AvatarNameWidget extends StatelessWidget {
         children: <Widget>[
           CircleAvatar(
             backgroundColor: Colors.blue,
-            backgroundImage: NetworkImage(appViewModel.user.profileImage),
+            backgroundImage: NetworkImage(appViewModel.user.image),
             radius: 25.0,
           ),
           SizedBox(
@@ -19,7 +19,7 @@ class AvatarNameWidget extends StatelessWidget {
           ),
           Text(
             AppLocalizations.of(context).translate("Hello") +
-                ' ${appViewModel.user.fullName} !',
+                ' ${appViewModel.user.name} !',
             style: TextStyle(
               color: Colors.black,
               fontSize: 24.0,

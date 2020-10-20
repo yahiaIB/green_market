@@ -16,8 +16,8 @@ class AppViewModel extends BaseViewModel {
   PreferenceUtils preferenceUtils;
   SocketManager _manager = SocketManager.getInstance();
   UserRepository _userRepository = new UserRepository();
-  List<AddressInfo> _addressesInfo = [];
-  List<AddressInfo> get addressesList => _addressesInfo;
+  List<UserAddress> _addressesInfo = [];
+  List<UserAddress> get addressesList => _addressesInfo;
   User get user => _user;
 
   void init() {
@@ -29,10 +29,18 @@ class AppViewModel extends BaseViewModel {
       _user = User().fromJson(json.decode(userData));
     }
     if (_user == null) {
-      _user = User(
-          fullName: "Montaser helmy",
-          mobile: "01156379617",
-          email: "montaserhelmy@gmail.com");
+      User newUser = User();
+      newUser.name = "Montaser helmy";
+      newUser.password = "123456789";
+      newUser.mobile=  "+201156379617";
+      newUser.email=  "montaserhelmy@gmail.com";
+
+      _user = newUser;
+      // _user = User(
+      //     fullName: "Montaser helmy",
+      //     mobile: "01156379617",
+      //     email: "montaserhelmy@gmail.com"
+      //     );
     }
     // _manager.socketInstance.on("profile-change", onUserProfileChanged);
   }
@@ -67,12 +75,18 @@ class AppViewModel extends BaseViewModel {
 
   register(Map userData) {
     if (_user == null) {
-      _user = User(
-          fullName: userData["fullName"],
-          mobile: userData["phoneNumber"],
-          email: userData["email"],
-          password: userData["password"],
-          sId: "123");
+      _user.name = userData["fullName"];
+      _user.mobile = userData["phoneNumber"];
+      _user.email = userData["email"];
+      _user.password = userData["password"];
+
+      // _user = User(
+      //     name: userData["fullName"],
+      //     mobile: userData["phoneNumber"],
+      //     email: userData["email"],
+      //     password: userData["password"],
+      //     sId: "123");
+
       notifyListeners();
       return _user;
     }
@@ -80,12 +94,17 @@ class AppViewModel extends BaseViewModel {
 
   login(Map userData) {
     if (_user == null) {
-      _user = User(
-          fullName: "Montaser helmy",
-          mobile: "01156379617",
-          email: userData["email"],
-          password: userData["password"],
-          sId: "123");
+      _user.name = userData["fullName"];
+      _user.mobile = userData["phoneNumber"];
+      _user.email = userData["email"];
+      _user.password = userData["password"];
+
+      // _user = User(
+      //     fullName: "Montaser helmy",
+      //     mobile: "01156379617",
+      //     email: userData["email"],
+      //     password: userData["password"],
+      //     sId: "123");
       notifyListeners();
       return _user;
     }
@@ -93,15 +112,15 @@ class AppViewModel extends BaseViewModel {
 
   void editPersonalDetails(String fullName, String mobile) {
     if (_user == null) {
-      _user = User(fullName: fullName, mobile: mobile);
+      // _user = User(fullName: fullName, mobile: mobile);
     } else {
-      _user.fullName = fullName;
+      _user.name = fullName;
       _user.mobile = mobile;
     }
     notifyListeners();
   }
 
-  void add_address(AddressInfo address) {
+  void addAddress(UserAddress address) {
     addressesList.add(address);
     notifyListeners();
   }
@@ -111,9 +130,10 @@ class AppViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  void editAddress(int index, AddressInfo address) {
+  void editAddress(int index, UserAddress address) {
     addressesList.removeAt(index);
     addressesList.insert(index, address);
     notifyListeners();
   }
+
 }

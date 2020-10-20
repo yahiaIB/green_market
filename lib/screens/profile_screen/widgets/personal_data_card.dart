@@ -3,12 +3,12 @@ import '../constants/profile_constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
-class Presonal_data extends StatelessWidget {
+class PresonalDataCard extends StatelessWidget {
   String data;
   IconData icon;
 
   @required
-  Presonal_data({this.data, this.icon});
+  PresonalDataCard({this.data, this.icon});
 
   @override
   Widget build(BuildContext context) {

@@ -24,8 +24,7 @@ class AuthenticationRepository {
 
   Future<User> verify({String userId, String token}) async {
     final data = {'id': userId, 'token': token};
-    final response = await HttpClient.getInstance()
-        .post(EndPoints.verifyEndpoint, data: data);
+    final response = await HttpClient.getInstance().post(EndPoints.verifyEndpoint, data: data);
     User user = User().fromJson(response.data);
     return user;
   }

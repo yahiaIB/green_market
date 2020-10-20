@@ -35,11 +35,13 @@ class Application extends StatefulWidget {
 class _ApplicationState extends State<Application> {
   @override
   initState() {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      systemNavigationBarColor: CustomColors.primaryColorDark,
-      statusBarColor: Colors.black12,
-    ));
-    Configuration.setEnvironment(Environment.PROD);
+    SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(
+          systemNavigationBarColor: CustomColors.mainColor,
+          statusBarColor: Colors.black12,
+        )
+    );
+    Configuration.setEnvironment(Environment.LOCAL);
 //    AppLanguage langModel = Provider.of<AppLanguage>(context, listen: false)..fetchLocale();
     super.initState();
   }

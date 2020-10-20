@@ -2,6 +2,7 @@ import 'package:Vio_Telehealth/helpers/app_localizations.dart';
 import 'package:Vio_Telehealth/screens/authentication_screen/authentication_model.dart';
 import 'package:Vio_Telehealth/screens/profile_screen/constants/profile_constants.dart';
 import 'package:Vio_Telehealth/screens/profile_screen/widgets/profile_list_item.dart';
+import 'package:Vio_Telehealth/theme/custom_colors.dart';
 import 'package:Vio_Telehealth/view_models/app_lang.dart';
 import 'package:Vio_Telehealth/view_models/app_status_model.dart';
 import 'package:flutter/material.dart';
@@ -31,10 +32,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   void logout() {
     AuthenticationViewModel authenticationViewModel =
-    Provider.of<AuthenticationViewModel>(context, listen: false);
+        Provider.of<AuthenticationViewModel>(context, listen: false);
 
     AppStatusViewModel appStatusModel =
-    Provider.of<AppStatusViewModel>(context, listen: false);
+        Provider.of<AppStatusViewModel>(context, listen: false);
 
     appStatusModel.setStatus(AppStatus.Unauthenticated);
     authenticationViewModel.logOut();
@@ -49,8 +50,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       for (Map listItem in listItems) {
         items.add(
           DropdownMenuItem(
-            child:
-            Text(AppLocalizations.of(context).translate(listItem["name"])),
+            child: Text(AppLocalizations.of(context).translate(listItem["name"])),
             value: listItem["value"],
           ),
         );
@@ -60,7 +60,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
     return Consumer2<AppViewModel, AppLanguage>(
         builder: (BuildContext context, AppViewModel appModel,
-            AppLanguage languageModel, Widget child) =>
+                AppLanguage languageModel, Widget child) =>
             Scaffold(
               body: SingleChildScrollView(
                 child: Column(
@@ -83,7 +83,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                         SizedBox(height: kSpacingUnit * 2.0),
                         Text(
-                          '${appModel.user.fullName}',
+                          '${appModel.user.name}',
                           style: kTitleTextStyle,
                         ),
                         SizedBox(height: kSpacingUnit * 0.5),
@@ -96,9 +96,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                     ProfileListItem(
                       icon: LineAwesomeIcons.user_1,
-                      text:
-                      AppLocalizations.of(context).translate(
-                          'Personal Details'),
+                      text: AppLocalizations.of(context)
+                          .translate('Personal Details'),
                       function: () {
                         Navigator.pushNamed(context, Routes.personalDetails);
                       },
@@ -119,53 +118,50 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                     ProfileListItem(
                       icon: LineAwesomeIcons.question_circle,
-                      text: AppLocalizations.of(context).translate(
-                          'Help & Support'),
+                      text: AppLocalizations.of(context)
+                          .translate('Help & Support'),
                     ),
                     Padding(
-                        padding:
-                        const EdgeInsets.only(left: 35, right: 35, bottom: 15),
-                        child: Container(
-                          width: MediaQuery
-                              .of(context)
-                              .size
-                              .width,
-                          padding: EdgeInsets.only(left: 20, right: 20),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                                kSpacingUnit.w * 3),
-                            color: kLightSecondaryColor,
-                          ),
-                          child: Row(
-                            children: [
-                              Icon(LineAwesomeIcons.language),
-                              SizedBox(
-                                width: 15,
-                              ),
-                              Expanded(
-                                child: DropdownButtonFormField<String>(
-                                    style: kTitleTextStyle.copyWith(
-                                        fontWeight: FontWeight.w500,
-                                        color: Colors.black),
-                                    decoration: InputDecoration(
-                                        enabledBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: kLightSecondaryColor))),
-                                    icon: Icon(LineAwesomeIcons.angle_down),
-                                    value: languageModel.appLocal.toString(),
-                                    items:
-                                    buildDropDownMenuLanguage(
-                                        _dropdownLanguage),
-                                    validator: (value) =>
-                                    value == null
-                                        ? AppLocalizations.of(context)
-                                        .translate('Choose language')
-                                        : null,
-                                    onChanged: (value) {
-                                      languageModel.changeLanguage(value);
-                                    }),
-                              ),
-                            ],
+                        padding: const EdgeInsets.symmetric(horizontal: 36,).copyWith( bottom: 15),
+                        child: Material(
+                          elevation: 8,
+                          borderRadius: BorderRadius.circular(kSpacingUnit.w * 3),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width,
+                            padding: EdgeInsets.only(left: 20, right: 20),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(kSpacingUnit.w * 3),
+                              // color: CustomColors.backgroundPrimaryProfileContainerColor,
+                            ),
+                            child: Row(
+                              children: [
+                                Icon(LineAwesomeIcons.language),
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                Expanded(
+                                  child: DropdownButtonFormField<String>(
+                                      style: kTitleTextStyle.copyWith(
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.black),
+                                      decoration: InputDecoration(
+                                          enabledBorder: UnderlineInputBorder(
+                                              borderSide: BorderSide(color: kLightSecondaryColor)
+                                          )
+                                      ),
+                                      icon: Icon(LineAwesomeIcons.angle_down),
+                                      value: languageModel.appLocal.toString(),
+                                      items: buildDropDownMenuLanguage(_dropdownLanguage),
+                                      validator: (value) => value == null
+                                          ? AppLocalizations.of(context)
+                                              .translate('Choose language')
+                                          : null,
+                                      onChanged: (value) {
+                                        languageModel.changeLanguage(value);
+                                      }),
+                                ),
+                              ],
+                            ),
                           ),
                         )),
                     ProfileListItem(
@@ -180,7 +176,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ],
                 ),
               ),
-            )
-    );
+            ));
   }
 }

@@ -1,4 +1,5 @@
 import 'package:Vio_Telehealth/helpers/app_localizations.dart';
+import 'package:Vio_Telehealth/widgets/container_box_shadow.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'constants/profile_constants.dart';
@@ -43,89 +44,72 @@ class _AddressesState extends State<Addresses> {
             ListView.builder(
                 itemCount: appModel.addressesList.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return ListTile(
-                      title: Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
-                    child: Container(
-                        padding: EdgeInsets.all(20),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          color: kLightSecondaryColor,
-                        ),
-                        child: Stack(
-                          children: [
-                            Positioned(
-                              right: languageModel.appLocal == Locale("ar")
-                                  ? null
-                                  : 0,
-                              top: 0,
-                              left: languageModel.appLocal == Locale("ar")
-                                  ? 0
-                                  : null,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Iconsbuttons(
-                                    iconData: Icon(LineAwesomeIcons.edit),
-                                    color: Colors.green,
-                                    onTap: () {
-                                      Navigator.pushNamed(
-                                          context, Routes.addAddress,
-                                          arguments: {
-                                            "index": index,
-                                            "address":
-                                                appModel.addressesList[index]
-                                          });
-                                    },
-                                  ),
-                                  Iconsbuttons(
-                                      iconData: Icon(Icons.delete),
-                                      color: mainColor,
-                                      onTap: () =>
-                                          appModel.deleteAddress(index))
-                                ],
-                              ),
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                  return ContainerBoxShadow(
+                      child: Stack(
+                        children: [
+                          Positioned(
+                            right: languageModel.appLocal == Locale("ar") ? null : 0,
+                            top: 0,
+                            left: languageModel.appLocal == Locale("ar") ? 0 : null,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              mainAxisSize: MainAxisSize.min,
                               children: [
-                                Text(
-                                    "${appModel.addressesList[index].addressName}",
-                                    style: TextStyle(color: Colors.grey)),
-                                Text(
-                                  AppLocalizations.of(context)
-                                          .translate("City : ") +
-                                      "${appModel.addressesList[index].city}",
-                                  style: kTitleTextStyle.copyWith(
-                                      fontWeight: FontWeight.w500, height: 1.5),
+                                Iconsbuttons(
+                                  iconData: Icon(LineAwesomeIcons.edit),
+                                  color: Colors.green,
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                        context, Routes.addAddress, arguments: {
+                                      "index": index,
+                                      "address": appModel.addressesList[index]
+                                    });
+                                  },
                                 ),
-                                Text(
-                                  AppLocalizations.of(context)
-                                          .translate("Region : ") +
-                                      "${appModel.addressesList[index].region}",
-                                  style: kTitleTextStyle.copyWith(
-                                      fontWeight: FontWeight.w500, height: 1.5),
-                                ),
-                                Text(
-                                  AppLocalizations.of(context)
-                                          .translate("Apartment : ") +
-                                      "${appModel.addressesList[index].apartment}",
-                                  style: kTitleTextStyle.copyWith(
-                                      fontWeight: FontWeight.w500, height: 1.5),
-                                ),
-                                Text(
-                                  AppLocalizations.of(context)
-                                          .translate("Address : ") +
-                                      "${appModel.addressesList[index].description}",
-                                  style: kTitleTextStyle.copyWith(
-                                      fontWeight: FontWeight.w500, height: 1.5),
-                                ),
+                                Iconsbuttons(
+                                    iconData: Icon(Icons.delete),
+                                    color: mainColor,
+                                    onTap: () => appModel.deleteAddress(index))
                               ],
                             ),
-                          ],
-                        )),
-                  ));
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                  "${appModel.addressesList[index].name}",
+                                  style: TextStyle(color: Colors.grey)),
+                              Text(
+                                AppLocalizations.of(context)
+                                        .translate("City : ") +
+                                    "${appModel.addressesList[index].area}",
+                                style: kTitleTextStyle.copyWith(
+                                    fontWeight: FontWeight.w500, height: 1.5),
+                              ),
+                              Text(
+                                AppLocalizations.of(context)
+                                        .translate("Region : ") +
+                                    "${appModel.addressesList[index].region}",
+                                style: kTitleTextStyle.copyWith(
+                                    fontWeight: FontWeight.w500, height: 1.5),
+                              ),
+                              Text(
+                                AppLocalizations.of(context).translate("Apartment : ") +
+                                    "${appModel.addressesList[index].apartment}",
+                                style: kTitleTextStyle.copyWith(
+                                    fontWeight: FontWeight.w500, height: 1.5),
+                              ),
+                              Text(
+                                AppLocalizations.of(context)
+                                        .translate("Address : ") +
+                                    "${appModel.addressesList[index].description}",
+                                style: kTitleTextStyle.copyWith(
+                                    fontWeight: FontWeight.w500, height: 1.5),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ));
                 }),
       ),
     );

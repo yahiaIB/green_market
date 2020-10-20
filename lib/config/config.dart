@@ -24,9 +24,9 @@ class Configuration {
 
 class _Config {
   static Map<String, dynamic> localConstants = {
-    "app": {"name": "BoilearPlate", "version": "1.0.0"},
+    "app": {"name": "blwa7da", "version": "1.0.0"},
     "env": "local",
-    "baseUrl": "https://devBaseUrl",
+    "baseUrl": "http://192.168.1.5:8080",
     "socketUrl": "https://socketDevBaseUrl",
     "iceServers": {
       'iceServers': [

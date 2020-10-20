@@ -61,7 +61,7 @@ class AuthenticationViewModel extends BaseViewModel {
   void saveUser(User user) {
     var pref = PreferenceUtils.getInstance();
     pref.saveStringData(PreferenceUtils.UserKey, json.encode(user.toJson()));
-    pref.saveStringData(PreferenceUtils.UserToken, user.token);
+    // pref.saveStringData(PreferenceUtils.UserToken, user.token);
     pref.saveStringData(PreferenceUtils.UserId, user.sId);
   }
 
