@@ -27,4 +27,35 @@ class UserRepository {
       throw e;
     }
   }
+
+
+  Future serverCreateAddress(address,userId) async {
+    try {
+      var response = await HttpClient.getInstance().post(EndPoints.addressesEndpoint(userId), data: address);
+      return response.data;
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  Future<List<UserAddress>> serverGetUserAddress(userId) async {
+    try {
+      var response = await HttpClient.getInstance().get(EndPoints.addressesEndpoint(userId));
+      return response.data.map<UserAddress>((address)=> UserAddress().fromJson(address)).toList();
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  Future serverDeleteUserAddress(userId, addressId) async {
+    try {
+      var response = await HttpClient.getInstance().delete(EndPoints.deleteUserAddressEndpoint(userId,addressId));
+      return response.data;
+    } catch (e) {
+      throw e;
+    }
+  }
+
+
+
 }

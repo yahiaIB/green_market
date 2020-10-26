@@ -17,6 +17,7 @@ class AppViewModel extends BaseViewModel {
   SocketManager _manager = SocketManager.getInstance();
   UserRepository _userRepository = new UserRepository();
   List<UserAddress> _addressesInfo = [];
+
   List<UserAddress> get addressesList => _addressesInfo;
   User get user => _user;
 
@@ -30,13 +31,7 @@ class AppViewModel extends BaseViewModel {
     }
     if (_user == null) {
       setGuestUser();
-      // _user = User(
-      //     fullName: "Montaser helmy",
-      //     mobile: "01156379617",
-      //     email: "montaserhelmy@gmail.com"
-      //     );
     }
-    // _manager.socketInstance.on("profile-change", onUserProfileChanged);
   }
 
   initPreferenceUtils() {
@@ -104,14 +99,39 @@ class AppViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  void addAddress(UserAddress address) {
-    addressesList.add(address);
-    notifyListeners();
+  Future addAddress(Map address) async {
+    try{
+      await _userRepository.serverCreateAddress(address,_user.sId);
+    }catch(e){
+      throw handelError(e);
+    }
   }
 
-  void deleteAddress(int index) {
-    addressesList.removeAt(index);
-    notifyListeners();
+  Future getUserAddresses() async{
+    try{
+      setBusy(true);
+      List<UserAddress> result = await _userRepository.serverGetUserAddress(_user.sId);
+      _addressesInfo = result;
+      notifyListeners();
+      setBusy(false);
+    }catch(e){
+      setBusy(false);
+      throw handelError(e);
+    }
+  }
+
+  void deleteAddress(int index, String id) async {
+    try{
+      setBusy(true);
+      var result = await _userRepository.serverDeleteUserAddress(_user.sId,id);
+      addressesList.removeAt(index);
+      notifyListeners();
+      setBusy(false);
+    }catch(e){
+      setBusy(false);
+      throw handelError(e);
+    }
+
   }
 
   void editAddress(int index, UserAddress address) {

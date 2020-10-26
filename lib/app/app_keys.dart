@@ -4,4 +4,5 @@ class AppKeys {
   static final homeScaffoldKey = GlobalKey<ScaffoldState>();
   static final registerScreenScaffoldKey = GlobalKey<ScaffoldState>();
   static final loginScreenScaffoldKey = GlobalKey<ScaffoldState>();
+  static final addLocationScreenScaffoldKey = GlobalKey<ScaffoldState>();
 }

@@ -15,6 +15,15 @@ class Addresses extends StatefulWidget {
 }
 
 class _AddressesState extends State<Addresses> {
+
+  @override
+  void initState() {
+    Provider.of<AppViewModel>(context, listen: false)..getUserAddresses();
+    // TODO: implement initState
+    super.initState();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,8 +31,9 @@ class _AddressesState extends State<Addresses> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add),
-            onPressed: () {
-              Navigator.pushNamed(context, Routes.addAddress);
+            onPressed: () async {
+               await Navigator.pushNamed(context, Routes.addAddress);
+               Provider.of<AppViewModel>(context, listen: false)..getUserAddresses();
             },
             iconSize: 30,
             color: mainColor,
@@ -56,20 +66,9 @@ class _AddressesState extends State<Addresses> {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Iconsbuttons(
-                                  iconData: Icon(LineAwesomeIcons.edit),
-                                  color: Colors.green,
-                                  onTap: () {
-                                    Navigator.pushNamed(
-                                        context, Routes.addAddress, arguments: {
-                                      "index": index,
-                                      "address": appModel.addressesList[index]
-                                    });
-                                  },
-                                ),
-                                Iconsbuttons(
                                     iconData: Icon(Icons.delete),
                                     color: mainColor,
-                                    onTap: () => appModel.deleteAddress(index))
+                                    onTap: () => appModel.deleteAddress(index ,appModel.addressesList[index].sId ))
                               ],
                             ),
                           ),
@@ -80,16 +79,15 @@ class _AddressesState extends State<Addresses> {
                                   "${appModel.addressesList[index].name}",
                                   style: TextStyle(color: Colors.grey)),
                               Text(
-                                AppLocalizations.of(context)
-                                        .translate("City : ") +
-                                    "${appModel.addressesList[index].area}",
+                                AppLocalizations.of(context).translate("City : ") +
+                                    "${appModel.addressesList[index].area.name}",
                                 style: kTitleTextStyle.copyWith(
                                     fontWeight: FontWeight.w500, height: 1.5),
                               ),
                               Text(
                                 AppLocalizations.of(context)
                                         .translate("Region : ") +
-                                    "${appModel.addressesList[index].region}",
+                                    "${appModel.addressesList[index].region.name}",
                                 style: kTitleTextStyle.copyWith(
                                     fontWeight: FontWeight.w500, height: 1.5),
                               ),

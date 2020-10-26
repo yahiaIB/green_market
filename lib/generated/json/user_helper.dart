@@ -1,4 +1,7 @@
+import 'package:Vio_Telehealth/models/area.dart';
+import 'package:Vio_Telehealth/models/region.dart';
 import 'package:Vio_Telehealth/models/user.dart';
+import 'package:Vio_Telehealth/generated/json/base/json_field.dart';
 
 userFromJson(User data, Map<String, dynamic> json) {
 	if (json['_id'] != null) {
@@ -25,12 +28,6 @@ userFromJson(User data, Map<String, dynamic> json) {
 	if (json['token'] != null) {
 		data.token = json['token']?.toString();
 	}
-	if (json['addresses'] != null) {
-		data.addresses = new List<UserAddress>();
-		(json['addresses'] as List).forEach((v) {
-			data.addresses.add(new UserAddress().fromJson(v));
-		});
-	}
 	return data;
 }
 
@@ -44,9 +41,6 @@ Map<String, dynamic> userToJson(User entity) {
 	data['email'] = entity.email;
 	data['image'] = entity.image;
 	data['token'] = entity.token;
-	if (entity.addresses != null) {
-		data['addresses'] =  entity.addresses.map((v) => v.toJson()).toList();
-	}
 	return data;
 }
 
@@ -58,7 +52,7 @@ userAddressFromJson(UserAddress data, Map<String, dynamic> json) {
 		data.name = json['name']?.toString();
 	}
 	if (json['region'] != null) {
-		data.region = json['region']?.toString();
+		data.region = Region().fromJson(json['region']);
 	}
 	if (json['apartment'] != null) {
 		data.apartment = json['apartment']?.toString();
@@ -67,7 +61,7 @@ userAddressFromJson(UserAddress data, Map<String, dynamic> json) {
 		data.description = json['description']?.toString();
 	}
 	if (json['area'] != null) {
-		data.area = json['area']?.toString();
+		data.area = Area().fromJson(json['area']);
 	}
 	return data;
 }
@@ -76,9 +70,9 @@ Map<String, dynamic> userAddressToJson(UserAddress entity) {
 	final Map<String, dynamic> data = new Map<String, dynamic>();
 	data['_id'] = entity.sId;
 	data['name'] = entity.name;
-	data['region'] = entity.region;
+	data['region'] = entity.region.toJson();
 	data['apartment'] = entity.apartment;
 	data['description'] = entity.description;
-	data['area'] = entity.area;
+	data['area'] = entity.area.toJson();
 	return data;
 }

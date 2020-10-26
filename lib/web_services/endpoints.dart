@@ -2,4 +2,8 @@ class EndPoints {
   static final loginEndpoint = '/auth/local/login';
   static final verifyEndpoint = '/auth/local/verify';
   static final registerEndpoint = '/auth/local/register';
+  static final areasEndpoint = '/areas';
+  static regionsEndpoint(areaId) => '/areas/$areaId/regions';
+  static addressesEndpoint(userId) => '/users/$userId/addresses';
+  static deleteUserAddressEndpoint(userId,addressId) => '/users/$userId/addresses/$addressId';
 }

@@ -1,5 +1,8 @@
 import 'package:Vio_Telehealth/generated/json/base/json_convert_content.dart';
 import 'package:Vio_Telehealth/generated/json/base/json_field.dart';
+import 'package:Vio_Telehealth/models/region.dart';
+
+import 'area.dart';
 
 class User with JsonConvert<User> {
 	@JSONField(name: "_id")
@@ -11,16 +14,14 @@ class User with JsonConvert<User> {
 	String email;
 	String image;
 	String token;
-	List<UserAddress> addresses;
-
 }
 
 class UserAddress with JsonConvert<UserAddress> {
 	@JSONField(name: "_id")
 	String sId;
 	String name;
-	String region;
+	Region region;
 	String apartment;
 	String description;
-	String area;
+	Area area;
 }

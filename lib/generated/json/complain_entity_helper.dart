@@ -1,5 +1,4 @@
 import 'package:Vio_Telehealth/models/complain_entity.dart';
-import 'package:Vio_Telehealth/generated/json/base/json_filed.dart';
 
 complainEntityFromJson(ComplainEntity data, Map<String, dynamic> json) {
 	if (json['_id'] != null) {
