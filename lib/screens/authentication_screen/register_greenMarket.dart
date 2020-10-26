@@ -230,13 +230,13 @@ class _RegisterGreenMarketState extends State<RegisterGreenMarket> {
                                       padding: EdgeInsets.fromLTRB(
                                           20.0, 20.0, 20.0, 20.0),
                                       onPressed: () {
+                                        print(_formkey.currentState);
                                         if (_formkey.currentState.validate()) {
                                           register();
                                         }
                                       },
                                       child: Text(
-                                          AppLocalizations.of(context)
-                                              .translate("Sign Up"),
+                                          AppLocalizations.of(context).translate("Sign Up"),
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                               fontSize: 20,

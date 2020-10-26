@@ -26,7 +26,7 @@ class _Config {
   static Map<String, dynamic> localConstants = {
     "app": {"name": "blwa7da", "version": "1.0.0"},
     "env": "local",
-    "baseUrl": "http://192.168.1.5:8081",
+    "baseUrl": "https://api.blwahda.com",
     "socketUrl": "https://socketDevBaseUrl",
     "iceServers": {
       'iceServers': [

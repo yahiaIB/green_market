@@ -3,8 +3,6 @@ import 'package:Vio_Telehealth/screens/cart_screen/cart_screen.dart';
 import 'package:Vio_Telehealth/screens/products_screen/products_screen.dart';
 import 'package:Vio_Telehealth/screens/profile_screen/profile_screen.dart';
 import 'package:Vio_Telehealth/theme/custom_colors.dart';
-import 'package:Vio_Telehealth/view_models/category_view_model.dart';
-import 'package:Vio_Telehealth/view_models/item_view_model.dart';
 import 'package:flutter/material.dart';
 
 

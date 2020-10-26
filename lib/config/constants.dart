@@ -1,4 +1,3 @@
-import 'package:Vio_Telehealth/models/category.dart';
 import 'package:Vio_Telehealth/models/item.dart';
 import 'package:Vio_Telehealth/view_models/category_view_model.dart';
 import 'package:flutter/material.dart';
@@ -113,9 +112,6 @@ class Constants {
     }),
 
   ];
- static List<Category> categories() => [
-   new Category(name: "Vegetables"),
-   new Category(name: "Fruits"),
- ];
+
  static String emptyCartImage() => "res/assets/images/empty_cart.png";
 }

@@ -6,4 +6,6 @@ class EndPoints {
   static regionsEndpoint(areaId) => '/areas/$areaId/regions';
   static addressesEndpoint(userId) => '/users/$userId/addresses';
   static deleteUserAddressEndpoint(userId,addressId) => '/users/$userId/addresses/$addressId';
+  static final categoriesEndpoint = '/categories';
+  static final productsEndpoint = '/products';
 }
