@@ -1,23 +1,26 @@
 import 'package:Vio_Telehealth/models/item.dart';
+import 'package:Vio_Telehealth/models/product_entity.dart';
 import 'package:Vio_Telehealth/screens/products_screen/widgets/item_options_dialog.dart';
 import 'package:Vio_Telehealth/screens/products_screen/widgets/unit_button_widget.dart';
 import 'package:Vio_Telehealth/theme/custom_colors.dart';
 import 'package:Vio_Telehealth/view_models/cart_view_model.dart';
-import 'package:Vio_Telehealth/view_models/item_view_model.dart';
+import 'package:Vio_Telehealth/view_models/product_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:toast/toast.dart';
 
 // how do you StatelessWidget and change the data ?????
 class ProductItem extends StatefulWidget {
-  final Item item;
+  final ProductEntity item;
   final int itemIndex;
   final int categoryIndex;
 
   ProductItem(
-      {@required this.item,
-      @required this.itemIndex,
-      @required this.categoryIndex});
+      {
+        @required this.item,
+        @required this.itemIndex,
+        @required this.categoryIndex,
+      });
 
   @override
   _ProductItemState createState() => _ProductItemState();
@@ -28,7 +31,7 @@ class _ProductItemState extends State<ProductItem> {
   Widget build(BuildContext context) {
     return Consumer2<ItemViewModel, CartViewModel>(
         builder: (context, itemConsumer, cart, child) {
-      return Stack(
+      return  Stack(
         children: [
           Material(
             elevation: 8,
@@ -47,7 +50,7 @@ class _ProductItemState extends State<ProductItem> {
                     height: 5,
                   ),
                   Text(
-                    "${widget.item.options[widget.item.selectedOptionIndex].price * widget.item.amount} L.E",
+                    "${widget.item.options[widget.item.selectedOptionIndex].pricePerUnit * widget.item.amount} L.E",
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
@@ -66,18 +69,10 @@ class _ProductItemState extends State<ProductItem> {
                           print("widget.item");
                           print(widget.item);
                           print(widget.item.amount);
-                          print(widget.item
-                              .options[widget.item.selectedOptionIndex].name);
-                          if (widget.item.amount >
-                              widget
-                                  .item
-                                  .options[widget.item.selectedOptionIndex]
-                                  .unitChange) {
-                            double newAmount = widget.item.amount -
-                                widget
-                                    .item
-                                    .options[widget.item.selectedOptionIndex]
-                                    .unitChange;
+                          print(widget.item.options[widget.item.selectedOptionIndex].name);
+                          if (widget.item.amount > widget.item.options[widget.item.selectedOptionIndex].increasingAmount) {
+                            double newAmount =
+                                widget.item.amount - widget.item.options[widget.item.selectedOptionIndex].increasingAmount;
                             itemConsumer.setAmount(
                               value: newAmount,
                               itemIndex: widget.itemIndex,
@@ -94,7 +89,7 @@ class _ProductItemState extends State<ProductItem> {
                         icon: Icons.add,
                         onTapped: () {
                           print(widget.item.amount);
-                          double newAmount = widget.item.amount + widget.item.options[widget.item.selectedOptionIndex].unitChange;
+                          double newAmount = widget.item.amount + widget.item.options[widget.item.selectedOptionIndex].increasingAmount;
                           itemConsumer.setAmount(value: newAmount,itemIndex:  widget.itemIndex, categoryIndex: widget.categoryIndex);
                           print(widget.item.amount);
                         },
@@ -116,7 +111,7 @@ class _ProductItemState extends State<ProductItem> {
                             optionIndex: widget.item.selectedOptionIndex,
                             itemIndex: widget.itemIndex,
                             categoryIndex: widget.categoryIndex,
-                            image: Image.asset(
+                            image: Image.network(
                               widget.item.image,
                               width: 100,
                               height: 100,
@@ -124,7 +119,7 @@ class _ProductItemState extends State<ProductItem> {
                           ),
                         );
                       },
-                      child: Image.asset(widget.item.image,height: 100,width: (MediaQuery.of(context).size.width - 40)/2,))
+                      child: Image.network(widget.item.image,height: 100,width: (MediaQuery.of(context).size.width - 40)/2,))
                 ],
               ),
             ),
@@ -140,14 +135,8 @@ class _ProductItemState extends State<ProductItem> {
                 bottomLeft: Radius.circular(30.0),
               ),
               onTap: () {
-                cart.addToCart(widget.item);
-                Toast.show(
-                    "Item is Added",
-                    context,
-                    duration: Toast.LENGTH_LONG,
-                    gravity: Toast.BOTTOM,
-                    backgroundColor: CustomColors.mainColor
-                );
+                cart.addToCart(product:widget.item,itemIndex: widget.itemIndex,categoryIndex: widget.categoryIndex,optionIndex: widget.item.selectedOptionIndex);
+
                 itemConsumer.setSelectedAtCart(
                     value: true,
                     optionIndex: widget.item.selectedOptionIndex,
@@ -155,8 +144,15 @@ class _ProductItemState extends State<ProductItem> {
                     categoryIndex: widget.categoryIndex);
 
                 itemConsumer.setAmount(value: 1.0,itemIndex: widget.itemIndex,categoryIndex: widget.categoryIndex);
-
+                print("add to cart");
                 print(widget.item.options[widget.item.selectedOptionIndex].name);
+                Toast.show(
+                    "Item is Added",
+                    context,
+                    duration: Toast.LENGTH_LONG,
+                    gravity: Toast.BOTTOM,
+                    backgroundColor: CustomColors.mainColor
+                );
               },
               child: Container(
                 decoration: BoxDecoration(

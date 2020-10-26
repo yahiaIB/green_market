@@ -2,7 +2,7 @@ import 'package:Vio_Telehealth/models/option.dart';
 
 class Item {
   String image = '';
-  double amount = 0.0;
+  double amount = 1.0;
   List<Option> options = [];
   int selectedOptionIndex = 0;
   String categoryName = '';

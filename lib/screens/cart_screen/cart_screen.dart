@@ -9,7 +9,7 @@ import 'package:Vio_Telehealth/screens/products_screen/widgets/unit_button_widge
 import 'package:Vio_Telehealth/theme/custom_colors.dart';
 import 'package:Vio_Telehealth/view_models/app_model.dart';
 import 'package:Vio_Telehealth/view_models/cart_view_model.dart';
-import 'package:Vio_Telehealth/view_models/item_view_model.dart';
+import 'package:Vio_Telehealth/view_models/product_view_model.dart';
 import 'package:Vio_Telehealth/widgets/primary_button.dart';
 import 'package:Vio_Telehealth/widgets/screen_app_bar.dart';
 import 'package:flutter/cupertino.dart';
@@ -33,6 +33,8 @@ class _CartScreenState extends State<CartScreen> {
 
   @override
   Widget build(BuildContext context) {
+    PageController controller = PageController();
+
     return Consumer2<CartViewModel, AppViewModel>(
       builder: (context, cart, appModel, child) {
         return Scaffold(
@@ -62,50 +64,73 @@ class _CartScreenState extends State<CartScreen> {
                         ],
                       ),
                     )
-                  : Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  : PageView(
+                      scrollDirection: Axis.horizontal,
+                      physics: NeverScrollableScrollPhysics(),
+                      // reverse: true,
+                      // physics: BouncingScrollPhysics(),
+                      controller: controller,
+
+                      onPageChanged: (num) {
+                        setState(() {
+
+                        });
+                      },
                       children: [
-                        Container(
-                          height: MediaQuery.of(context).size.height - 380,
-                          child: ListView(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 10),
-                              children:
-                                  List.generate(cart.cartItems.length, (index) {
-                                var item = cart.cartItems[index];
-                                return CartItemWidget(
-                                  item: item,
-                                  itemIndex: index,
-                                );
-                              })),
+                        SingleChildScrollView(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                                child: Column(
+                                    children:
+                                    List.generate(cart.cartItems.length, (index) {
+                                      var item = cart.cartItems[index];
+                                      return CartItemWidget(
+                                        item: item,
+                                        itemIndex: index,
+                                      );
+                                    })),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(15.0),
+                                child: PrimaryButton(
+                                        (){
+                                          controller.animateToPage(1, duration: Duration(milliseconds: 100), curve: Curves.easeIn);
+                                          },
+                                    "Checkout",
+                                  paddingRightLeft: 30,
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                         Container(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 20,
-                            ).copyWith(
-                              bottom: 20,
-                            ),
+                            padding: EdgeInsets.symmetric(horizontal: 20,).copyWith(bottom: 20,),
                             child: Column(
                               children: [
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween  ,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      "Address",
+                                      "Address Name:",
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          fontSize: 20
-                                      ),
+                                          fontSize: 20),
                                     ),
                                     Container(
-                                      width: MediaQuery.of(context).size.width - 130,
+                                      width: MediaQuery.of(context).size.width - 200,
                                       margin: EdgeInsets.only(bottom: 12),
                                       child: Material(
                                         elevation: 3,
                                         child: Padding(
-                                          padding: const EdgeInsets.symmetric(horizontal: 10),
-                                          child: new DropdownButton<UserAddress>(
-
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 10),
+                                          child:
+                                              new DropdownButton<UserAddress>(
                                             value: selectedAddress,
                                             hint: Text("Select Address"),
                                             focusColor: CustomColors.mainColor,
@@ -115,13 +140,11 @@ class _CartScreenState extends State<CartScreen> {
                                                 selectedAddress = value;
                                               });
                                             },
-                                            items: appModel.addressesList
-                                                .map((UserAddress address) =>
-                                                       DropdownMenuItem<UserAddress>(
-                                                        value: address,
-                                                        child: Text(
-                                                          "${address.name}",
-                                                        ),
+                                            items: appModel.addressesList.map(
+                                                  (UserAddress address) =>
+                                                      DropdownMenuItem<UserAddress>(
+                                                    value: address,
+                                                    child: Text("${address.name}",),
                                                   ),
                                                 )
                                                 .toList(),

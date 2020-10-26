@@ -1,5 +1,6 @@
 import 'package:Vio_Telehealth/models/option.dart';
-import 'package:Vio_Telehealth/view_models/item_view_model.dart';
+import 'package:Vio_Telehealth/models/product_entity.dart';
+import 'package:Vio_Telehealth/view_models/product_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -10,7 +11,7 @@ class ItemOptionsDialog extends StatefulWidget {
   final int optionIndex;
   final int itemIndex;
   final int categoryIndex;
-  final List<Option> options;
+  final List<ProductOption> options;
   ItemOptionsDialog({
     @required this.name,
     @required this.buttonText,
@@ -82,17 +83,15 @@ class _ItemOptionsDialogState extends State<ItemOptionsDialog> {
                         children: widget.options
                             .map((option) => new RadioListTile(
                             value: option.name,
-                            title: Expanded(
-                              child: Text.rich(TextSpan(
-                                  text: '${option.name} ',
-                                  children: <InlineSpan>[
-                                    TextSpan(
-                                      text: " ${option.price} " + "L.E/${option.unit}",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    )
-                                  ])),
-                            ),
+                            title: Text.rich(TextSpan(
+                                text: '${option.name} ',
+                                children: <InlineSpan>[
+                                  TextSpan(
+                                    text: " ${option.pricePerUnit} " + "L.E/${option.unit}",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold),
+                                  )
+                                ])),
                             groupValue: groupValue,
                             onChanged: (value) {
                               print(value);
@@ -125,6 +124,7 @@ class _ItemOptionsDialogState extends State<ItemOptionsDialog> {
                   backgroundColor: Colors.white,
                   radius: Consts.avatarRadius,
                   child: widget.image,
+
                 ),
               ),
             ],

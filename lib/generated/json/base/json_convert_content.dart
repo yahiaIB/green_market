@@ -7,12 +7,16 @@ import 'package:Vio_Telehealth/models/profit_transfer_entity.dart';
 import 'package:Vio_Telehealth/generated/json/profit_transfer_entity_helper.dart';
 import 'package:Vio_Telehealth/models/subscription_entity.dart';
 import 'package:Vio_Telehealth/generated/json/subscription_entity_helper.dart';
-import 'package:Vio_Telehealth/models/user.dart';
-import 'package:Vio_Telehealth/generated/json/user_entity_helper.dart';
 import 'package:Vio_Telehealth/models/complain_entity.dart';
 import 'package:Vio_Telehealth/generated/json/complain_entity_helper.dart';
 import 'package:Vio_Telehealth/models/session.dart';
 import 'package:Vio_Telehealth/generated/json/session_helper.dart';
+import 'package:Vio_Telehealth/models/category_entity.dart';
+import 'package:Vio_Telehealth/generated/json/category_entity_helper.dart';
+import 'package:Vio_Telehealth/models/user.dart';
+import 'package:Vio_Telehealth/generated/json/user_helper.dart';
+import 'package:Vio_Telehealth/models/product_entity.dart';
+import 'package:Vio_Telehealth/generated/json/product_entity_helper.dart';
 
 class JsonConvert<T> {
 	T fromJson(Map<String, dynamic> json) {
@@ -29,9 +33,7 @@ class JsonConvert<T> {
 			return profitTransferBankDetailsFromJson(data as ProfitTransferBankDetails, json) as T;			case ProfitTransferStatu:
 			return profitTransferStatuFromJson(data as ProfitTransferStatu, json) as T;			case SubscriptionEntity:
 			return subscriptionEntityFromJson(data as SubscriptionEntity, json) as T;			case SubscriptionInterval:
-			return subscriptionIntervalFromJson(data as SubscriptionInterval, json) as T;			case User:
-			return userFromJson(data as User, json) as T;			case UserAddress:
-			return userAddressFromJson(data as UserAddress, json) as T;			case ComplainEntity:
+			return subscriptionIntervalFromJson(data as SubscriptionInterval, json) as T;			case ComplainEntity:
 			return complainEntityFromJson(data as ComplainEntity, json) as T;			case ComplainStatu:
 			return complainStatuFromJson(data as ComplainStatu, json) as T;			case Session:
 			return sessionFromJson(data as Session, json) as T;			case SessionSessionDetails:
@@ -39,7 +41,12 @@ class JsonConvert<T> {
 			return sessionPrescriptionFromJson(data as SessionPrescription, json) as T;			case SessionPrescriptionDrug:
 			return sessionPrescriptionDrugFromJson(data as SessionPrescriptionDrug, json) as T;			case SessionStatu:
 			return sessionStatuFromJson(data as SessionStatu, json) as T;			case SessionWebrtcStatu:
-			return sessionWebrtcStatuFromJson(data as SessionWebrtcStatu, json) as T;   }
+			return sessionWebrtcStatuFromJson(data as SessionWebrtcStatu, json) as T;			case CategoryEntity:
+			return categoryEntityFromJson(data as CategoryEntity, json) as T;			case User:
+			return userFromJson(data as User, json) as T;			case UserAddress:
+			return userAddressFromJson(data as UserAddress, json) as T;			case ProductEntity:
+			return productEntityFromJson(data as ProductEntity, json) as T;			case ProductOption:
+			return productOptionFromJson(data as ProductOption, json) as T;    }
     return data as T;
   }
 
@@ -49,9 +56,7 @@ class JsonConvert<T> {
 			return profitTransferBankDetailsToJson(data as ProfitTransferBankDetails);			case ProfitTransferStatu:
 			return profitTransferStatuToJson(data as ProfitTransferStatu);			case SubscriptionEntity:
 			return subscriptionEntityToJson(data as SubscriptionEntity);			case SubscriptionInterval:
-			return subscriptionIntervalToJson(data as SubscriptionInterval);			case User:
-			return userToJson(data as User);			case UserAddress:
-			return userAddressToJson(data as UserAddress);			case ComplainEntity:
+			return subscriptionIntervalToJson(data as SubscriptionInterval);			case ComplainEntity:
 			return complainEntityToJson(data as ComplainEntity);			case ComplainStatu:
 			return complainStatuToJson(data as ComplainStatu);			case Session:
 			return sessionToJson(data as Session);			case SessionSessionDetails:
@@ -59,7 +64,12 @@ class JsonConvert<T> {
 			return sessionPrescriptionToJson(data as SessionPrescription);			case SessionPrescriptionDrug:
 			return sessionPrescriptionDrugToJson(data as SessionPrescriptionDrug);			case SessionStatu:
 			return sessionStatuToJson(data as SessionStatu);			case SessionWebrtcStatu:
-			return sessionWebrtcStatuToJson(data as SessionWebrtcStatu);  }
+			return sessionWebrtcStatuToJson(data as SessionWebrtcStatu);			case CategoryEntity:
+			return categoryEntityToJson(data as CategoryEntity);			case User:
+			return userToJson(data as User);			case UserAddress:
+			return userAddressToJson(data as UserAddress);			case ProductEntity:
+			return productEntityToJson(data as ProductEntity);			case ProductOption:
+			return productOptionToJson(data as ProductOption);    }
     return data as T;
   }
   //Go back to a single instance by type
@@ -69,9 +79,7 @@ class JsonConvert<T> {
 			return ProfitTransferBankDetails().fromJson(json);			case 'ProfitTransferStatu':
 			return ProfitTransferStatu().fromJson(json);			case 'SubscriptionEntity':
 			return SubscriptionEntity().fromJson(json);			case 'SubscriptionInterval':
-			return SubscriptionInterval().fromJson(json);			case 'UserEntity':
-			return User().fromJson(json);			case 'UserAddress':
-			return UserAddress().fromJson(json);			case 'ComplainEntity':
+			return SubscriptionInterval().fromJson(json);			case 'ComplainEntity':
 			return ComplainEntity().fromJson(json);			case 'ComplainStatu':
 			return ComplainStatu().fromJson(json);			case 'Session':
 			return Session().fromJson(json);			case 'SessionSessionDetails':
@@ -79,7 +87,12 @@ class JsonConvert<T> {
 			return SessionPrescription().fromJson(json);			case 'SessionPrescriptionDrug':
 			return SessionPrescriptionDrug().fromJson(json);			case 'SessionStatu':
 			return SessionStatu().fromJson(json);			case 'SessionWebrtcStatu':
-			return SessionWebrtcStatu().fromJson(json); }
+			return SessionWebrtcStatu().fromJson(json);			case 'CategoryEntity':
+			return CategoryEntity().fromJson(json);			case 'User':
+			return User().fromJson(json);			case 'UserAddress':
+			return UserAddress().fromJson(json);			case 'ProductEntity':
+			return ProductEntity().fromJson(json);			case 'ProductOption':
+			return ProductOption().fromJson(json);    }
     return null;
   }
 
@@ -90,9 +103,7 @@ class JsonConvert<T> {
 			return List<ProfitTransferBankDetails>();			case 'ProfitTransferStatu':
 			return List<ProfitTransferStatu>();			case 'SubscriptionEntity':
 			return List<SubscriptionEntity>();			case 'SubscriptionInterval':
-			return List<SubscriptionInterval>();			case 'UserEntity':
-			return List<User>();			case 'UserAddress':
-			return List<UserAddress>();			case 'ComplainEntity':
+			return List<SubscriptionInterval>();			case 'ComplainEntity':
 			return List<ComplainEntity>();			case 'ComplainStatu':
 			return List<ComplainStatu>();			case 'Session':
 			return List<Session>();			case 'SessionSessionDetails':
@@ -100,7 +111,12 @@ class JsonConvert<T> {
 			return List<SessionPrescription>();			case 'SessionPrescriptionDrug':
 			return List<SessionPrescriptionDrug>();			case 'SessionStatu':
 			return List<SessionStatu>();			case 'SessionWebrtcStatu':
-			return List<SessionWebrtcStatu>();	  }
+			return List<SessionWebrtcStatu>();			case 'CategoryEntity':
+			return List<CategoryEntity>();			case 'User':
+			return List<User>();			case 'UserAddress':
+			return List<UserAddress>();			case 'ProductEntity':
+			return List<ProductEntity>();			case 'ProductOption':
+			return List<ProductOption>();    }
     return null;
   }
 
