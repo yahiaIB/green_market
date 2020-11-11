@@ -12,4 +12,5 @@ class EndPoints {
   static final createOrdersEndpoint = '/orders';
   static ordersEndpoint(userId) => '/users/$userId/orders';
   static deleteUserOrderEndpoint(userId,orderId) => '/users/$userId/orders/$orderId';
+  static updateUserEndpoint(userId) => '/users/$userId';
 }
