@@ -1,4 +1,5 @@
 import 'package:Vio_Telehealth/config/constants.dart';
+import 'package:Vio_Telehealth/helpers/app_localizations.dart';
 import 'package:Vio_Telehealth/models/cart.dart';
 import 'package:Vio_Telehealth/models/item.dart';
 import 'package:Vio_Telehealth/models/product_entity.dart';
@@ -38,16 +39,22 @@ class _ProductsState extends State<Products> with TickerProviderStateMixin  {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<ItemViewModel>(
+    return Consumer<ProductViewModel>(
 
       builder: (context,mainVM,child){
 
         _tabController = new TabController(vsync: this, length: mainVM.categoriesList.length);
+        print("mainVM.categoriesList.length");
+        print(mainVM.categoriesList.length);
+        print("mainVM.getCategories.length");
+        print(mainVM.getCategories.length);
+        print("mainVM.getProducts.length");
+        print(mainVM.getProducts.length);
 
 
         return SafeArea(
           child: Scaffold(
-              appBar:ScreenAppBar(title: "Home",icon: Icons.home,isIconButton: false,),
+              appBar:ScreenAppBarWithIcon(title: AppLocalizations.of(context).translate("Home"),icon: Icons.home,isIconButton: false,),
               body:mainVM.busy ? Center(child: CircularProgressIndicator(valueColor: new AlwaysStoppedAnimation<Color>(CustomColors.mainColor),
               ),) :
               DefaultTabController(

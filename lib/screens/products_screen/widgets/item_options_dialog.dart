@@ -38,7 +38,7 @@ class _ItemOptionsDialogState extends State<ItemOptionsDialog> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<ItemViewModel>(
+    return Consumer<ProductViewModel>(
       builder:(context,itemVM,child){
         return Dialog(
           shape: RoundedRectangleBorder(

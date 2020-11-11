@@ -21,7 +21,7 @@ class CartItemWidget extends StatelessWidget {
       builder: (context,cart,child){
         return Container(
           margin: EdgeInsets.only(top: 15),
-          height: 120,
+          padding: EdgeInsets.only(top: 10,left: 10,right: 10),
           decoration: BoxDecoration(
               color: Colors.white,
               boxShadow: [
@@ -38,7 +38,7 @@ class CartItemWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.network(item.image,height: 120,width: 100,),
+              Image.network(item.image,height: 100,width: 100,),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -52,7 +52,7 @@ class CartItemWidget extends StatelessWidget {
                   ),
 
                   Text(
-                    "${item.option.pricePerUnit * item.amount}  L.E",
+                    "${double.parse(item.option.pricePerUnit.toStringAsFixed(2))* double.parse(item.amount.toStringAsFixed(2))}  L.E",
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
@@ -84,7 +84,7 @@ class CartItemWidget extends StatelessWidget {
                             borderRadius: BorderRadius.circular(30)
                         ),
                         child: Text(
-                          "${item.amount}  KG",
+                          "${double.parse(item.amount.toStringAsFixed(2))}  KG",
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
@@ -105,20 +105,17 @@ class CartItemWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              Padding(
-                padding: EdgeInsets.only(top:15.0,right: 15.0),
-                child: InkWell(
-                  child: Icon(
-                    MaterialCommunityIcons.delete_sweep,
-                    size: 40,
-                    color: CustomColors.mainColor,
-                  ),
-                  onTap: ()async{
-                    if(await Dialogs.confirmDialog3(context, "Are You Sure?")){
-                      cart.removeFromCart(item,context);
-                    }
-                  },
+              InkWell(
+                child: Icon(
+                  MaterialCommunityIcons.delete_sweep,
+                  size: 40,
+                  color: CustomColors.mainColor,
                 ),
+                onTap: ()async{
+                  if(await Dialogs.confirmDialog3(context, "Are You Sure to remove this item ?")){
+                    cart.removeFromCart(item,context);
+                  }
+                },
               )
             ],
           ),

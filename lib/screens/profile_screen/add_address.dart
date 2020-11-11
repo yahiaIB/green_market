@@ -50,18 +50,18 @@ class _AddAddressState extends State<AddAddress> {
     return items;
   }
 
-  List<DropdownMenuItem> buildDropDownMenuItems(List listItems) {
-    List<DropdownMenuItem<String>> items = List();
-    for (String listItem in listItems) {
-      items.add(
-        DropdownMenuItem(
-          child: Text(listItem),
-          value: listItem,
-        ),
-      );
-    }
-    return items;
-  }
+  // List<DropdownMenuItem> buildDropDownMenuItems(List listItems) {
+  //   List<DropdownMenuItem<String>> items = List();
+  //   for (String listItem in listItems) {
+  //     items.add(
+  //       DropdownMenuItem(
+  //         child: Text(listItem),
+  //         value: listItem,
+  //       ),
+  //     );
+  //   }
+  //   return items;
+  // }
 
   final _formkey = GlobalKey<FormState>();
 

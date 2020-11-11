@@ -1,7 +1,11 @@
 import 'package:Vio_Telehealth/models/cart.dart';
 import 'package:Vio_Telehealth/models/cart_item.dart';
 import 'package:Vio_Telehealth/models/item.dart';
+import 'package:Vio_Telehealth/models/order_entity.dart';
 import 'package:Vio_Telehealth/models/product_entity.dart';
+import 'package:Vio_Telehealth/models/user.dart';
+import 'package:Vio_Telehealth/repositories/order_repository.dart';
+import 'package:Vio_Telehealth/repositories/user_repository.dart';
 import 'package:Vio_Telehealth/view_models/base_model.dart';
 import 'package:Vio_Telehealth/view_models/product_view_model.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -9,28 +13,71 @@ import 'package:provider/provider.dart';
 
 class CartViewModel extends BaseViewModel {
   List<CartItem> _items = [];
+  UserAddress selectedAddress;
+  UserRepository _userRepository = new UserRepository();
+
+  void setAddress(UserAddress selectedAddress) {
+    this.selectedAddress = selectedAddress;
+    notifyListeners();
+  }
+
+  OrderRepository orderRepository = new OrderRepository();
+
   List<CartItem> get cartItems => _items;
-  double _deliveryPrice = 7;
-  double get deliveryPrice => _deliveryPrice;
+
+  Future<void> createOrder() async {
+    List<OrderProduct> products = [];
+    _items.forEach((cItem) {
+      products.add(
+          OrderProduct(
+          sId: cItem.productId,
+          selectedOption: cItem.optionId,
+          amount: cItem.amount
+          )
+      );
+    });
+    OrderEntity order = OrderEntity(
+        products: products,
+        address: selectedAddress.sId,
+        total: (subTotalPrice + selectedAddress.region.deliveryFees)
+    );
+    try {
+      await _userRepository.serverCreateOrder(order);
+      _items = [];
+      notifyListeners();
+    } catch (e) {
+      throw handelError(e);
+    }
+  }
+
   double get subTotalPrice =>
       _items.fold(0.0, (double currentTotal, CartItem nextProduct) {
-        return currentTotal + (nextProduct.option.pricePerUnit * nextProduct.amount);
+        return currentTotal +
+            (nextProduct.option.pricePerUnit * nextProduct.amount);
       });
-  double get totalPrice => subTotalPrice + deliveryPrice;
+  double get totalPrice =>subTotalPrice + selectedAddress.region.deliveryFees;
 
-  void addToCart({ProductEntity product,int itemIndex,int categoryIndex,int optionIndex}) {
+  bool get isCartEmpty => _items.isEmpty;
+
+  void addToCart(
+      {ProductEntity product,
+      int itemIndex,
+      int categoryIndex,
+      int optionIndex}) {
     CartItem cartItem = new CartItem();
 
     cartItem.image = product.image;
     cartItem.amount = product.amount;
     cartItem.option = product.options[product.selectedOptionIndex];
+    cartItem.productId = product.sId;
+    cartItem.optionId = product.options[product.selectedOptionIndex].sId;
     cartItem.itemIndex = itemIndex;
     cartItem.categoryIndex = categoryIndex;
-    cartItem.optionIndex= optionIndex;
+    cartItem.optionIndex = optionIndex;
 
     print(cartItem.option.name);
 
-    if (cartItem.option.isSelectedAtCart ) {
+    if (cartItem.option.isSelectedAtCart) {
       _items.forEach((cItem) {
         if (cartItem.option.name == cItem.option.name) {
           print(cItem.amount);
@@ -49,15 +96,24 @@ class CartViewModel extends BaseViewModel {
 
   void removeFromCart(CartItem item, BuildContext context) {
     _items.remove(item);
-    Provider.of<ItemViewModel>(context, listen: false).setSelectedAtCart(value: false,itemIndex: item.itemIndex,categoryIndex: item.categoryIndex,optionIndex: item.optionIndex);
+    Provider.of<ProductViewModel>(context, listen: false).setSelectedAtCart(
+        value: false,
+        itemIndex: item.itemIndex,
+        categoryIndex: item.categoryIndex,
+        optionIndex: item.optionIndex);
     notifyListeners();
   }
-  void setAmount({double value,int itemIndex}) {
+
+  void removeAllCartItems() {
+    _items = [];
+    notifyListeners();
+  }
+
+  void setAmount({double value, int itemIndex}) {
     print(value);
     print(itemIndex);
 
     _items[itemIndex].amount = value;
     notifyListeners();
   }
-
 }

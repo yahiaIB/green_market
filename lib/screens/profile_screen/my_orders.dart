@@ -1,8 +1,11 @@
 import 'package:Vio_Telehealth/helpers/app_localizations.dart';
 import 'package:Vio_Telehealth/theme/custom_colors.dart';
+import 'package:Vio_Telehealth/view_models/app_model.dart';
 import 'package:Vio_Telehealth/widgets/container_box_shadow.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'constants/profile_constants.dart';
+import 'package:intl/intl.dart';
 
 class MyOrders extends StatefulWidget {
   @override
@@ -10,6 +13,14 @@ class MyOrders extends StatefulWidget {
 }
 
 class _MyOrdersState extends State<MyOrders> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    Provider.of<AppViewModel>(context, listen: false)..getUserOrders();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,105 +33,112 @@ class _MyOrdersState extends State<MyOrders> {
           ),
         ),
       ),
-      body: ListView.builder(
-          itemCount: 6,
-          itemBuilder: (BuildContext context, int index) {
-            return ContainerBoxShadow(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        AppLocalizations.of(context).translate("Order Number"),
-                        style:
-                            TextStyle(fontWeight: FontWeight.bold, height: 1.5),
-                      ),
-                      Text(
-                        "2092",
-                        style: TextStyle(),
-                      )
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        AppLocalizations.of(context).translate("Status"),
-                        style:
-                            TextStyle(fontWeight: FontWeight.bold, height: 1.5),
-                      ),
-                      Text(
-                        "New",
-                        style: TextStyle(),
-                      )
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        AppLocalizations.of(context).translate("Delivery Date"),
-                        style:
-                            TextStyle(fontWeight: FontWeight.bold, height: 1.5),
-                      ),
-                      Text(
-                        "Tomorrow 19 September",
-                        style: TextStyle(),
-                      )
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        AppLocalizations.of(context).translate("Delivery Time"),
-                        style:
-                            TextStyle(fontWeight: FontWeight.bold, height: 1.5),
-                      ),
-                      Text(
-                        "2PM - 3PM",
-                        style: TextStyle(),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        AppLocalizations.of(context).translate("Address"),
-                        style:
-                            TextStyle(fontWeight: FontWeight.bold, height: 1.5),
-                      ),
-                      Text(
-                        "Madinty & Shorouq city",
-                        style: TextStyle(),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        AppLocalizations.of(context).translate("Total"),
-                        style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                            height: 3),
-                      ),
-                      Text(
-                        "35.00 LE",
-                        style: TextStyle(
-                            fontSize: 20, height: 3, color: mainColor),
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            );
-          }),
+      body: Consumer<AppViewModel>(
+          builder: (BuildContext context, AppViewModel appModel, Widget child) =>
+         ListView.builder(
+            itemCount: appModel.orderList.length,
+            itemBuilder: (BuildContext context, int index) {
+              return ContainerBoxShadow(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          AppLocalizations.of(context).translate("Order Number"),
+                          style:
+                              TextStyle(fontWeight: FontWeight.bold, height: 1.5),
+                        ),
+                        Text(
+                          "${appModel.orderList[index].number}",
+                          style: TextStyle(),
+                        )
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          AppLocalizations.of(context).translate("Status"),
+                          style:
+                              TextStyle(fontWeight: FontWeight.bold, height: 1.5),
+                        ),
+                        Text(
+                          "New",
+                          style: TextStyle(),
+                        )
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          AppLocalizations.of(context).translate("Delivery Date"),
+                          style:
+                              TextStyle(fontWeight: FontWeight.bold, height: 1.5),
+                        ),
+                        Text(
+                          "${DateFormat('dd-MM-yyyy').format(
+                            DateTime.parse(appModel.orderList[index].createdAt.toString())
+                          ) }",
+                          style: TextStyle(),
+                        )
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          AppLocalizations.of(context).translate("Delivery Time"),
+                          style:
+                              TextStyle(fontWeight: FontWeight.bold, height: 1.5),
+                        ),
+                        Text(
+                          "${
+                              DateTime.parse(appModel.orderList[index].createdAt).hour+2
+                           }",
+                          style: TextStyle(),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          AppLocalizations.of(context).translate("Address"),
+                          style:
+                              TextStyle(fontWeight: FontWeight.bold, height: 1.5),
+                        ),
+                        Text(
+                          "${appModel.orderList[index].address.name}",
+                          style: TextStyle(),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          AppLocalizations.of(context).translate("Total"),
+                          style: TextStyle(
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                              height: 3),
+                        ),
+                        Text(
+                          "${appModel.orderList[index].priceInfo.total} "+"LE",
+                          style: TextStyle(
+                              fontSize: 20, height: 3, color: mainColor),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              );
+            }),
+      ),
     );
   }
 }

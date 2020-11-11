@@ -1,4 +1,5 @@
 import 'package:Vio_Telehealth/models/subscription_entity.dart';
+import 'package:Vio_Telehealth/generated/json/base/json_filed.dart';
 
 subscriptionEntityFromJson(SubscriptionEntity data, Map<String, dynamic> json) {
 	if (json['_id'] != null) {

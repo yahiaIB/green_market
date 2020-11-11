@@ -1,7 +1,6 @@
 import 'package:Vio_Telehealth/models/area.dart';
-import 'package:Vio_Telehealth/models/region.dart';
 import 'package:Vio_Telehealth/models/user.dart';
-import 'package:Vio_Telehealth/generated/json/base/json_field.dart';
+import 'package:Vio_Telehealth/models/region.dart';
 
 userFromJson(User data, Map<String, dynamic> json) {
 	if (json['_id'] != null) {
@@ -52,7 +51,7 @@ userAddressFromJson(UserAddress data, Map<String, dynamic> json) {
 		data.name = json['name']?.toString();
 	}
 	if (json['region'] != null) {
-		data.region = Region().fromJson(json['region']);
+		data.region = new Region().fromJson(json['region']);
 	}
 	if (json['apartment'] != null) {
 		data.apartment = json['apartment']?.toString();
@@ -61,7 +60,7 @@ userAddressFromJson(UserAddress data, Map<String, dynamic> json) {
 		data.description = json['description']?.toString();
 	}
 	if (json['area'] != null) {
-		data.area = Area().fromJson(json['area']);
+		data.area = new Area().fromJson(json['area']);
 	}
 	return data;
 }
@@ -70,9 +69,13 @@ Map<String, dynamic> userAddressToJson(UserAddress entity) {
 	final Map<String, dynamic> data = new Map<String, dynamic>();
 	data['_id'] = entity.sId;
 	data['name'] = entity.name;
-	data['region'] = entity.region.toJson();
+	if (entity.region != null) {
+		data['region'] = entity.region.toJson();
+	}
 	data['apartment'] = entity.apartment;
 	data['description'] = entity.description;
-	data['area'] = entity.area.toJson();
+	if (entity.area != null) {
+		data['area'] = entity.area.toJson();
+	}
 	return data;
 }

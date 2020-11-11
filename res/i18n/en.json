@@ -68,5 +68,9 @@
 
   "Enter your email": "Enter your email",
   "Continue": "Continue",
-  "Enter verification code": "Enter verification code"
+  "Enter verification code": "Enter verification code",
+
+  "Your cart is empty" : "Your cart is empty",
+  "Forget Password":"Forget Password"
+
 }

@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:Vio_Telehealth/models/order_entity.dart';
+import 'package:Vio_Telehealth/models/user_orders_entity.dart';
 import 'package:dio/dio.dart';
 
 import '../web_services/endpoints.dart';
@@ -47,6 +49,8 @@ class UserRepository {
     }
   }
 
+
+
   Future serverDeleteUserAddress(userId, addressId) async {
     try {
       var response = await HttpClient.getInstance().delete(EndPoints.deleteUserAddressEndpoint(userId,addressId));
@@ -55,6 +59,40 @@ class UserRepository {
       throw e;
     }
   }
+
+  Future<List <OrderEntity> > fetchOrders({String userId}) async {
+    final response = await HttpClient.getInstance().get(EndPoints.ordersEndpoint(userId));
+    List <OrderEntity> orders = response.data.map<OrderEntity>((order)=>OrderEntity().fromJson(order)).toList();
+    return orders;
+  }
+  Future serverCreateOrder(order) async {
+    try {
+      var response = await HttpClient.getInstance().post(EndPoints.createOrdersEndpoint, data: order);
+      return response.data;
+    } catch (e) {
+      throw e;
+    }
+  }
+  Future<List<UserOrdersEntity>> serverGetUserOrder(userId) async {
+    try {
+      var response = await HttpClient.getInstance().get(EndPoints.ordersEndpoint(userId));
+      return response.data.map<UserOrdersEntity>((order)=> UserOrdersEntity().fromJson(order)).toList();
+    } catch (e) {
+      throw e;
+    }
+  }
+
+
+  Future serverDeleteUserOrder(userId, addressId) async {
+    try {
+      var response = await HttpClient.getInstance().delete(EndPoints.deleteUserOrderEndpoint(userId,addressId));
+      return response.data;
+    } catch (e) {
+      throw e;
+    }
+  }
+
+
 
 
 

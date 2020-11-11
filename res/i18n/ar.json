@@ -20,15 +20,15 @@
   "Do you have account?": "هل تمتلك حسابا؟",
 
 
-  "Personal Details": "المعلومات الشخصيه",
+  "Personal Details": "المعلومات الشخصية",
   "Addresses": "العناوين",
   "My orders": "طلباتي",
   "Help & Support": "الدعم والمساعده",
-  "Choose language": "اختار لغه",
+  "Choose language": "اختار لغة",
   "Logout": "تسجيل الخروج",
 
 
-  "Edit personal details": "تعديل المعلومات الشخصيه",
+  "Edit personal details": "تعديل المعلومات الشخصية",
   "Phone number": "رقم الهاتف",
   "Save": "حفظ",
   "Photo Library": "معرض الصور",
@@ -36,8 +36,8 @@
 
 
   "My addresses": "عناويني",
-  "City : ": "المدينه : ",
-  "Region : ": "المنطقه : ",
+  "City : ": "المدينة : ",
+  "Region : ": "المنطقة : ",
   "Apartment : ": "رقم الشقه : ",
   "Address : ": "العنوان : ",
 
@@ -46,27 +46,29 @@
   "Edit address":"تعديل العنوان",
   "Address Name": "اسم العنوان",
   "please enter your address name": "من فضلك ادخل اسم العنوان",
-  "Choose City": "اختار المدينه",
-  "Choose Region": "اختار المنطقه",
-  "Apartment number": "رقم الشقه",
-  "please enter your apartment number": "من فضلك ادخل رقم الشقه",
+  "Choose City": "اختار المدينة",
+  "Choose Region": "اختار المنطقة",
+  "Apartment number": "رقم الشقة",
+  "please enter your apartment number": "من فضلك ادخل رقم الشقة",
   "Description" : "العنوان بالتفصيل",
   "please enter your address description": "من فضلك قم بادخال العنوان بالتفصيل",
 
 
   "Order Number": "رقم الطلب",
-  "Status": "الحاله",
+  "Status": "الحالة",
   "Delivery Date": "تاريخ التوصيل",
   "Delivery Time": "وقت التوصيل",
   "Total": "الحساب",
   "Address": "العنوان",
 
 
-  "Home": "الصفحه الرئيسيه",
+  "Home": "الصفحة الرئيسية",
   "Cart": "عربة التسوق",
-  "Profile": "الصفحه الشخصيه",
+  "Profile": "الصفحة الشخصية",
 
   "Enter your email": "ادخل بريدك الالكتروني",
-  "Continue": "متابعه",
-  "Enter verification code":"قم بادخال الكود"
+  "Continue": "متابعة",
+  "Enter verification code":"قم بادخال الكود",
+  "Your cart is empty" : "عربة تسوقك فارغة",
+  "Forget Password": "نسيت كلمة المرور"
 }
