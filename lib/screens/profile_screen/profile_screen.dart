@@ -1,3 +1,6 @@
+import 'package:Vio_Telehealth/config/auth/auth_visibility_widget.dart';
+import 'package:Vio_Telehealth/config/auth/authorization.dart';
+import 'package:Vio_Telehealth/config/auth/roles.dart';
 import 'package:Vio_Telehealth/helpers/app_localizations.dart';
 import 'package:Vio_Telehealth/screens/authentication_screen/authentication_model.dart';
 import 'package:Vio_Telehealth/screens/profile_screen/constants/profile_constants.dart';
@@ -74,7 +77,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             children: <Widget>[
                               CircleAvatar(
                                 radius: kSpacingUnit * 10.0,
-                                //backgroundImage: AssetImage('res/assets/images/m.png'),
+                                backgroundImage: appModel.user.image == null ? null : NetworkImage(appModel.user.image),
                               ),
                             ],
                           ),
@@ -92,28 +95,37 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         SizedBox(height: kSpacingUnit * 2.0),
                       ],
                     ),
-                    ProfileListItem(
-                      icon: LineAwesomeIcons.user_1,
-                      text: AppLocalizations.of(context)
-                          .translate('Personal Details'),
-                      function: () {
-                        Navigator.pushNamed(context, Routes.personalDetails);
-                      },
+                    AuthVisibilityWidget(
+                      child: ProfileListItem(
+                        icon: LineAwesomeIcons.user_1,
+                        text: AppLocalizations.of(context).translate('Personal Details'),
+                        function: () {
+                          Navigator.pushNamed(context, Routes.personalDetails);
+                        },
+                      ),
+                      resourceName: Authorizations.personalDetailsButton,
                     ),
-                    ProfileListItem(
-                      icon: LineAwesomeIcons.address_card,
-                      text: AppLocalizations.of(context).translate('Addresses'),
-                      function: () {
-                        Navigator.pushNamed(context, Routes.addresses);
-                      },
+                    AuthVisibilityWidget(
+                      child: ProfileListItem(
+                        icon: LineAwesomeIcons.address_card,
+                        text: AppLocalizations.of(context).translate('Addresses'),
+                        function: () {
+                          Navigator.pushNamed(context, Routes.addresses);
+                        },
+                      ),
+                      resourceName: Authorizations.personalAddressButton,
                     ),
-                    ProfileListItem(
-                      icon: LineAwesomeIcons.history,
-                      text: AppLocalizations.of(context).translate('My orders'),
-                      function: () {
-                        Navigator.pushNamed(context, Routes.myOrders);
-                      },
+                    AuthVisibilityWidget(
+                      child: ProfileListItem(
+                        icon: LineAwesomeIcons.history,
+                        text: AppLocalizations.of(context).translate('My orders'),
+                        function: () {
+                          Navigator.pushNamed(context, Routes.myOrders);
+                        },
+                      ),
+                      resourceName: Authorizations.personalOrdersButton,
                     ),
+
                     ProfileListItem(
                       icon: LineAwesomeIcons.question_circle,
                       text: AppLocalizations.of(context)

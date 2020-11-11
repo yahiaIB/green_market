@@ -10,10 +10,20 @@ import '../models/user.dart';
 import 'package:intl/intl.dart';
 
 class UserRepository {
-  Future<User> profile({String userId}) async {
-//    final response = await HttpClient.getInstance().get(EndPoints.profile(userId));
-//    User user = User().fromJson(response.data);
-//    return user;
+
+  Future<User> updateProfile({String userId , userData , image}) async {
+    var data = FormData.fromMap({
+      "data": jsonEncode(userData),
+    });
+    if (image != null && image.runtimeType != String) {
+      data.files.add(MapEntry(
+          "image",
+          MultipartFile.fromFileSync(image.path,
+              filename: image.path)));
+    }
+    final response = await HttpClient.getInstance().put(EndPoints.updateUserEndpoint(userId),data: data);
+    User user = User().fromJson(response.data);
+    return user;
   }
 
   Future<void> serverUpdateUserFCMToken(userData,userId) async {
@@ -21,6 +31,7 @@ class UserRepository {
       var data = FormData.fromMap({
         "data": jsonEncode(userData),
       });
+
 //      var response = await HttpClient.getInstance().put(EndPoints.updateUserProfile(userId), data: data);
       return true;
     } catch (e) {

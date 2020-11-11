@@ -24,7 +24,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
 
   @override
   Widget build(BuildContext context) {
-    var profileInfo = Expanded(
+     profileInfo(AppViewModel appViewModel) => Expanded(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
@@ -36,7 +36,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
               children: <Widget>[
                 CircleAvatar(
                   radius: kSpacingUnit.w * 10,
-                  backgroundImage: AssetImage("assets/avatar.png"),
+                  backgroundImage: appViewModel.user.image == null ? null : NetworkImage(appViewModel.user.image),
                 ),
               ],
             ),
@@ -46,13 +46,13 @@ class _PersonalDetailsState extends State<PersonalDetails> {
       ),
     );
 
-    var header = Row(
+    header(appViewModel) => Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         SizedBox(width: kSpacingUnit.w * 3),
 
-        profileInfo,
+        profileInfo(appViewModel),
         //themeSwitcher,
         SizedBox(width: kSpacingUnit.w * 3),
       ],
@@ -73,7 +73,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
         body: Column(
           children: <Widget>[
             SizedBox(height: kSpacingUnit.w * 5),
-            header,
+            header(appModel),
             Expanded(
               child: ListView(
                 children: <Widget>[
@@ -101,7 +101,8 @@ class _PersonalDetailsState extends State<PersonalDetails> {
               Navigator.pushNamed(context, Routes.editPersonalDetails,
                   arguments: {
                     "fullName": appModel.user.name,
-                    "mobile": appModel.user.mobile
+                    "mobile": appModel.user.mobile,
+                    "image": appModel.user.image,
                   });
             }),
       ),

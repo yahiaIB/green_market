@@ -21,7 +21,7 @@ class _AuthVisibilityWidgetState extends State<AuthVisibilityWidget> {
   void initState() {
     preferenceUtils = PreferenceUtils.getInstance();
     var userRoles = preferenceUtils.getData(PreferenceUtils.UserRoles);
-    if(Authorizations.authorizations[widget.resourceName].contains(userRoles)){
+    if(Authorizations.authorizations[widget.resourceName].contains("$userRoles")){
       visible = true;
     }
     super.initState();

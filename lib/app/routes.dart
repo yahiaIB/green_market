@@ -58,8 +58,9 @@ class Routes {
         String fullName =
             personalData != null ? personalData["fullName"] : null;
         String mobile = personalData != null ? personalData["mobile"] : null;
+        String image = personalData != null ? personalData["image"] : null;
         return MaterialPageRoute(
-            builder: (_) => EditPersonalDetails(fullName, mobile));
+            builder: (_) => EditPersonalDetails(fullName, mobile,image));
       case addAddress:
         var data = settings.arguments as Map;
         int index = data != null ? data["index"] : null;
