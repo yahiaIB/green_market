@@ -411,6 +411,33 @@ class Dialogs {
         });
   }
 
+  static Future<bool> confirmDialogWithLabels(BuildContext context, title,trueLabel,falseLabel) {
+    return showDialog<bool>(
+        context: context,
+        barrierDismissible: false, // user must tap button!
+        builder: (BuildContext context) {
+          return Container(
+            child: new AlertDialog(
+              title: new Text(title),
+              actions: <Widget>[
+                new FlatButton(
+                  child:  Text(trueLabel),
+                  onPressed: () {
+                    Navigator.of(context).pop(true);
+                  },
+                ),
+                new FlatButton(
+                  child:  Text(falseLabel),
+                  onPressed: () {
+                    Navigator.of(context).pop(false);
+                  },
+                ),
+              ],
+            ),
+          );
+        });
+  }
+
   static Widget writeDescriptionTextEditing(
       {context,
       TextEditingController textEditingController,

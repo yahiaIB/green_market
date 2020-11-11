@@ -19,6 +19,12 @@ productEntityFromJson(ProductEntity data, Map<String, dynamic> json) {
 	if (json['image'] != null) {
 		data.image = json['image']?.toString();
 	}
+	if (json['selectedOptionIndex'] != null) {
+		data.selectedOptionIndex = json['selectedOptionIndex']?.toInt();
+	}
+	if (json['amount'] != null) {
+		data.amount = json['amount']?.toDouble();
+	}
 	return data;
 }
 
@@ -31,6 +37,8 @@ Map<String, dynamic> productEntityToJson(ProductEntity entity) {
 	}
 	data['active'] = entity.active;
 	data['image'] = entity.image;
+	data['selectedOptionIndex'] = entity.selectedOptionIndex;
+	data['amount'] = entity.amount;
 	return data;
 }
 
@@ -53,6 +61,9 @@ productOptionFromJson(ProductOption data, Map<String, dynamic> json) {
 	if (json['increasingAmount'] != null) {
 		data.increasingAmount = json['increasingAmount']?.toDouble();
 	}
+	if (json['isSelectedAtCart'] != null) {
+		data.isSelectedAtCart = json['isSelectedAtCart'];
+	}
 	return data;
 }
 
@@ -64,5 +75,6 @@ Map<String, dynamic> productOptionToJson(ProductOption entity) {
 	data['active'] = entity.active;
 	data['pricePerUnit'] = entity.pricePerUnit;
 	data['increasingAmount'] = entity.increasingAmount;
+	data['isSelectedAtCart'] = entity.isSelectedAtCart;
 	return data;
 }

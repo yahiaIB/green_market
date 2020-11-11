@@ -29,8 +29,8 @@ class ProductItem extends StatefulWidget {
 class _ProductItemState extends State<ProductItem> {
   @override
   Widget build(BuildContext context) {
-    return Consumer2<ItemViewModel, CartViewModel>(
-        builder: (context, itemConsumer, cart, child) {
+    return Consumer2<ProductViewModel, CartViewModel>(
+        builder: (context, productVM, cart, child) {
       return  Stack(
         children: [
           Material(
@@ -50,7 +50,7 @@ class _ProductItemState extends State<ProductItem> {
                     height: 5,
                   ),
                   Text(
-                    "${widget.item.options[widget.item.selectedOptionIndex].pricePerUnit * widget.item.amount} L.E",
+                    "${(widget.item.options[widget.item.selectedOptionIndex].pricePerUnit * widget.item.amount).toStringAsFixed(2)} L.E",
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
@@ -66,32 +66,25 @@ class _ProductItemState extends State<ProductItem> {
                       UnitButton(
                         icon: Icons.remove,
                         onTapped: () {
-                          print("widget.item");
-                          print(widget.item);
-                          print(widget.item.amount);
-                          print(widget.item.options[widget.item.selectedOptionIndex].name);
                           if (widget.item.amount > widget.item.options[widget.item.selectedOptionIndex].increasingAmount) {
                             double newAmount =
                                 widget.item.amount - widget.item.options[widget.item.selectedOptionIndex].increasingAmount;
-                            itemConsumer.setAmount(
+                            productVM.setAmount(
                               value: newAmount,
                               itemIndex: widget.itemIndex,
                               categoryIndex: widget.categoryIndex,
                             );
-                            print(widget.item.amount);
                           }
                         },
                       ),
                       Text(
-                        "${widget.item.amount}  KG",
+                        "${widget.item.amount.toStringAsFixed(2)}  KG",
                       ),
                       UnitButton(
                         icon: Icons.add,
                         onTapped: () {
-                          print(widget.item.amount);
                           double newAmount = widget.item.amount + widget.item.options[widget.item.selectedOptionIndex].increasingAmount;
-                          itemConsumer.setAmount(value: newAmount,itemIndex:  widget.itemIndex, categoryIndex: widget.categoryIndex);
-                          print(widget.item.amount);
+                          productVM.setAmount(value: newAmount,itemIndex:  widget.itemIndex, categoryIndex: widget.categoryIndex);
                         },
                       ),
                     ],
@@ -135,15 +128,20 @@ class _ProductItemState extends State<ProductItem> {
                 bottomLeft: Radius.circular(30.0),
               ),
               onTap: () {
-                cart.addToCart(product:widget.item,itemIndex: widget.itemIndex,categoryIndex: widget.categoryIndex,optionIndex: widget.item.selectedOptionIndex);
+                cart.addToCart(
+                    product:widget.item,
+                    itemIndex: widget.itemIndex,
+                    categoryIndex: widget.categoryIndex,
+                    optionIndex: widget.item.selectedOptionIndex
+                );
 
-                itemConsumer.setSelectedAtCart(
+                productVM.setSelectedAtCart(
                     value: true,
                     optionIndex: widget.item.selectedOptionIndex,
                     itemIndex: widget.itemIndex,
                     categoryIndex: widget.categoryIndex);
 
-                itemConsumer.setAmount(value: 1.0,itemIndex: widget.itemIndex,categoryIndex: widget.categoryIndex);
+                productVM.setAmount(value: 1.0,itemIndex: widget.itemIndex,categoryIndex: widget.categoryIndex);
                 print("add to cart");
                 print(widget.item.options[widget.item.selectedOptionIndex].name);
                 Toast.show(

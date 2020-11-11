@@ -1,6 +1,7 @@
 import 'package:Vio_Telehealth/models/region.dart';
+import 'package:Vio_Telehealth/generated/json/base/json_filed.dart';
 
-regionEntityFromJson(Region data, Map<String, dynamic> json) {
+regionFromJson(Region data, Map<String, dynamic> json) {
 	if (json['_id'] != null) {
 		data.sId = json['_id']?.toString();
 	}
@@ -16,7 +17,7 @@ regionEntityFromJson(Region data, Map<String, dynamic> json) {
 	return data;
 }
 
-Map<String, dynamic> regionEntityToJson(Region entity) {
+Map<String, dynamic> regionToJson(Region entity) {
 	final Map<String, dynamic> data = new Map<String, dynamic>();
 	data['_id'] = entity.sId;
 	data['name'] = entity.name;

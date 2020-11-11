@@ -1,13 +1,20 @@
+import 'package:Vio_Telehealth/app/app_keys.dart';
+import 'package:Vio_Telehealth/app/routes.dart';
 import 'package:Vio_Telehealth/config/constants.dart';
+import 'package:Vio_Telehealth/helpers/app_localizations.dart';
 import 'package:Vio_Telehealth/models/address.dart';
 import 'package:Vio_Telehealth/models/cart.dart';
 import 'package:Vio_Telehealth/models/item.dart';
 import 'package:Vio_Telehealth/models/option.dart';
+import 'package:Vio_Telehealth/models/order_entity.dart';
 import 'package:Vio_Telehealth/models/user.dart';
+import 'package:Vio_Telehealth/screens/authentication_screen/authentication_model.dart';
 import 'package:Vio_Telehealth/screens/cart_screen/widgets/cart_item_widget.dart';
 import 'package:Vio_Telehealth/screens/products_screen/widgets/unit_button_widget.dart';
 import 'package:Vio_Telehealth/theme/custom_colors.dart';
+import 'package:Vio_Telehealth/utils/utils_functions.dart';
 import 'package:Vio_Telehealth/view_models/app_model.dart';
+import 'package:Vio_Telehealth/view_models/app_status_model.dart';
 import 'package:Vio_Telehealth/view_models/cart_view_model.dart';
 import 'package:Vio_Telehealth/view_models/product_view_model.dart';
 import 'package:Vio_Telehealth/widgets/primary_button.dart';
@@ -25,26 +32,23 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
-  UserAddress selectedAddress;
-  @override
-  void initState() {
-    super.initState();
-  }
+  ScrollPhysics myScrollPhysics = NeverScrollableScrollPhysics();
+
+  PageController controller = PageController();
 
   @override
   Widget build(BuildContext context) {
-    PageController controller = PageController();
-
-    return Consumer2<CartViewModel, AppViewModel>(
-      builder: (context, cart, appModel, child) {
+    return Consumer3<CartViewModel, AppViewModel, AuthenticationViewModel>(
+      builder: (context, cartModel, appModel,authenticationModel, child) {
         return Scaffold(
-            appBar: ScreenAppBar(
-              title: "Cart",
+            key: AppKeys.confirmOrderScreenScaffoldKey,
+            appBar: ScreenAppBarWithIcon(
+              title: AppLocalizations.of(context).translate("Cart"),
               icon: Icons.shopping_basket,
               isIconButton: false,
             ),
             body: Center(
-              child: cart.cartItems.isEmpty
+              child: cartModel.isCartEmpty
                   ? Container(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -55,7 +59,8 @@ class _CartScreenState extends State<CartScreen> {
                             fit: BoxFit.cover,
                           ),
                           Text(
-                            "Your cart is empty",
+                            AppLocalizations.of(context)
+                                .translate("Your cart is empty"),
                             style: TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.bold,
@@ -66,15 +71,19 @@ class _CartScreenState extends State<CartScreen> {
                     )
                   : PageView(
                       scrollDirection: Axis.horizontal,
-                      physics: NeverScrollableScrollPhysics(),
-                      // reverse: true,
-                      // physics: BouncingScrollPhysics(),
+                      physics: myScrollPhysics,
                       controller: controller,
+                      onPageChanged: (page) {
+                        if(page != 0){
+                          setState(() {
+                            myScrollPhysics = BouncingScrollPhysics();
+                          });
 
-                      onPageChanged: (num) {
-                        setState(() {
-
-                        });
+                        }else{
+                          setState(() {
+                            myScrollPhysics = NeverScrollableScrollPhysics();
+                          });
+                        }
                       },
                       children: [
                         SingleChildScrollView(
@@ -83,24 +92,32 @@ class _CartScreenState extends State<CartScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 10, vertical: 10),
                                 child: Column(
-                                    children:
-                                    List.generate(cart.cartItems.length, (index) {
-                                      var item = cart.cartItems[index];
-                                      return CartItemWidget(
-                                        item: item,
-                                        itemIndex: index,
-                                      );
-                                    })),
+                                    children: List.generate(
+                                        cartModel.cartItems.length, (index) {
+                                  var item = cartModel.cartItems[index];
+                                  return CartItemWidget(
+                                    item: item,
+                                    itemIndex: index,
+                                  );
+                                })),
                               ),
                               Padding(
                                 padding: const EdgeInsets.all(15.0),
                                 child: PrimaryButton(
-                                        (){
-                                          controller.animateToPage(1, duration: Duration(milliseconds: 100), curve: Curves.easeIn);
-                                          },
-                                    "Checkout",
+                                  () {
+                                    authenticationModel.authenticate(
+                                            (){
+                                      controller.animateToPage(1,
+                                          duration: Duration(milliseconds: 100),
+                                          curve: Curves.easeIn);
+                                    }, context);
+
+
+                                  },
+                                  "Checkout",
                                   paddingRightLeft: 30,
                                 ),
                               )
@@ -108,7 +125,11 @@ class _CartScreenState extends State<CartScreen> {
                           ),
                         ),
                         Container(
-                            padding: EdgeInsets.symmetric(horizontal: 20,).copyWith(bottom: 20,),
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 20,
+                            ).copyWith(
+                              bottom: 20,
+                            ),
                             child: Column(
                               children: [
                                 Row(
@@ -121,90 +142,119 @@ class _CartScreenState extends State<CartScreen> {
                                           fontWeight: FontWeight.bold,
                                           fontSize: 20),
                                     ),
-                                    Container(
-                                      width: MediaQuery.of(context).size.width - 200,
-                                      margin: EdgeInsets.only(bottom: 12),
-                                      child: Material(
-                                        elevation: 3,
-                                        child: Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 10),
-                                          child:
-                                              new DropdownButton<UserAddress>(
-                                            value: selectedAddress,
-                                            hint: Text("Select Address"),
-                                            focusColor: CustomColors.mainColor,
-                                            isExpanded: true,
-                                            onChanged: (UserAddress value) {
-                                              setState(() {
-                                                selectedAddress = value;
-                                              });
-                                            },
-                                            items: appModel.addressesList.map(
-                                                  (UserAddress address) =>
-                                                      DropdownMenuItem<UserAddress>(
-                                                    value: address,
-                                                    child: Text("${address.name}",),
-                                                  ),
-                                                )
-                                                .toList(),
+                                    InkWell(
+                                      onTap: () async {
+                                        if (appModel.addressesList.isEmpty) {
+                                          await Navigator.pushNamed(
+                                              context, Routes.addAddress);
+                                        }
+                                      },
+                                      child: Container(
+                                        width:
+                                            MediaQuery.of(context).size.width -
+                                                200,
+                                        margin: EdgeInsets.only(bottom: 12),
+                                        child: Material(
+                                          elevation: 3,
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 10),
+                                            child:
+                                                new DropdownButton<UserAddress>(
+                                              value: cartModel.selectedAddress,
+                                              hint: Text("Select Address"),
+                                              focusColor:
+                                                  CustomColors.mainColor,
+                                              isExpanded: true,
+                                              onChanged: (UserAddress value) {
+                                                cartModel.setAddress(value);
+                                              },
+                                              items: appModel.addressesList.map(
+                                                    (UserAddress address) =>
+                                                        DropdownMenuItem<UserAddress>(
+                                                      value: address,
+                                                      child: Text(
+                                                        "${address.name}",
+                                                      ),
+                                                    ),
+                                                  )
+                                                  .toList(),
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
                                   ],
                                 ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text("Subtotal"),
-                                    Text("${cart.subTotalPrice}"),
-                                  ],
-                                ),
-                                Divider(
-                                  thickness: 1,
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text("Delivery"),
-                                    Text("${cart.deliveryPrice} L.E"),
-                                  ],
-                                ),
-                                Divider(
-                                  thickness: 1,
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      "Total",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20),
-                                    ),
-                                    Text(
-                                      "${cart.totalPrice} L.E",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20),
-                                    ),
-                                  ],
-                                ),
-                                PrimaryButton(
-                                  () {
-                                    Toast.show("Order Confirmed", context,
-                                        duration: Toast.LENGTH_LONG,
-                                        gravity: Toast.BOTTOM,
-                                        backgroundColor:
-                                            CustomColors.mainColor);
-                                  },
-                                  "Confirm Order",
-                                  color: CustomColors.mainColor,
-                                ),
+                                cartModel.selectedAddress != null
+                                    ? Column(
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text("Subtotal"),
+                                              Text(
+                                                  "${double.parse(cartModel.subTotalPrice.toStringAsFixed(2))}"),
+                                            ],
+                                          ),
+                                          Divider(
+                                            thickness: 1,
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text("Delivery"),
+                                              Text(
+                                                  "${cartModel.selectedAddress.region.deliveryFees} L.E"),
+                                            ],
+                                          ),
+                                          Divider(thickness: 1,),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                "Total",
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 20),
+                                              ),
+                                              Text(
+                                                "${double.parse(cartModel.totalPrice.toStringAsFixed(2))} L.E",
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 20),
+                                              ),
+                                            ],
+                                          ),
+                                          PrimaryButton(
+                                            () async {
+                                              try {
+                                                await cartModel.createOrder();
+                                                Toast.show(
+                                                    "Order Confirmed", context,
+                                                    duration: Toast.LENGTH_LONG,
+                                                    gravity: Toast.BOTTOM,
+                                                    backgroundColor:
+                                                        CustomColors.mainColor);
+                                                Navigator.pushNamed(
+                                                    context, Routes.myOrders);
+                                              } catch (e) {
+                                                UtilsFunctions
+                                                    .showSnackBarWithScaffoldKey(
+                                                        scaffoldKey: AppKeys
+                                                            .confirmOrderScreenScaffoldKey,
+                                                        text: e.toString());
+                                              }
+                                            },
+                                            "Confirm Order",
+                                            color: CustomColors.mainColor,
+                                          ),
+                                        ],
+                                      )
+                                    : Container(),
                               ],
                             ))
                       ],

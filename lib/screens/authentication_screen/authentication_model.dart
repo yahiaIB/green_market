@@ -11,6 +11,8 @@ import '../../repositories/authentication_repository.dart';
 import '../../view_models/base_model.dart';
 import 'package:flutter/material.dart';
 
+import 'login_greenMarket.dart';
+
 class AuthenticationViewModel extends BaseViewModel {
   AuthenticationRepository _repository = AuthenticationRepository();
 
@@ -104,7 +106,7 @@ class AuthenticationViewModel extends BaseViewModel {
                             context,
                             new MaterialPageRoute(
                                 builder: (BuildContext context) =>
-                                    new Login()));
+                                    new LoginGeenMarket()));
                         Navigator.of(context).pop(isLogined);
                       },
                     ),

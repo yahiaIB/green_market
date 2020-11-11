@@ -34,7 +34,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
       appBar: AppBar(
         shadowColor: mainColor.withOpacity(0.3),
         title: Text(
-          "Forget passwoed",
+          AppLocalizations.of(context).translate("Forget Password"),
           style: TextStyle(
             color: mainColor,
           ),

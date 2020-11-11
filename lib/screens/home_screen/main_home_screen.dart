@@ -17,13 +17,13 @@ class MainHomeScreenState extends State<MainHomeScreen> {
       _page = index;
     });
   }
-
-  List<String> pagesTitles = [
-    "Home",
-    "History",
-    "Wallet",
-    "Profile"
-  ];
+  //
+  // List<String> pagesTitles = [
+  //   "Home",
+  //   "History",
+  //   "Wallet",
+  //   "Profile"
+  // ];
 
   List<Widget> pages ;
 

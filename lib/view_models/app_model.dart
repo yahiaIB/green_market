@@ -1,5 +1,7 @@
 import 'dart:convert';
 import 'package:Vio_Telehealth/config/constants.dart';
+import 'package:Vio_Telehealth/models/order_entity.dart';
+import 'package:Vio_Telehealth/models/user_orders_entity.dart';
 import 'package:Vio_Telehealth/screens/authentication_screen/authentication_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +19,9 @@ class AppViewModel extends BaseViewModel {
   SocketManager _manager = SocketManager.getInstance();
   UserRepository _userRepository = new UserRepository();
   List<UserAddress> _addressesInfo = [];
+  List<UserOrdersEntity> _orderList = [];
+
+  List<UserOrdersEntity> get orderList => _orderList;
 
   List<UserAddress> get addressesList => _addressesInfo;
 
@@ -29,6 +34,7 @@ class AppViewModel extends BaseViewModel {
     print(userData);
     if (userData != null) {
       _user = User().fromJson(json.decode(userData));
+      getUserAddresses();
     }
     if (_user == null) {
       setGuestUser();
@@ -58,7 +64,7 @@ class AppViewModel extends BaseViewModel {
 
   void setGuestUser() {
     User newUser = User();
-    newUser.name = "Blwa7da";
+    newUser.name = "Guest";
     newUser.password = "1234567r";
     newUser.mobile = "+201156379617";
     newUser.email = "blwa7da@gmail.com";
@@ -124,6 +130,7 @@ class AppViewModel extends BaseViewModel {
     }
   }
 
+
   void deleteAddress(int index, String id) async {
     try {
       setBusy(true);
@@ -141,5 +148,18 @@ class AppViewModel extends BaseViewModel {
     addressesList.removeAt(index);
     addressesList.insert(index, address);
     notifyListeners();
+  }
+
+  Future getUserOrders() async{
+    try{
+      setBusy(true);
+      List<UserOrdersEntity> result = await _userRepository.serverGetUserOrder(_user.sId);
+      _orderList = result;
+      notifyListeners();
+      setBusy(false);
+    }catch(e){
+      setBusy(false);
+      throw handelError(e);
+    }
   }
 }

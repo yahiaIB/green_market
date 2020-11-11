@@ -1,21 +1,21 @@
 import 'package:Vio_Telehealth/theme/custom_colors.dart';
 import 'package:flutter/material.dart';
 
-class ScreenAppBar extends StatefulWidget implements PreferredSizeWidget {
+class ScreenAppBarWithIcon extends StatefulWidget implements PreferredSizeWidget {
   final IconData icon;
   final bool isIconButton;
   final Function onPress;
   final String title;
-  ScreenAppBar({@required this.title,@required this.icon,@required this.isIconButton,this.onPress}) : preferredSize = Size.fromHeight(kToolbarHeight);
+  ScreenAppBarWithIcon({@required this.title,@required this.icon,@required this.isIconButton,this.onPress}) : preferredSize = Size.fromHeight(kToolbarHeight);
 
   @override
   final Size preferredSize; // default is 56.0
 
   @override
-  _ScreenAppBarState createState() => _ScreenAppBarState();
+  _ScreenAppBarWithIconState createState() => _ScreenAppBarWithIconState();
 }
 
-class _ScreenAppBarState extends State<ScreenAppBar>{
+class _ScreenAppBarWithIconState extends State<ScreenAppBarWithIcon>{
 
   @override
   Widget build(BuildContext context) {

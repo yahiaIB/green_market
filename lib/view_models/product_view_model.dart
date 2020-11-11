@@ -1,19 +1,18 @@
-import 'package:Vio_Telehealth/config/constants.dart';
 import 'package:Vio_Telehealth/models/category_entity.dart';
-import 'package:Vio_Telehealth/models/item.dart';
 import 'package:Vio_Telehealth/models/product_entity.dart';
 import 'package:Vio_Telehealth/repositories/category_repository.dart';
 import 'package:Vio_Telehealth/repositories/product_repository.dart';
 import 'package:Vio_Telehealth/view_models/base_model.dart';
-import 'package:flutter/material.dart';
 
-class ItemViewModel extends BaseViewModel {
+
+class ProductViewModel extends BaseViewModel {
   CategoryRepository categoryRepository  = new CategoryRepository();
   ProductRepository productRepository  = new ProductRepository();
 
   List<ProductEntity> _products = [];
 
   List<CategoryEntity> _categories =  [];
+
   List categoriesList = [];
 
   List<ProductEntity> get getProducts => _products;
@@ -35,8 +34,8 @@ class ItemViewModel extends BaseViewModel {
       throw handelError(err);
     }
   }
-
   void setAmount({double value,int itemIndex,int categoryIndex}) {
+
     print(value);
     print(itemIndex);
 
