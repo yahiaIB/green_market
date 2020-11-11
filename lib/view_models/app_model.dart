@@ -19,6 +19,7 @@ class AppViewModel extends BaseViewModel {
   List<UserAddress> _addressesInfo = [];
 
   List<UserAddress> get addressesList => _addressesInfo;
+
   User get user => _user;
 
   void init() {
@@ -36,13 +37,6 @@ class AppViewModel extends BaseViewModel {
 
   initPreferenceUtils() {
     preferenceUtils = PreferenceUtils.getInstance();
-  }
-
-  void onUserProfileChanged(data) async {
-    _user = await _userRepository.profile(
-        userId: preferenceUtils.getData(PreferenceUtils.UserId));
-    preferenceUtils.saveStringData(PreferenceUtils.UserKey, json.encode(_user));
-    notifyListeners();
   }
 
   Future updateFCMToken({userData}) async {
@@ -66,8 +60,8 @@ class AppViewModel extends BaseViewModel {
     User newUser = User();
     newUser.name = "Blwa7da";
     newUser.password = "1234567r";
-    newUser.mobile=  "+201156379617";
-    newUser.email=  "blwa7da@gmail.com";
+    newUser.mobile = "+201156379617";
+    newUser.email = "blwa7da@gmail.com";
     _user = newUser;
   }
 
@@ -89,49 +83,58 @@ class AppViewModel extends BaseViewModel {
     }
   }
 
-  void editPersonalDetails(String fullName, String mobile) {
-    if (_user == null) {
-      // _user = User(fullName: fullName, mobile: mobile);
-    } else {
-      _user.name = fullName;
-      _user.mobile = mobile;
+  Future editPersonalDetails(String fullName, String mobile, image) async {
+    try{
+      setBusy(true);
+      var data = {
+        "name": fullName,
+        "mobile": mobile,
+      };
+      User updateUser = await _userRepository.updateProfile(userId: _user.sId, userData: data, image: image);
+      preferenceUtils.saveStringData(PreferenceUtils.UserKey, json.encode(updateUser.toJson()));
+      _user = updateUser;
+      setBusy(false);
+      notifyListeners();
+    }catch(e){
+      setBusy(false);
+      throw handelError(e);
     }
-    notifyListeners();
+
   }
 
   Future addAddress(Map address) async {
-    try{
-      await _userRepository.serverCreateAddress(address,_user.sId);
-    }catch(e){
+    try {
+      await _userRepository.serverCreateAddress(address, _user.sId);
+    } catch (e) {
       throw handelError(e);
     }
   }
 
-  Future getUserAddresses() async{
-    try{
+  Future getUserAddresses() async {
+    try {
       setBusy(true);
-      List<UserAddress> result = await _userRepository.serverGetUserAddress(_user.sId);
+      List<UserAddress> result =
+          await _userRepository.serverGetUserAddress(_user.sId);
       _addressesInfo = result;
       notifyListeners();
       setBusy(false);
-    }catch(e){
+    } catch (e) {
       setBusy(false);
       throw handelError(e);
     }
   }
 
   void deleteAddress(int index, String id) async {
-    try{
+    try {
       setBusy(true);
-      var result = await _userRepository.serverDeleteUserAddress(_user.sId,id);
+      var result = await _userRepository.serverDeleteUserAddress(_user.sId, id);
       addressesList.removeAt(index);
       notifyListeners();
       setBusy(false);
-    }catch(e){
+    } catch (e) {
       setBusy(false);
       throw handelError(e);
     }
-
   }
 
   void editAddress(int index, UserAddress address) {
@@ -139,5 +142,4 @@ class AppViewModel extends BaseViewModel {
     addressesList.insert(index, address);
     notifyListeners();
   }
-
 }

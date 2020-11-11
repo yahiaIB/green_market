@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:Vio_Telehealth/app/app_keys.dart';
 import 'package:Vio_Telehealth/helpers/app_localizations.dart';
 import 'package:Vio_Telehealth/view_models/app_model.dart';
 import 'package:image_picker/image_picker.dart';
@@ -12,8 +13,8 @@ import 'package:Vio_Telehealth/utils/utils_functions.dart';
 import 'package:Vio_Telehealth/theme/custom_colors.dart';
 
 class EditPersonalDetails extends StatefulWidget {
-  String fullName, mobile;
-  EditPersonalDetails(this.fullName, this.mobile);
+  String fullName, mobile, image;
+  EditPersonalDetails(this.fullName, this.mobile,this.image);
   @override
   _EditPersonalDetailsState createState() => _EditPersonalDetailsState();
 }
@@ -23,14 +24,18 @@ class _EditPersonalDetailsState extends State<EditPersonalDetails> {
   final nameController = TextEditingController();
   final phoneNumberController = TextEditingController();
 
-  void editPersonalDetails() {
-    AppViewModel appModel = Provider.of<AppViewModel>(context, listen: false);
-    appModel.editPersonalDetails(
-        nameController.text, phoneNumberController.text);
-    Navigator.pop(context);
+  void editPersonalDetails() async {
+    try{
+      AppViewModel appModel = Provider.of<AppViewModel>(context, listen: false);
+      await appModel.editPersonalDetails(nameController.text, phoneNumberController.text,_image);
+      Navigator.pop(context);
+    }catch(e){
+     UtilsFunctions.showSnackBarWithScaffoldKey(scaffoldKey: AppKeys.editProfileScreenScaffoldKey,text: e.toString());
+    }
+
   }
 
-  File _image;
+  var _image;
 
   @override
   void initState() {
@@ -38,6 +43,7 @@ class _EditPersonalDetailsState extends State<EditPersonalDetails> {
     super.initState();
     nameController.text = widget.fullName;
     phoneNumberController.text = widget.mobile;
+    _image = widget.image;
   }
 
   _imgFromCamera() async {
@@ -106,9 +112,9 @@ class _EditPersonalDetailsState extends State<EditPersonalDetails> {
               children: <Widget>[
                 CircleAvatar(
                   radius: kSpacingUnit.w * 10,
-                  backgroundImage: _image != null
+                  backgroundImage: _image == null ? AssetImage("assets/avatar.png") : _image.runtimeType != String
                       ? FileImage(_image)
-                      : AssetImage("assets/avatar.png"),
+                      : NetworkImage(_image),
                 ),
                 Align(
                   alignment: Alignment.bottomRight,
@@ -156,6 +162,7 @@ class _EditPersonalDetailsState extends State<EditPersonalDetails> {
     );
 
     return Scaffold(
+      key: AppKeys.editProfileScreenScaffoldKey,
       appBar: AppBar(
         shadowColor: mainColor.withOpacity(0.3),
         title: Text(

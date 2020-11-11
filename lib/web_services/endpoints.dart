@@ -8,4 +8,6 @@ class EndPoints {
   static deleteUserAddressEndpoint(userId,addressId) => '/users/$userId/addresses/$addressId';
   static final categoriesEndpoint = '/categories';
   static final productsEndpoint = '/products';
+  static updateUserEndpoint(userId) => '/users/$userId';
+
 }
