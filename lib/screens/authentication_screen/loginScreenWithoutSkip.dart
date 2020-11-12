@@ -41,23 +41,25 @@ class _LoginWithoutSkipState extends State<LoginWithoutSkip> {
 
   void login() async {
     AppViewModel appModel = Provider.of<AppViewModel>(context, listen: false);
-    AuthenticationViewModel authenticationModel = Provider.of<AuthenticationViewModel>(context, listen: false);
-    AppStatusViewModel appStatusViewModel = Provider.of<AppStatusViewModel>(context, listen: false);
+    AuthenticationViewModel authenticationModel =
+        Provider.of<AuthenticationViewModel>(context, listen: false);
+    AppStatusViewModel appStatusViewModel =
+        Provider.of<AppStatusViewModel>(context, listen: false);
 
     Map data = {
-      "username":emailController.text,
-      "password":passwordController.text,
+      "username": emailController.text,
+      "password": passwordController.text,
     };
-    try{
-      User user = await authenticationModel.signIn(data :data);
+    try {
+      User user = await authenticationModel.signIn(data: data);
       appModel.setUser(user);
+      appModel.getUserAddresses();
       appStatusViewModel.setStatus(AppStatus.Authenticated);
-
-    }catch(e){
+      Navigator.pop(context, true);
+    } catch (e) {
       UtilsFunctions.showSnackBarWithScaffoldKey(
           scaffoldKey: AppKeys.loginScreenScaffoldKey, text: e.toString());
     }
-
   }
 
   @override
@@ -76,7 +78,7 @@ class _LoginWithoutSkipState extends State<LoginWithoutSkip> {
               Image.asset("assets/3681093.jpg"),
               Container(
                 padding:
-                EdgeInsets.only(left: 30, right: 30, top: 20, bottom: 20),
+                    EdgeInsets.only(left: 30, right: 30, top: 20, bottom: 20),
                 child: Form(
                   key: _formkey,
                   child: Column(
@@ -112,7 +114,8 @@ class _LoginWithoutSkipState extends State<LoginWithoutSkip> {
                         validator: (value) => UtilsFunctions.validation(
                             value,
                             Validators.isValidEmail(value),
-                            AppLocalizations.of(context).translate("please enter your Email")),
+                            AppLocalizations.of(context)
+                                .translate("please enter your Email")),
                       ),
                       SizedBox(
                         height: 20,
@@ -122,7 +125,8 @@ class _LoginWithoutSkipState extends State<LoginWithoutSkip> {
                         decoration: new InputDecoration(
                             focusedBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(color: Colors.black54)),
-                            labelText: AppLocalizations.of(context).translate("Enter Password"),
+                            labelText: AppLocalizations.of(context)
+                                .translate("Enter Password"),
                             labelStyle: TextStyle(color: Colors.black54),
                             suffixIcon: IconButton(
                                 onPressed: () {
@@ -130,9 +134,9 @@ class _LoginWithoutSkipState extends State<LoginWithoutSkip> {
                                 },
                                 icon: _isHidden
                                     ? Icon(Icons.visibility_off,
-                                    color: Colors.black54)
+                                        color: Colors.black54)
                                     : Icon(Icons.visibility,
-                                    color: Colors.black54)),
+                                        color: Colors.black54)),
                             icon: const Padding(
                               padding: const EdgeInsets.only(top: 15.0),
                               child: const Icon(
@@ -174,27 +178,35 @@ class _LoginWithoutSkipState extends State<LoginWithoutSkip> {
                         height: 80,
                       ),
                       Consumer<AuthenticationViewModel>(
-                        builder:(context,authViewModel,child)=> authViewModel.busy ? Center(child: CircularProgressIndicator(),) :Material(
-                          elevation: 5.0,
-                          borderRadius: BorderRadius.circular(30.0),
-                          color: CustomColors.buttonColor,
-                          child: MaterialButton(
-                            minWidth: MediaQuery.of(context).size.width,
-                            padding: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0),
-                            onPressed: () {
-                              if (_formkey.currentState.validate()) {
-                                login();
-                              }
-                            },
-                            child: Text(
-                                AppLocalizations.of(context).translate("Sign In"),
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold)),
-                          ),
-                        ),
+                        builder: (context, authViewModel, child) =>
+                            authViewModel.busy
+                                ? Center(
+                                    child: CircularProgressIndicator(),
+                                  )
+                                : Material(
+                                    elevation: 5.0,
+                                    borderRadius: BorderRadius.circular(30.0),
+                                    color: CustomColors.buttonColor,
+                                    child: MaterialButton(
+                                      minWidth:
+                                          MediaQuery.of(context).size.width,
+                                      padding: EdgeInsets.fromLTRB(
+                                          20.0, 20.0, 20.0, 20.0),
+                                      onPressed: () {
+                                        if (_formkey.currentState.validate()) {
+                                          login();
+                                        }
+                                      },
+                                      child: Text(
+                                          AppLocalizations.of(context)
+                                              .translate("Sign In"),
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold)),
+                                    ),
+                                  ),
                       ),
                       SizedBox(
                         height: 80,
@@ -209,9 +221,10 @@ class _LoginWithoutSkipState extends State<LoginWithoutSkip> {
                                 color: Colors.black38,
                                 fontWeight: FontWeight.bold,
                               )),
-                          onTap: () async{
-                            var isLoggedIn = await Navigator.pushNamed(context, Routes.register);
-                            if(isLoggedIn != null){
+                          onTap: () async {
+                            var isLoggedIn = await Navigator.pushNamed(
+                                context, Routes.register);
+                            if (isLoggedIn != null) {
                               Navigator.of(context).pop(isLoggedIn);
                             }
                           },

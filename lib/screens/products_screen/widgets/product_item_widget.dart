@@ -112,7 +112,7 @@ class _ProductItemState extends State<ProductItem> {
                           ),
                         );
                       },
-                      child: Image.network(widget.item.image,height: 100,width: (MediaQuery.of(context).size.width - 40)/2,))
+                      child: Image.network(widget.item.image.toString(),height: 100,width: (MediaQuery.of(context).size.width - 40)/2,))
                 ],
               ),
             ),

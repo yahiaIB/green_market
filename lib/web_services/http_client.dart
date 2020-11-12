@@ -1,3 +1,4 @@
+import 'package:Vio_Telehealth/config/constants.dart';
 import 'package:Vio_Telehealth/utils/preference_utils.dart';
 
 import '../config/config.dart';
@@ -21,10 +22,12 @@ class HttpClient {
         ..interceptors
             .add(InterceptorsWrapper(onRequest: (RequestOptions options) {
           var token = PreferenceUtils.getInstance().getData(PreferenceUtils.UserToken);
+          var lang = PreferenceUtils.getInstance().getData(Constants.langCodeKey);
           if (token != null) {
             options.headers['Authorization'] = "Bearer " +token;
 //            options.headers['Authorization'] = token;
           }
+          options.headers['Accept-Language'] = lang;
           return options;
         }))
         ..transformer = FlutterTransformer();

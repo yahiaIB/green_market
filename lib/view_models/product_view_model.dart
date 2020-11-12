@@ -21,6 +21,7 @@ class ProductViewModel extends BaseViewModel {
   Future fetchProductsAndCategories() async{
     try {
       setBusy(true);
+      categoriesList = [];
       _categories = await categoryRepository.fetchCategories();
       _products = await productRepository.fetchProducts();
       _categories.forEach(

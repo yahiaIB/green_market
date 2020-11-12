@@ -8,6 +8,8 @@ import 'package:Vio_Telehealth/screens/profile_screen/widgets/profile_list_item.
 import 'package:Vio_Telehealth/theme/custom_colors.dart';
 import 'package:Vio_Telehealth/view_models/app_lang.dart';
 import 'package:Vio_Telehealth/view_models/app_status_model.dart';
+import 'package:Vio_Telehealth/view_models/cart_view_model.dart';
+import 'package:Vio_Telehealth/view_models/product_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
@@ -167,6 +169,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               .translate('Choose language')
                                           : null,
                                       onChanged: (value) {
+                                        ProductViewModel productViewModel = Provider.of<ProductViewModel>(context, listen: false);
+                                        CartViewModel cartViewModel = Provider.of<CartViewModel>(context, listen: false);
+                                        productViewModel.fetchProductsAndCategories();
+                                        cartViewModel.removeAllCartItems();
                                         languageModel.changeLanguage(value);
                                       }),
                                 ),
