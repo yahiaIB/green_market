@@ -104,15 +104,18 @@ class _ProductItemState extends State<ProductItem> {
                             optionIndex: widget.item.selectedOptionIndex,
                             itemIndex: widget.itemIndex,
                             categoryIndex: widget.categoryIndex,
-                            image: Image.network(
+                            image: widget.item.image != null ? Image.network(
                               widget.item.image,
                               width: 100,
                               height: 100,
-                            ),
+                            )
+                            :Image.asset("res/assets/images/basket.png",height: 100,width: 100),
                           ),
                         );
                       },
-                      child: Image.network(widget.item.image,height: 100,width: (MediaQuery.of(context).size.width - 40)/2,))
+                      child: widget.item.image != null ? Image.network(widget.item.image,height: 100,width: (MediaQuery.of(context).size.width - 40)/2,)
+                        :Image.asset("res/assets/images/basket.png",height: 100,width: (MediaQuery.of(context).size.width - 40)/2,),
+                  )
                 ],
               ),
             ),

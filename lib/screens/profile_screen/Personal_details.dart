@@ -36,7 +36,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
               children: <Widget>[
                 CircleAvatar(
                   radius: kSpacingUnit.w * 10,
-                  backgroundImage: appViewModel.user.image == null ? null : NetworkImage(appViewModel.user.image),
+                  backgroundImage: appViewModel.user.image == null ? AssetImage("res/assets/images/user-picture.png") : NetworkImage(appViewModel.user.image),
                 ),
               ],
             ),
