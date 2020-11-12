@@ -116,6 +116,7 @@ class _ProductItemState extends State<ProductItem> {
                       child: widget.item.image != null ? Image.network(widget.item.image,height: 100,width: (MediaQuery.of(context).size.width - 40)/2,)
                         :Image.asset("res/assets/images/basket.png",height: 100,width: (MediaQuery.of(context).size.width - 40)/2,),
                   )
+
                 ],
               ),
             ),

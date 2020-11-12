@@ -51,6 +51,7 @@ class _LoginGreenMarketState extends State<LoginGreenMarket> {
     try{
       User user = await authenticationModel.signIn(data :data);
       appModel.setUser(user);
+      appModel.getUserAddresses();
       appStatusViewModel.setStatus(AppStatus.Authenticated);
 
     }catch(e){
