@@ -79,7 +79,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             children: <Widget>[
                               CircleAvatar(
                                 radius: kSpacingUnit * 10.0,
-                                backgroundImage: appModel.user.image == null ? null : NetworkImage(appModel.user.image),
+                                backgroundImage: appModel.user.image == null ? AssetImage("res/assets/images/user-picture.png") : NetworkImage(appModel.user.image),
                               ),
                             ],
                           ),

@@ -39,7 +39,8 @@ class CartItemWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.network(item.image,height: 100,width: 100,),
+              item.image != null ? Image.network(item.image,height: 100,width: 100,)
+                :Image.asset("res/assets/images/basket.png",height: 100,width: 100),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
