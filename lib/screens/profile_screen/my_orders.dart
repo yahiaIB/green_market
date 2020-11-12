@@ -128,7 +128,7 @@ class _MyOrdersState extends State<MyOrders> {
                               height: 3),
                         ),
                         Text(
-                          "${appModel.orderList[index].priceInfo.total} "+"LE",
+                          "${appModel.orderList[index].priceInfo.total} "+"${AppLocalizations.of(context).translate("L.E")}",
                           style: TextStyle(
                               fontSize: 20, height: 3, color: mainColor),
                         ),

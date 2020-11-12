@@ -394,13 +394,13 @@ class Dialogs {
               title: new Text(title),
               actions: <Widget>[
                 new FlatButton(
-                  child: const Text('YES'),
+                  child: new Text(AppLocalizations.of(context).translate("YES") ?? "YES"),
                   onPressed: () {
                     Navigator.of(context).pop(true);
                   },
                 ),
                 new FlatButton(
-                  child: const Text('NO'),
+                  child: new Text(AppLocalizations.of(context).translate("NO") ?? "NO"),
                   onPressed: () {
                     Navigator.of(context).pop(false);
                   },

@@ -1,5 +1,3 @@
-import 'package:Vio_Telehealth/models/item.dart';
-import 'package:Vio_Telehealth/view_models/category_view_model.dart';
 import 'package:flutter/material.dart';
 
 class Constants {

@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:Vio_Telehealth/config/auth/roles.dart';
 import 'package:Vio_Telehealth/screens/authentication_screen/login.dart';
+import 'package:Vio_Telehealth/screens/authentication_screen/loginScreenWithoutSkip.dart';
 import 'package:Vio_Telehealth/utils/preference_utils.dart';
 
 import '../../models/user.dart';
@@ -19,7 +20,7 @@ class AuthenticationViewModel extends BaseViewModel {
   Future signIn({@required data}) async {
     try {
       setBusy(true);
-      var user = await _repository.SignIn(data: data);
+      var user = await _repository.signIn(data: data);
       setBusy(false);
       return user;
     } catch (err) {
@@ -102,12 +103,14 @@ class AuthenticationViewModel extends BaseViewModel {
                     new FlatButton(
                       child: const Text('Go to login'),
                       onPressed: () async {
-                        bool isLogined = await Navigator.push(
+                        bool isLoggedIn = await Navigator.push(
                             context,
                             new MaterialPageRoute(
                                 builder: (BuildContext context) =>
-                                    new LoginGeenMarket()));
-                        Navigator.of(context).pop(isLogined);
+                                    new LoginWithoutSkip()
+                            )
+                        );
+                        Navigator.of(context).pop(isLoggedIn);
                       },
                     ),
                     new FlatButton(

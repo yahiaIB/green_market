@@ -1,3 +1,4 @@
+import 'package:Vio_Telehealth/helpers/app_localizations.dart';
 import 'package:Vio_Telehealth/models/cart_item.dart';
 import 'package:Vio_Telehealth/screens/products_screen/widgets/unit_button_widget.dart';
 import 'package:Vio_Telehealth/theme/custom_colors.dart';
@@ -21,7 +22,7 @@ class CartItemWidget extends StatelessWidget {
       builder: (context,cart,child){
         return Container(
           margin: EdgeInsets.only(top: 15),
-          padding: EdgeInsets.only(top: 10,left: 10,right: 10),
+          padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
               color: Colors.white,
               boxShadow: [
@@ -52,7 +53,7 @@ class CartItemWidget extends StatelessWidget {
                   ),
 
                   Text(
-                    "${double.parse(item.option.pricePerUnit.toStringAsFixed(2))* double.parse(item.amount.toStringAsFixed(2))}  L.E",
+                    "${double.parse(item.option.pricePerUnit.toStringAsFixed(2))* double.parse(item.amount.toStringAsFixed(2))} "+"${AppLocalizations.of(context).translate("L.E")}",
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
@@ -84,7 +85,7 @@ class CartItemWidget extends StatelessWidget {
                             borderRadius: BorderRadius.circular(30)
                         ),
                         child: Text(
-                          "${double.parse(item.amount.toStringAsFixed(2))}  KG",
+                          "${double.parse(item.amount.toStringAsFixed(2))} "+"${item.option.unit}"  ,
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
@@ -105,17 +106,20 @@ class CartItemWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              InkWell(
-                child: Icon(
-                  MaterialCommunityIcons.delete_sweep,
-                  size: 40,
-                  color: CustomColors.mainColor,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5,vertical: 5),
+                child: InkWell(
+                  child: Icon(
+                    MaterialCommunityIcons.delete_sweep,
+                    size: 40,
+                    color: CustomColors.mainColor,
+                  ),
+                  onTap: ()async{
+                    if(await Dialogs.confirmDialog3(context, AppLocalizations.of(context).translate("Are you sure to remove this item ?"))){
+                      cart.removeFromCart(item,context);
+                    }
+                  },
                 ),
-                onTap: ()async{
-                  if(await Dialogs.confirmDialog3(context, "Are You Sure to remove this item ?")){
-                    cart.removeFromCart(item,context);
-                  }
-                },
               )
             ],
           ),

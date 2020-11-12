@@ -1,4 +1,4 @@
-import 'package:Vio_Telehealth/models/item.dart';
+import 'package:Vio_Telehealth/helpers/app_localizations.dart';
 import 'package:Vio_Telehealth/models/product_entity.dart';
 import 'package:Vio_Telehealth/screens/products_screen/widgets/item_options_dialog.dart';
 import 'package:Vio_Telehealth/screens/products_screen/widgets/unit_button_widget.dart';
@@ -50,7 +50,7 @@ class _ProductItemState extends State<ProductItem> {
                     height: 5,
                   ),
                   Text(
-                    "${(widget.item.options[widget.item.selectedOptionIndex].pricePerUnit * widget.item.amount).toStringAsFixed(2)} L.E",
+                    "${(widget.item.options[widget.item.selectedOptionIndex].pricePerUnit * widget.item.amount).toStringAsFixed(2)} "+"${AppLocalizations.of(context).translate("L.E")}",
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
@@ -78,7 +78,7 @@ class _ProductItemState extends State<ProductItem> {
                         },
                       ),
                       Text(
-                        "${widget.item.amount.toStringAsFixed(2)}  KG",
+                        "${widget.item.amount.toStringAsFixed(2)} "+"${widget.item.options[widget.item.selectedOptionIndex].unit}",
                       ),
                       UnitButton(
                         icon: Icons.add,
@@ -142,10 +142,8 @@ class _ProductItemState extends State<ProductItem> {
                     categoryIndex: widget.categoryIndex);
 
                 productVM.setAmount(value: 1.0,itemIndex: widget.itemIndex,categoryIndex: widget.categoryIndex);
-                print("add to cart");
-                print(widget.item.options[widget.item.selectedOptionIndex].name);
                 Toast.show(
-                    "Item is Added",
+                    AppLocalizations.of(context).translate("Item Added"),
                     context,
                     duration: Toast.LENGTH_LONG,
                     gravity: Toast.BOTTOM,

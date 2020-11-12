@@ -70,5 +70,19 @@
   "Continue": "متابعة",
   "Enter verification code":"قم بادخال الكود",
   "Your cart is empty" : "عربة تسوقك فارغة",
-  "Forget Password": "نسيت كلمة المرور"
+  "Forget Password": "نسيت كلمة المرور",
+  "Checkout":"الدفع",
+  "Confirm Order": "تأكيد الطلب",
+
+  "L.E": "جنية",
+  "Address Name": "أسم العنوان",
+  "Select Address": "أختار عنوان",
+  "Subtotal": "المجموع الفرعي",
+  "Delivery": "التوصيل",
+  "Total": "المجموع",
+  "Order Confirmed": "تم تاكيد الطلب",
+  "Item Added": "تمت اضافة السلعة",
+  "Are you sure to remove this item ?": "هل أنت متأكد من إزالة هذه السلعة ؟",
+  "YES": "نعم",
+  "NO": "لا"
 }

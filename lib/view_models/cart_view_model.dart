@@ -1,6 +1,4 @@
-import 'package:Vio_Telehealth/models/cart.dart';
 import 'package:Vio_Telehealth/models/cart_item.dart';
-import 'package:Vio_Telehealth/models/item.dart';
 import 'package:Vio_Telehealth/models/order_entity.dart';
 import 'package:Vio_Telehealth/models/product_entity.dart';
 import 'package:Vio_Telehealth/models/user.dart';
@@ -8,7 +6,7 @@ import 'package:Vio_Telehealth/repositories/order_repository.dart';
 import 'package:Vio_Telehealth/repositories/user_repository.dart';
 import 'package:Vio_Telehealth/view_models/base_model.dart';
 import 'package:Vio_Telehealth/view_models/product_view_model.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class CartViewModel extends BaseViewModel {

@@ -1,4 +1,3 @@
-import 'package:Vio_Telehealth/models/option.dart';
 import 'package:Vio_Telehealth/models/product_entity.dart';
 
 class CartItem{

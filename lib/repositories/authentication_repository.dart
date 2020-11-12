@@ -14,7 +14,7 @@ class AuthenticationRepository {
 
   var role = 'patient';
 
-  Future SignIn({data}) async {
+  Future signIn({data}) async {
     try{
       final response = await HttpClient.getInstance().post(EndPoints.loginEndpoint, data: data);
       return await serverSaveUser(response.data);

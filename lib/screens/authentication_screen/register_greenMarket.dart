@@ -61,7 +61,7 @@ class _RegisterGreenMarketState extends State<RegisterGreenMarket> {
       User registeredUser = await authenticationModel.signUp(userData: data);
       appModel.setUser(registeredUser);
       appStatusViewModel.setStatus(AppStatus.Authenticated);
-      Navigator.pop(context);
+      Navigator.pop(context,true);
     } catch (e) {
       UtilsFunctions.showSnackBarWithScaffoldKey(
           scaffoldKey: AppKeys.registerScreenScaffoldKey, text: e.toString());

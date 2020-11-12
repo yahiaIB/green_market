@@ -1,4 +1,4 @@
-import 'package:Vio_Telehealth/models/option.dart';
+import 'package:Vio_Telehealth/helpers/app_localizations.dart';
 import 'package:Vio_Telehealth/models/product_entity.dart';
 import 'package:Vio_Telehealth/view_models/product_view_model.dart';
 import 'package:flutter/material.dart';
@@ -87,7 +87,7 @@ class _ItemOptionsDialogState extends State<ItemOptionsDialog> {
                                 text: '${option.name} ',
                                 children: <InlineSpan>[
                                   TextSpan(
-                                    text: " ${option.pricePerUnit} " + "L.E/${option.unit}",
+                                    text: " ${option.pricePerUnit} " + "${AppLocalizations.of(context).translate("L.E")}/${option.unit}",
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold),
                                   )

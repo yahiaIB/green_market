@@ -19,7 +19,7 @@ class SplashScreen extends StatelessWidget {
             screen = Home();
             break;
           case AppStatus.Unauthenticated:
-            screen = LoginGeenMarket();
+            screen = LoginGreenMarket();
             break;
           case AppStatus.Uninitialized:
             screen = SplashWidget();

@@ -2,27 +2,18 @@ import 'package:Vio_Telehealth/app/app_keys.dart';
 import 'package:Vio_Telehealth/app/routes.dart';
 import 'package:Vio_Telehealth/config/constants.dart';
 import 'package:Vio_Telehealth/helpers/app_localizations.dart';
-import 'package:Vio_Telehealth/models/address.dart';
-import 'package:Vio_Telehealth/models/cart.dart';
-import 'package:Vio_Telehealth/models/item.dart';
-import 'package:Vio_Telehealth/models/option.dart';
-import 'package:Vio_Telehealth/models/order_entity.dart';
 import 'package:Vio_Telehealth/models/user.dart';
 import 'package:Vio_Telehealth/screens/authentication_screen/authentication_model.dart';
 import 'package:Vio_Telehealth/screens/cart_screen/widgets/cart_item_widget.dart';
-import 'package:Vio_Telehealth/screens/products_screen/widgets/unit_button_widget.dart';
 import 'package:Vio_Telehealth/theme/custom_colors.dart';
 import 'package:Vio_Telehealth/utils/utils_functions.dart';
 import 'package:Vio_Telehealth/view_models/app_model.dart';
-import 'package:Vio_Telehealth/view_models/app_status_model.dart';
 import 'package:Vio_Telehealth/view_models/cart_view_model.dart';
-import 'package:Vio_Telehealth/view_models/product_view_model.dart';
 import 'package:Vio_Telehealth/widgets/primary_button.dart';
 import 'package:Vio_Telehealth/widgets/screen_app_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+
 import 'package:provider/provider.dart';
 import 'package:toast/toast.dart';
 
@@ -110,14 +101,14 @@ class _CartScreenState extends State<CartScreen> {
                                   () {
                                     authenticationModel.authenticate(
                                             (){
-                                      controller.animateToPage(1,
-                                          duration: Duration(milliseconds: 100),
-                                          curve: Curves.easeIn);
-                                    }, context);
+                                              controller.animateToPage(1, duration: Duration(milliseconds: 100), curve: Curves.easeIn);
+                                            },
+                                        context
+                                    );
 
 
                                   },
-                                  "Checkout",
+                                  AppLocalizations.of(context).translate("Checkout"),
                                   paddingRightLeft: 30,
                                 ),
                               )
@@ -137,7 +128,7 @@ class _CartScreenState extends State<CartScreen> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      "Address Name:",
+                                      "${AppLocalizations.of(context).translate("Address Name")}"+":",
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 20),
@@ -162,7 +153,7 @@ class _CartScreenState extends State<CartScreen> {
                                             child:
                                                 new DropdownButton<UserAddress>(
                                               value: cartModel.selectedAddress,
-                                              hint: Text("Select Address"),
+                                              hint: Text(AppLocalizations.of(context).translate("Select Address")),
                                               focusColor:
                                                   CustomColors.mainColor,
                                               isExpanded: true,
@@ -193,9 +184,10 @@ class _CartScreenState extends State<CartScreen> {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
-                                              Text("Subtotal"),
+                                              Text(AppLocalizations.of(context).translate("Subtotal")),
                                               Text(
-                                                  "${double.parse(cartModel.subTotalPrice.toStringAsFixed(2))}"),
+                                                  "${double.parse(cartModel.subTotalPrice.toStringAsFixed(2))} "+"${AppLocalizations.of(context).translate("L.E")}"
+                                              ),
                                             ],
                                           ),
                                           Divider(
@@ -205,9 +197,9 @@ class _CartScreenState extends State<CartScreen> {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
-                                              Text("Delivery"),
+                                              Text(AppLocalizations.of(context).translate("Delivery")),
                                               Text(
-                                                  "${cartModel.selectedAddress.region.deliveryFees} L.E"),
+                                                  "${cartModel.selectedAddress.region.deliveryFees} "+"${AppLocalizations.of(context).translate("L.E")}"),
                                             ],
                                           ),
                                           Divider(thickness: 1,),
@@ -216,13 +208,13 @@ class _CartScreenState extends State<CartScreen> {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Text(
-                                                "Total",
+                                                AppLocalizations.of(context).translate("Total"),
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: 20),
                                               ),
                                               Text(
-                                                "${double.parse(cartModel.totalPrice.toStringAsFixed(2))} L.E",
+                                                "${double.parse(cartModel.totalPrice.toStringAsFixed(2))} "+"${AppLocalizations.of(context).translate("L.E")}",
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: 20),
@@ -234,7 +226,7 @@ class _CartScreenState extends State<CartScreen> {
                                               try {
                                                 await cartModel.createOrder();
                                                 Toast.show(
-                                                    "Order Confirmed", context,
+                                                    AppLocalizations.of(context).translate("Order Confirmed"), context,
                                                     duration: Toast.LENGTH_LONG,
                                                     gravity: Toast.BOTTOM,
                                                     backgroundColor:
@@ -249,7 +241,7 @@ class _CartScreenState extends State<CartScreen> {
                                                         text: e.toString());
                                               }
                                             },
-                                            "Confirm Order",
+                                            AppLocalizations.of(context).translate("Confirm Order"),
                                             color: CustomColors.mainColor,
                                           ),
                                         ],
