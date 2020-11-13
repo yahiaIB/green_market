@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 class ItemOptionsDialog extends StatefulWidget {
   final String name, buttonText;
 
-  final Image image;
+  final Widget image;
   final int optionIndex;
   final int itemIndex;
   final int categoryIndex;

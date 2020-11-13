@@ -5,6 +5,7 @@ import 'package:Vio_Telehealth/theme/custom_colors.dart';
 import 'package:Vio_Telehealth/utils/dialogs.dart';
 import 'package:Vio_Telehealth/view_models/cart_view_model.dart';
 import 'package:Vio_Telehealth/view_models/product_view_model.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:provider/provider.dart';
@@ -39,7 +40,11 @@ class CartItemWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              item.image != null ? Image.network(item.image,height: 100,width: 100,)
+              item.image != null ? CachedNetworkImage(
+                imageUrl: item.image,
+                width: 100,
+                height: 100,
+              )
                 :Image.asset("res/assets/images/basket.png",height: 100,width: 100),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,

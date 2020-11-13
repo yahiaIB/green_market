@@ -10,7 +10,8 @@ import 'package:Vio_Telehealth/view_models/app_lang.dart';
 class ProfileListItem extends StatelessWidget {
   final IconData icon;
   final String text;
-  final bool hasNavigation, color;
+  final bool hasNavigation;
+  final Color color;
   final Function function;
 
   const ProfileListItem(
@@ -18,7 +19,7 @@ class ProfileListItem extends StatelessWidget {
       this.icon,
       this.text,
       this.hasNavigation = true,
-      this.color = true,
+      this.color = Colors.white,
       this.function})
       : super(key: key);
 
@@ -45,7 +46,7 @@ class ProfileListItem extends StatelessWidget {
               // ),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(kSpacingUnit.w * 3),
-                color: color ? Colors.white : Colors.red.withOpacity(0.2),
+                color: color,
               ),
               child: Padding(
                 padding: EdgeInsets.symmetric(

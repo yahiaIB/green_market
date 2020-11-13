@@ -36,9 +36,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   void logout() {
-    AuthenticationViewModel authenticationViewModel = Provider.of<AuthenticationViewModel>(context, listen: false);
-    AppStatusViewModel appStatusModel = Provider.of<AppStatusViewModel>(context, listen: false);
-    AppViewModel appViewModel = Provider.of<AppViewModel>(context, listen: false);
+    AuthenticationViewModel authenticationViewModel =
+        Provider.of<AuthenticationViewModel>(context, listen: false);
+    AppStatusViewModel appStatusModel =
+        Provider.of<AppStatusViewModel>(context, listen: false);
+    AppViewModel appViewModel =
+        Provider.of<AppViewModel>(context, listen: false);
     authenticationViewModel.logOut();
     appViewModel.setGuestUser();
     appStatusModel.setStatus(AppStatus.Unauthenticated);
@@ -53,7 +56,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
       for (Map listItem in listItems) {
         items.add(
           DropdownMenuItem(
-            child: Text(AppLocalizations.of(context).translate(listItem["name"])),
+            child:
+                Text(AppLocalizations.of(context).translate(listItem["name"])),
             value: listItem["value"],
           ),
         );
@@ -69,38 +73,45 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: Column(
                   children: <Widget>[
                     SizedBox(height: kSpacingUnit * 5.0),
-                    Column(
-                      children: <Widget>[
-                        Container(
-                          height: kSpacingUnit * 15.0,
-                          width: kSpacingUnit * 15.0,
-                          margin: EdgeInsets.only(top: kSpacingUnit * 3.0),
-                          child: Stack(
-                            children: <Widget>[
-                              CircleAvatar(
-                                radius: kSpacingUnit * 10.0,
-                                backgroundImage: appModel.user.image == null ? AssetImage("res/assets/images/user-picture.png") : NetworkImage(appModel.user.image),
-                              ),
-                            ],
+                    AuthVisibilityWidget(
+                      child: Column(
+                        children: <Widget>[
+                          Container(
+                            height: kSpacingUnit * 15.0,
+                            width: kSpacingUnit * 15.0,
+                            margin: EdgeInsets.only(top: kSpacingUnit * 3.0),
+                            child: Stack(
+                              children: <Widget>[
+                                CircleAvatar(
+                                  radius: kSpacingUnit * 10.0,
+                                  backgroundImage: appModel.user.image == null
+                                      ? AssetImage(
+                                          "res/assets/images/user-picture.png")
+                                      : NetworkImage(appModel.user.image),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                        SizedBox(height: kSpacingUnit * 2.0),
-                        Text(
-                          '${appModel.user.name}',
-                          style: kTitleTextStyle,
-                        ),
-                        SizedBox(height: kSpacingUnit * 0.5),
-                        Text(
-                          '${appModel.user.mobile}',
-                          style: kCaptionTextStyle,
-                        ),
-                        SizedBox(height: kSpacingUnit * 2.0),
-                      ],
+                          SizedBox(height: kSpacingUnit * 2.0),
+                          Text(
+                            '${appModel.user.name}',
+                            style: kTitleTextStyle,
+                          ),
+                          SizedBox(height: kSpacingUnit * 0.5),
+                          Text(
+                            '${appModel.user.mobile}',
+                            style: kCaptionTextStyle,
+                          ),
+                          SizedBox(height: kSpacingUnit * 2.0),
+                        ],
+                      ),
+                      resourceName: Authorizations.personalDetailsButton,
                     ),
                     AuthVisibilityWidget(
                       child: ProfileListItem(
                         icon: LineAwesomeIcons.user_1,
-                        text: AppLocalizations.of(context).translate('Personal Details'),
+                        text: AppLocalizations.of(context)
+                            .translate('Personal Details'),
                         function: () {
                           Navigator.pushNamed(context, Routes.personalDetails);
                         },
@@ -110,7 +121,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     AuthVisibilityWidget(
                       child: ProfileListItem(
                         icon: LineAwesomeIcons.address_card,
-                        text: AppLocalizations.of(context).translate('Addresses'),
+                        text:
+                            AppLocalizations.of(context).translate('Addresses'),
                         function: () {
                           Navigator.pushNamed(context, Routes.addresses);
                         },
@@ -120,7 +132,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     AuthVisibilityWidget(
                       child: ProfileListItem(
                         icon: LineAwesomeIcons.history,
-                        text: AppLocalizations.of(context).translate('My orders'),
+                        text:
+                            AppLocalizations.of(context).translate('My orders'),
                         function: () {
                           Navigator.pushNamed(context, Routes.myOrders);
                         },
@@ -128,21 +141,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       resourceName: Authorizations.personalOrdersButton,
                     ),
 
-                    ProfileListItem(
-                      icon: LineAwesomeIcons.question_circle,
-                      text: AppLocalizations.of(context)
-                          .translate('Help & Support'),
-                    ),
+//                    ProfileListItem(
+//                      icon: LineAwesomeIcons.question_circle,
+//                      text: AppLocalizations.of(context)
+//                          .translate('Help & Support'),
+//                    ),
                     Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 36,).copyWith( bottom: 15),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 36,
+                        ).copyWith(bottom: 15),
                         child: Material(
                           elevation: 8,
-                          borderRadius: BorderRadius.circular(kSpacingUnit.w * 3),
+                          borderRadius:
+                              BorderRadius.circular(kSpacingUnit.w * 3),
                           child: Container(
                             width: MediaQuery.of(context).size.width,
                             padding: EdgeInsets.only(left: 20, right: 20),
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(kSpacingUnit.w * 3),
+                              borderRadius:
+                                  BorderRadius.circular(kSpacingUnit.w * 3),
                               // color: CustomColors.backgroundPrimaryProfileContainerColor,
                             ),
                             child: Row(
@@ -158,20 +175,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           color: Colors.black),
                                       decoration: InputDecoration(
                                           enabledBorder: UnderlineInputBorder(
-                                              borderSide: BorderSide(color: kLightSecondaryColor)
-                                          )
-                                      ),
+                                              borderSide: BorderSide(
+                                                  color:
+                                                      kLightSecondaryColor))),
                                       icon: Icon(LineAwesomeIcons.angle_down),
                                       value: languageModel.appLocal.toString(),
-                                      items: buildDropDownMenuLanguage(_dropdownLanguage),
+                                      items: buildDropDownMenuLanguage(
+                                          _dropdownLanguage),
                                       validator: (value) => value == null
                                           ? AppLocalizations.of(context)
                                               .translate('Choose language')
                                           : null,
                                       onChanged: (value) {
-                                        ProductViewModel productViewModel = Provider.of<ProductViewModel>(context, listen: false);
-                                        CartViewModel cartViewModel = Provider.of<CartViewModel>(context, listen: false);
-                                        productViewModel.fetchProductsAndCategories();
+                                        ProductViewModel productViewModel =
+                                            Provider.of<ProductViewModel>(
+                                                context,
+                                                listen: false);
+                                        CartViewModel cartViewModel =
+                                            Provider.of<CartViewModel>(context,
+                                                listen: false);
+                                        productViewModel
+                                            .fetchProductsAndCategories();
                                         cartViewModel.removeAllCartItems();
                                         languageModel.changeLanguage(value);
                                       }),
@@ -180,15 +204,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                           ),
                         )),
-                    ProfileListItem(
-                      icon: LineAwesomeIcons.alternate_sign_out,
-                      text: AppLocalizations.of(context).translate('Logout'),
-                      hasNavigation: false,
-                      color: false,
-                      function: () {
-                        logout();
-                      },
-                    ),
+                    appModel.user.name == "Guest"
+                        ? ProfileListItem(
+                            icon: LineAwesomeIcons.alternate_sign_out,
+                            text: AppLocalizations.of(context)
+                                .translate('Login'),
+                            hasNavigation: false,
+                            color: Colors.lightGreen,
+                            function: () {
+                              logout();
+                            },
+                          )
+                        : ProfileListItem(
+                            icon: LineAwesomeIcons.alternate_sign_out,
+                            text: AppLocalizations.of(context)
+                                .translate('Logout'),
+                            hasNavigation: false,
+                            color: Colors.red.withOpacity(0.2),
+                            function: () {
+                              logout();
+                            },
+                          ),
                   ],
                 ),
               ),

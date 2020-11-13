@@ -5,6 +5,7 @@ import 'package:Vio_Telehealth/screens/products_screen/widgets/unit_button_widge
 import 'package:Vio_Telehealth/theme/custom_colors.dart';
 import 'package:Vio_Telehealth/view_models/cart_view_model.dart';
 import 'package:Vio_Telehealth/view_models/product_view_model.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:toast/toast.dart';
@@ -45,6 +46,7 @@ class _ProductItemState extends State<ProductItem> {
                   Text(
                     widget.item.options[widget.item.selectedOptionIndex].name,
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    overflow: TextOverflow.ellipsis,
                   ),
                   SizedBox(
                     height: 5,
@@ -104,7 +106,8 @@ class _ProductItemState extends State<ProductItem> {
                             optionIndex: widget.item.selectedOptionIndex,
                             itemIndex: widget.itemIndex,
                             categoryIndex: widget.categoryIndex,
-                            image: widget.item.image != null ? Image.network(
+                            image: widget.item.image != null ?
+                            Image.network(
                               widget.item.image,
                               width: 100,
                               height: 100,
@@ -113,7 +116,12 @@ class _ProductItemState extends State<ProductItem> {
                           ),
                         );
                       },
-                      child: widget.item.image != null ? Image.network(widget.item.image,height: 100,width: (MediaQuery.of(context).size.width - 40)/2,)
+                      child: widget.item.image != null ?
+                      CachedNetworkImage(
+                        imageUrl: widget.item.image,
+                        width: (MediaQuery.of(context).size.width - 40)/2,
+                        height: 100,
+                      )
                         :Image.asset("res/assets/images/basket.png",height: 100,width: (MediaQuery.of(context).size.width - 40)/2,),
                   )
 
