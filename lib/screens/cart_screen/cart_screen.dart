@@ -251,8 +251,7 @@ class _CartScreenState extends State<CartScreen> {
                                                 gravity: Toast.BOTTOM,
                                                 backgroundColor:
                                                     CustomColors.mainColor);
-                                            Navigator.pushNamed(
-                                                context, Routes.myOrders);
+                                            Navigator.pushNamed(context, Routes.myOrders);
                                           } catch (e) {
                                             UtilsFunctions
                                                 .showSnackBarWithScaffoldKey(
@@ -263,7 +262,7 @@ class _CartScreenState extends State<CartScreen> {
                                         },
                                         AppLocalizations.of(context)
                                             .translate("Confirm Order"),
-                                        color: CustomColors.mainColor,
+                                        color: CustomColors.buttonColor,
                                       ),
                                     ],
                                   )

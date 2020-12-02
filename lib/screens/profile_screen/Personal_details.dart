@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:Vio_Telehealth/app/routes.dart';
 import 'package:Vio_Telehealth/helpers/app_localizations.dart';
+import 'package:Vio_Telehealth/theme/custom_colors.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -29,19 +30,19 @@ class _PersonalDetailsState extends State<PersonalDetails> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Container(
-            height: kSpacingUnit.w * 15,
-            width: kSpacingUnit.w * 15,
-            margin: EdgeInsets.only(top: kSpacingUnit.w * 3),
+            height: CustomColors.kSpacingUnit.w * 15,
+            width: CustomColors.kSpacingUnit.w * 15,
+            margin: EdgeInsets.only(top: CustomColors.kSpacingUnit.w * 3),
             child: Stack(
               children: <Widget>[
                 CircleAvatar(
-                  radius: kSpacingUnit.w * 10,
+                  radius: CustomColors.kSpacingUnit.w * 10,
                   backgroundImage: appViewModel.user.image == null ? AssetImage("res/assets/images/user-picture.png") : NetworkImage(appViewModel.user.image),
                 ),
               ],
             ),
           ),
-          SizedBox(height: kSpacingUnit.w * 2),
+          SizedBox(height: CustomColors.kSpacingUnit.w * 2),
         ],
       ),
     );
@@ -50,11 +51,11 @@ class _PersonalDetailsState extends State<PersonalDetails> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        SizedBox(width: kSpacingUnit.w * 3),
+        SizedBox(width: CustomColors.kSpacingUnit.w * 3),
 
         profileInfo(appViewModel),
         //themeSwitcher,
-        SizedBox(width: kSpacingUnit.w * 3),
+        SizedBox(width: CustomColors.kSpacingUnit.w * 3),
       ],
     );
 
@@ -62,17 +63,17 @@ class _PersonalDetailsState extends State<PersonalDetails> {
       builder: (BuildContext context, AppViewModel appModel, Widget child) =>
           Scaffold(
         appBar: AppBar(
-          shadowColor: mainColor.withOpacity(0.3),
+          shadowColor: CustomColors.mainColor.withOpacity(0.3),
           title: Text(
             AppLocalizations.of(context).translate("Personal Details"),
             style: TextStyle(
-              color: mainColor,
+              color: CustomColors.mainColor,
             ),
           ),
         ),
         body: Column(
           children: <Widget>[
-            SizedBox(height: kSpacingUnit.w * 5),
+            SizedBox(height: CustomColors.kSpacingUnit.w * 5),
             header(appModel),
             Expanded(
               child: ListView(
@@ -96,7 +97,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
         ),
         floatingActionButton: FloatingActionButton(
             child: Icon(Icons.edit),
-            backgroundColor: mainColor,
+            backgroundColor: CustomColors.buttonColor,
             onPressed: () {
               Navigator.pushNamed(context, Routes.editPersonalDetails,
                   arguments: {

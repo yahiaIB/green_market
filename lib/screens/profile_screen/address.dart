@@ -1,6 +1,8 @@
 import 'package:Vio_Telehealth/helpers/app_localizations.dart';
+import 'package:Vio_Telehealth/theme/custom_colors.dart';
 import 'package:Vio_Telehealth/widgets/container_box_shadow.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:provider/provider.dart';
 import 'constants/profile_constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -36,15 +38,15 @@ class _AddressesState extends State<Addresses> {
                Provider.of<AppViewModel>(context, listen: false)..getUserAddresses();
             },
             iconSize: 30,
-            color: mainColor,
+            color: CustomColors.mainColor,
             //disabledColor: mainColor,
           )
         ],
-        shadowColor: mainColor.withOpacity(0.3),
+        shadowColor: CustomColors.mainColor.withOpacity(0.3),
         title: Text(
           AppLocalizations.of(context).translate("My addresses"),
           style: TextStyle(
-            color: mainColor,
+            color: CustomColors.mainColor,
           ),
         ),
       ),
@@ -65,9 +67,11 @@ class _AddressesState extends State<Addresses> {
                               mainAxisAlignment: MainAxisAlignment.end,
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                Iconsbuttons(
-                                    iconData: Icon(Icons.delete),
-                                    color: mainColor,
+                                IconsButtons(
+                                    iconData: Icon(
+                                      MaterialCommunityIcons.delete_sweep,
+                                    ),
+                                    color: Colors.red,
                                     onTap: () => appModel.deleteAddress(index ,appModel.addressesList[index].sId ))
                               ],
                             ),
@@ -81,27 +85,27 @@ class _AddressesState extends State<Addresses> {
                               Text(
                                 AppLocalizations.of(context).translate("City : ") +
                                     "${appModel.addressesList[index].area.name}",
-                                style: kTitleTextStyle.copyWith(
+                                style: CustomColors.kTitleTextStyle.copyWith(
                                     fontWeight: FontWeight.w500, height: 1.5),
                               ),
                               Text(
                                 AppLocalizations.of(context)
                                         .translate("Region : ") +
                                     "${appModel.addressesList[index].region.name}",
-                                style: kTitleTextStyle.copyWith(
+                                style: CustomColors.kTitleTextStyle.copyWith(
                                     fontWeight: FontWeight.w500, height: 1.5),
                               ),
                               Text(
                                 AppLocalizations.of(context).translate("Apartment : ") +
                                     "${appModel.addressesList[index].apartment}",
-                                style: kTitleTextStyle.copyWith(
+                                style: CustomColors.kTitleTextStyle.copyWith(
                                     fontWeight: FontWeight.w500, height: 1.5),
                               ),
                               Text(
                                 AppLocalizations.of(context)
                                         .translate("Address : ") +
                                     "${appModel.addressesList[index].description}",
-                                style: kTitleTextStyle.copyWith(
+                                style: CustomColors.kTitleTextStyle.copyWith(
                                     fontWeight: FontWeight.w500, height: 1.5),
                               ),
                             ],
@@ -114,19 +118,19 @@ class _AddressesState extends State<Addresses> {
   }
 }
 
-class Iconsbuttons extends StatelessWidget {
+class IconsButtons extends StatelessWidget {
   final Icon iconData;
   final Color color;
   final Function onTap;
 
-  Iconsbuttons(
+  IconsButtons(
       {@required this.color, @required this.iconData, @required this.onTap});
   @override
   Widget build(BuildContext context) {
     return IconButton(
         icon: iconData,
         color: color,
-        iconSize: ScreenUtil().setSp(kSpacingUnit.w * 3),
+        iconSize: ScreenUtil().setSp(CustomColors.kSpacingUnit.w * 3),
         onPressed: onTap);
   }
 }

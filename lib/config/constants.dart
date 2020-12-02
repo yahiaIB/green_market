@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Constants {
-  static const appTitle = "boiler-Plate";
+  static const appTitle = "Blwa7da";
 
   static final langCodeKey = 'language_code';
   static final enLangCode = 'en';

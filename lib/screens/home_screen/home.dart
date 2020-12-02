@@ -1,11 +1,17 @@
+import 'dart:convert';
+
+import 'package:Vio_Telehealth/app/routes.dart';
 import 'package:Vio_Telehealth/helpers/app_localizations.dart';
 import 'package:Vio_Telehealth/screens/cart_screen/cart_screen.dart';
 import 'package:Vio_Telehealth/screens/products_screen/products_screen.dart';
 import 'package:Vio_Telehealth/screens/profile_screen/profile_screen.dart';
 import 'package:Vio_Telehealth/theme/custom_colors.dart';
 import 'package:Vio_Telehealth/view_models/cart_view_model.dart';
+import 'package:fcm_config/fcm_config.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:http/http.dart' as http;
+
 
 
 class Home extends StatefulWidget {
@@ -13,7 +19,9 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
+class _HomeState extends State<Home> with SingleTickerProviderStateMixin , FCMNotificationMixin, FCMNotificationClickMixin {
+  RemoteMessage _notification;
+  final String serverToken = 'your key here';
   int _selectedIndex = 0;
 
   List<Widget> _widgetOptions=[
@@ -72,7 +80,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                           right: 0,
                           child: CircleAvatar(
                             radius: 5,
-                            backgroundColor: Colors.green,
+                            backgroundColor: CustomColors.buttonColor,
                           ),
                         )
                         :Container(),
@@ -96,5 +104,44 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         ),
       ),
     );
+  }
+  void send() async {
+    await http.post(
+      'https://fcm.googleapis.com/fcm/send',
+      headers: <String, String>{
+        'Content-Type': 'application/json',
+        'Authorization': 'key=$serverToken',
+      },
+      body: jsonEncode(
+        <String, dynamic>{
+          'notification': <String, dynamic>{
+            'body': 'this is a body',
+            'title': 'this is a title'
+          },
+          'priority': 'high',
+          'data': <String, dynamic>{
+            'id': '1',
+            'status': 'done',
+          },
+          'to': await FirebaseMessaging.instance.getToken(),
+        },
+      ),
+    );
+  }
+
+  @override
+  void onNotify(RemoteMessage notification) {
+    setState(() {
+      _notification = notification;
+    });
+  }
+
+  @override
+  void onClick(RemoteMessage notification) {
+    setState(() {
+      _notification = notification;
+    });
+    print("Notification clicked with title: ${notification.notification.title} && body: ${notification.notification.body}");
+    Navigator.pushNamed(context, Routes.myOrders);
   }
 }

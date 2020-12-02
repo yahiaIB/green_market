@@ -1,7 +1,6 @@
 import 'package:Vio_Telehealth/config/constants.dart';
 import 'package:Vio_Telehealth/helpers/app_localizations.dart';
 import 'package:Vio_Telehealth/theme/custom_assets.dart';
-import 'package:Vio_Telehealth/utils/firebase_notification_handler.dart';
 import 'package:flutter/material.dart';
 class MainHomeScreen extends StatefulWidget {
   @override
