@@ -1,3 +1,4 @@
+import 'package:Vio_Telehealth/theme/custom_colors.dart';
 import 'package:flutter/material.dart';
 import '../constants/profile_constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,7 +16,7 @@ class PresonalDataCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
-        color: kLightSecondaryColor,
+        color: CustomColors.kLightSecondaryColor,
       ),
       margin: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
       child: Stack(
@@ -23,11 +24,11 @@ class PresonalDataCard extends StatelessWidget {
           ListTile(
             leading: Icon(
               icon,
-              size: kSpacingUnit * 2.5,
+              size: CustomColors.kSpacingUnit * 2.5,
             ),
             title: Text(
               data,
-              style: kTitleTextStyle.copyWith(
+              style: CustomColors.kTitleTextStyle.copyWith(
                 fontWeight: FontWeight.w500,
               ),
             ),

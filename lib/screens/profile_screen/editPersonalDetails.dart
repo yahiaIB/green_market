@@ -105,14 +105,14 @@ class _EditPersonalDetailsState extends State<EditPersonalDetails> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Container(
-            height: kSpacingUnit.w * 15,
-            width: kSpacingUnit.w * 15,
-            margin: EdgeInsets.only(top: kSpacingUnit.w * 3),
+            height: CustomColors.kSpacingUnit.w * 15,
+            width: CustomColors.kSpacingUnit.w * 15,
+            margin: EdgeInsets.only(top: CustomColors.kSpacingUnit.w * 3),
             child: Stack(
               children: <Widget>[
                 CircleAvatar(
-                  radius: kSpacingUnit.w * 10,
-                  backgroundImage: _image == null ? AssetImage("assets/avatar.png") : _image.runtimeType != String
+                  radius: CustomColors.kSpacingUnit.w * 10,
+                  backgroundImage: _image == null ? AssetImage("res/assets/images/user-picture.png") : _image.runtimeType != String
                       ? FileImage(_image)
                       : NetworkImage(_image),
                 ),
@@ -123,19 +123,19 @@ class _EditPersonalDetailsState extends State<EditPersonalDetails> {
                       _showPicker(context);
                     },
                     child: Container(
-                      height: kSpacingUnit.w * 3.5,
-                      width: kSpacingUnit.w * 3.5,
+                      height: CustomColors.kSpacingUnit.w * 3.5,
+                      width: CustomColors.kSpacingUnit.w * 3.5,
                       decoration: BoxDecoration(
-                        color: mainColor,
+                        color: CustomColors.buttonColor,
                         shape: BoxShape.circle,
                       ),
                       child: Center(
-                        heightFactor: kSpacingUnit.w * 1.5,
-                        widthFactor: kSpacingUnit.w * 1.5,
+                        heightFactor: CustomColors.kSpacingUnit.w * 1.5,
+                        widthFactor: CustomColors.kSpacingUnit.w * 1.5,
                         child: Icon(
                           LineAwesomeIcons.camera,
                           color: Colors.white,
-                          size: ScreenUtil().setSp(kSpacingUnit.w * 2.5),
+                          size: ScreenUtil().setSp(CustomColors.kSpacingUnit.w * 2.5),
                         ),
                       ),
                     ),
@@ -144,7 +144,7 @@ class _EditPersonalDetailsState extends State<EditPersonalDetails> {
               ],
             ),
           ),
-          SizedBox(height: kSpacingUnit.w * 2),
+          SizedBox(height: CustomColors.kSpacingUnit.w * 2),
         ],
       ),
     );
@@ -153,22 +153,22 @@ class _EditPersonalDetailsState extends State<EditPersonalDetails> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        SizedBox(width: kSpacingUnit.w * 3),
+        SizedBox(width: CustomColors.kSpacingUnit.w * 3),
 
         profileInfo,
         //themeSwitcher,
-        SizedBox(width: kSpacingUnit.w * 3),
+        SizedBox(width: CustomColors.kSpacingUnit.w * 3),
       ],
     );
 
     return Scaffold(
       key: AppKeys.editProfileScreenScaffoldKey,
       appBar: AppBar(
-        shadowColor: mainColor.withOpacity(0.3),
+        shadowColor: CustomColors.mainColor.withOpacity(0.3),
         title: Text(
           AppLocalizations.of(context).translate("Edit personal details"),
           style: TextStyle(
-            color: mainColor,
+            color: CustomColors.mainColor,
           ),
         ),
       ),
@@ -176,7 +176,7 @@ class _EditPersonalDetailsState extends State<EditPersonalDetails> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            SizedBox(height: kSpacingUnit.w * 5),
+            SizedBox(height: CustomColors.kSpacingUnit.w * 5),
             header,
             Container(
               margin: EdgeInsets.all(10),

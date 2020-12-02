@@ -72,18 +72,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
               body: SingleChildScrollView(
                 child: Column(
                   children: <Widget>[
-                    SizedBox(height: kSpacingUnit * 5.0),
+                    SizedBox(height: CustomColors.kSpacingUnit * 5.0),
                     AuthVisibilityWidget(
                       child: Column(
                         children: <Widget>[
                           Container(
-                            height: kSpacingUnit * 15.0,
-                            width: kSpacingUnit * 15.0,
-                            margin: EdgeInsets.only(top: kSpacingUnit * 3.0),
+                            height: CustomColors.kSpacingUnit * 15.0,
+                            width: CustomColors.kSpacingUnit * 15.0,
+                            margin: EdgeInsets.only(top: CustomColors.kSpacingUnit * 3.0),
                             child: Stack(
                               children: <Widget>[
                                 CircleAvatar(
-                                  radius: kSpacingUnit * 10.0,
+                                  radius: CustomColors.kSpacingUnit * 10.0,
                                   backgroundImage: appModel.user.image == null
                                       ? AssetImage(
                                           "res/assets/images/user-picture.png")
@@ -92,17 +92,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ],
                             ),
                           ),
-                          SizedBox(height: kSpacingUnit * 2.0),
+                          SizedBox(height: CustomColors.kSpacingUnit * 2.0),
                           Text(
                             '${appModel.user.name}',
-                            style: kTitleTextStyle,
+                            style: CustomColors.kTitleTextStyle,
                           ),
-                          SizedBox(height: kSpacingUnit * 0.5),
+                          SizedBox(height: CustomColors.kSpacingUnit * 0.5),
                           Text(
                             '${appModel.user.mobile}',
-                            style: kCaptionTextStyle,
+                            style: CustomColors.kCaptionTextStyle,
                           ),
-                          SizedBox(height: kSpacingUnit * 2.0),
+                          SizedBox(height: CustomColors.kSpacingUnit * 2.0),
                         ],
                       ),
                       resourceName: Authorizations.personalDetailsButton,
@@ -153,13 +153,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         child: Material(
                           elevation: 8,
                           borderRadius:
-                              BorderRadius.circular(kSpacingUnit.w * 3),
+                              BorderRadius.circular(CustomColors.kSpacingUnit.w * 3),
                           child: Container(
                             width: MediaQuery.of(context).size.width,
                             padding: EdgeInsets.only(left: 20, right: 20),
                             decoration: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.circular(kSpacingUnit.w * 3),
+                                  BorderRadius.circular(CustomColors.kSpacingUnit.w * 3),
                               // color: CustomColors.backgroundPrimaryProfileContainerColor,
                             ),
                             child: Row(
@@ -170,14 +170,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ),
                                 Expanded(
                                   child: DropdownButtonFormField<String>(
-                                      style: kTitleTextStyle.copyWith(
+                                      style: CustomColors.kTitleTextStyle.copyWith(
                                           fontWeight: FontWeight.w500,
                                           color: Colors.black),
                                       decoration: InputDecoration(
                                           enabledBorder: UnderlineInputBorder(
                                               borderSide: BorderSide(
                                                   color:
-                                                      kLightSecondaryColor))),
+                                                  CustomColors.kLightSecondaryColor))),
                                       icon: Icon(LineAwesomeIcons.angle_down),
                                       value: languageModel.appLocal.toString(),
                                       items: buildDropDownMenuLanguage(

@@ -25,11 +25,11 @@ class _MyOrdersState extends State<MyOrders> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        shadowColor: mainColor.withOpacity(0.3),
+        shadowColor: CustomColors.mainColor.withOpacity(0.3),
         title: Text(
           AppLocalizations.of(context).translate("My orders"),
           style: TextStyle(
-            color: mainColor,
+            color: CustomColors.mainColor,
           ),
         ),
       ),
@@ -130,7 +130,7 @@ class _MyOrdersState extends State<MyOrders> {
                         Text(
                           "${appModel.orderList[index].priceInfo.total} "+"${AppLocalizations.of(context).translate("L.E")}",
                           style: TextStyle(
-                              fontSize: 20, height: 3, color: mainColor),
+                              fontSize: 20, height: 3, color: CustomColors.mainColor),
                         ),
                       ],
                     )

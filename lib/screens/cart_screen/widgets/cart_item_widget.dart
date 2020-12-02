@@ -118,7 +118,7 @@ class CartItemWidget extends StatelessWidget {
                   child: Icon(
                     MaterialCommunityIcons.delete_sweep,
                     size: 40,
-                    color: CustomColors.mainColor,
+                    color: Colors.red,
                   ),
                   onTap: ()async{
                     if(await Dialogs.confirmDialog3(context, AppLocalizations.of(context).translate("Are you sure to remove this item ?"))){

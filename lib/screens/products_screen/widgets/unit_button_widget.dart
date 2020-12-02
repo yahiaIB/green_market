@@ -10,7 +10,7 @@ class UnitButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: CustomColors.mainColor,
+          color: CustomColors.buttonColor,
           borderRadius: BorderRadius.circular(5)),
       child: InkWell(
         borderRadius: BorderRadius.circular(20),

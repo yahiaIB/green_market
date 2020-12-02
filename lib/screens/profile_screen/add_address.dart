@@ -101,13 +101,13 @@ class _AddAddressState extends State<AddAddress> {
     return Scaffold(
       key: AppKeys.addLocationScreenScaffoldKey,
       appBar: AppBar(
-        shadowColor: mainColor.withOpacity(0.3),
+        shadowColor: CustomColors.mainColor.withOpacity(0.3),
         title: Text(
           widget.index == null
               ? AppLocalizations.of(context).translate("Add address")
               : AppLocalizations.of(context).translate("Edit address"),
           style: TextStyle(
-            color: mainColor,
+            color: CustomColors.mainColor,
           ),
         ),
       ),

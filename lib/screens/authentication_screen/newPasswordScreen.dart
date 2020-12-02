@@ -32,11 +32,11 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
       //backgroundColor: Color(0xffF5F3F0),
       backgroundColor: CustomColors.background,
       appBar: AppBar(
-        shadowColor: mainColor.withOpacity(0.3),
+        shadowColor: CustomColors.mainColor.withOpacity(0.3),
         title: Text(
           "Forget passwoed",
           style: TextStyle(
-            color: mainColor,
+            color: CustomColors.mainColor,
           ),
         ),
       ),

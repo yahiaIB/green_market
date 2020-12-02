@@ -1,20 +1,63 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 class CustomColors {
   //TODO Define your colors here
-  const CustomColors();
-  static const Color buttonColor = Color(0xfffa5e62);
+  CustomColors();
+  // static const Color buttonColor = Color(0xfffa5e62);
+  static const Color buttonColor = Color(0xffF5BF2C);
   static final Color background = Color(0xfff8f8f8);
   static final Color primaryColorLight = ColorHex("#E5183B");
   static final Color thirdColorLight = ColorHex("#ff8e33");
 
-  static final Color mainColor = ColorHex("#F85558");
+  // static final Color mainColor = ColorHex("#F85558");
+  static final Color mainColor = ColorHex("#7CB342");
+
+
   static final Color unselectedItemColor = Colors.black.withOpacity(0.3);
   // static final Color unselectedItemColor = ColorHex("#D2CFD6");
   static final Color backgroundScreenColor = ColorHex("#FAF9FE");
   static final Color backgroundPrimaryProfileContainerColor = Colors.grey.withOpacity(0.2);
   static final Color backgroundSecondaryProfileContainerColor = ColorHex("#F85558").withOpacity(0.05);
 
+
+  static final int  kSpacingUnit = 10;
+  static final Color kDarkPrimaryColor = Color(0xFF212121);
+  static final Color kDarkSecondaryColor = Color(0xFF373737);
+  static final Color kLightPrimaryColor = Color(0xFFFFFFFF);
+  static final Color kLightSecondaryColor = Color(0xFFF3F7FB);
+  static final Color kAccentColor = Color(0xFFFFC107);
+  static final TextStyle kTitleTextStyle = TextStyle(
+    fontSize: ScreenUtil().setSp(kSpacingUnit * 1.7),
+    fontWeight: FontWeight.w600,
+  );
+
+  static final kCaptionTextStyle = TextStyle(
+    fontSize: ScreenUtil().setSp(kSpacingUnit * 1.3),
+    fontWeight: FontWeight.w300,
+  );
+
+  static final kButtonTextStyle = TextStyle(
+    fontSize: ScreenUtil().setSp(kSpacingUnit * 1.5),
+    fontWeight: FontWeight.w400,
+    color: kDarkPrimaryColor,
+  );
+
+  static final kLightTheme = ThemeData(
+    brightness: Brightness.light,
+    fontFamily: 'SFProText',
+    primaryColor: kLightPrimaryColor,
+    canvasColor: kLightPrimaryColor,
+    backgroundColor: kLightSecondaryColor,
+    accentColor: kAccentColor,
+    iconTheme: ThemeData.light().iconTheme.copyWith(
+      color: kDarkSecondaryColor,
+    ),
+    textTheme: ThemeData.light().textTheme.apply(
+      fontFamily: 'SFProText',
+      bodyColor: kDarkSecondaryColor,
+      displayColor: kDarkSecondaryColor,
+    ),
+  );
 
   static var red = ColorHex("#BC0D00");
   static final Color green = ColorHex("#518239");

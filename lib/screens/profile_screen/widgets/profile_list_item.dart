@@ -27,25 +27,25 @@ class ProfileListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: kSpacingUnit.w * 4,
+        horizontal: CustomColors.kSpacingUnit.w * 4,
       ).copyWith(
-        bottom: kSpacingUnit.w * 2,
+        bottom: CustomColors.kSpacingUnit.w * 2,
       ),
       child: Material(
         elevation: 5,
-        borderRadius: BorderRadius.circular(kSpacingUnit.w * 3),
+        borderRadius: BorderRadius.circular(CustomColors.kSpacingUnit.w * 3),
         child: GestureDetector(
           onTap: function,
           child: Consumer<AppLanguage>(
             builder: (BuildContext context, AppLanguage languageModel,
                     Widget child) =>
                 Container(
-              height: kSpacingUnit.w * 5.5,
+              height: CustomColors.kSpacingUnit.w * 5.5,
               // padding: EdgeInsets.symmetric(
               //   horizontal: kSpacingUnit.w * 2,
               // ),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(kSpacingUnit.w * 3),
+                borderRadius: BorderRadius.circular(CustomColors.kSpacingUnit.w * 3),
                 color: color,
               ),
               child: Padding(
@@ -56,12 +56,12 @@ class ProfileListItem extends StatelessWidget {
                   children: <Widget>[
                     Icon(
                       this.icon,
-                      size: kSpacingUnit.w * 2.5,
+                      size: CustomColors.kSpacingUnit.w * 2.5,
                     ),
-                    SizedBox(width: kSpacingUnit.w * 1.5),
+                    SizedBox(width: CustomColors.kSpacingUnit.w * 1.5),
                     Text(
                       this.text,
-                      style: kTitleTextStyle.copyWith(
+                      style: CustomColors.kTitleTextStyle.copyWith(
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -71,7 +71,7 @@ class ProfileListItem extends StatelessWidget {
                             languageModel.appLocal == Locale("en")
                                 ? LineAwesomeIcons.angle_right
                                 : LineAwesomeIcons.angle_left,
-                            size: kSpacingUnit.w * 2.5,
+                            size: CustomColors.kSpacingUnit.w * 2.5,
                           )
                         : Container(),
                   ],
