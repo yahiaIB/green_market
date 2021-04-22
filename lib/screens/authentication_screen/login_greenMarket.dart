@@ -39,26 +39,19 @@ class _LoginGreenMarketState extends State<LoginGreenMarket> {
     });
   }
 
-  void login() async {
+  void login() async{
     AppViewModel appModel = Provider.of<AppViewModel>(context, listen: false);
     AuthenticationViewModel authenticationModel = Provider.of<AuthenticationViewModel>(context, listen: false);
     AppStatusViewModel appStatusViewModel = Provider.of<AppStatusViewModel>(context, listen: false);
-
-    Map data = {
-      "username":emailController.text,
-      "password":passwordController.text,
-    };
+    Map data = {"username":emailController.text, "password":passwordController.text,};
     try{
       User user = await authenticationModel.signIn(data :data);
       appModel.setUser(user);
       appModel.getUserAddresses();
       appStatusViewModel.setStatus(AppStatus.Authenticated);
-
     }catch(e){
-      UtilsFunctions.showSnackBarWithScaffoldKey(
-          scaffoldKey: AppKeys.loginScreenScaffoldKey, text: e.toString());
+      UtilsFunctions.showSnackBarWithScaffoldKey(scaffoldKey: AppKeys.loginScreenScaffoldKey, text: e.message);
     }
-
   }
 
   @override
@@ -177,7 +170,9 @@ class _LoginGreenMarketState extends State<LoginGreenMarket> {
                         height: 80,
                       ),
                       Consumer<AuthenticationViewModel>(
-                        builder:(context,authViewModel,child)=> authViewModel.busy ? Center(child: CircularProgressIndicator(),) :Material(
+                        builder:(context,authViewModel,child)=> authViewModel.busy ?
+                        Center(child: CircularProgressIndicator(valueColor:  new AlwaysStoppedAnimation<Color>(CustomColors.mainColor),),)
+                            :Material(
                           elevation: 5.0,
                           borderRadius: BorderRadius.circular(30.0),
                           color: CustomColors.buttonColor,

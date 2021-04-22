@@ -3,6 +3,7 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:Vio_Telehealth/models/user.dart';
+import 'package:Vio_Telehealth/web_services/error_helper.dart';
 import 'package:dio/dio.dart';
 
 import '../utils/preference_utils.dart';
@@ -19,7 +20,7 @@ class AuthenticationRepository {
       final response = await HttpClient.getInstance().post(EndPoints.loginEndpoint, data: data);
       return await serverSaveUser(response.data);
     }catch(e){
-      throw e;
+      throw ExceptionHelper.parse(err: e);
     }
   }
 

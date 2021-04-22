@@ -10,7 +10,7 @@ class CustomColors {
   static final Color thirdColorLight = ColorHex("#ff8e33");
 
   // static final Color mainColor = ColorHex("#F85558");
-  static final Color mainColor = ColorHex("#7CB342");
+  static final Color mainColor = Color(0xff7CB342);
 
 
   static final Color unselectedItemColor = Colors.black.withOpacity(0.3);

@@ -219,7 +219,7 @@ class _RegisterGreenMarketState extends State<RegisterGreenMarket> {
                       Consumer<AuthenticationViewModel>(
                         builder: (context, authViewModel, child) =>
                             authViewModel.busy
-                                ? Center(child: CircularProgressIndicator())
+                                ? Center(child: CircularProgressIndicator(valueColor:  new AlwaysStoppedAnimation<Color>(CustomColors.mainColor),))
                                 : Material(
                                     elevation: 5.0,
                                     borderRadius: BorderRadius.circular(30.0),

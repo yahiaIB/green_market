@@ -35,6 +35,26 @@ class UtilsFunctions {
         ),
       );
   }
+  static showRoundedSnackBar(
+      {String text, Color color = Colors.red, @required BuildContext context}) {
+    Scaffold.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(
+        SnackBar(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)) ,
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                text,
+                style: TextStyle(fontSize: 12.0),
+              )
+            ],
+          ),
+          backgroundColor: color,
+        ),
+      );
+  }
 
   static showSnackBarWithScaffoldKey(
       {String text, Color color = Colors.red, @required scaffoldKey}) {

@@ -25,14 +25,14 @@ class AuthenticationViewModel extends BaseViewModel {
       return user;
     } catch (err) {
       setBusy(false);
-      throw handelError(e);
+      rethrow;
     }
   }
 
   Future signUp({@required userData}) async {
 //    status = AppStatus.Authenticating;
-    setBusy(true);
     try {
+      setBusy(true);
       User user = await _repository.serverSignUp(userData);
       setBusy(false);
       return user;

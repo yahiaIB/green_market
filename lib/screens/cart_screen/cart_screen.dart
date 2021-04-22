@@ -156,7 +156,7 @@ class _CartScreenState extends State<CartScreen> {
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 10),
                                         child: appModel.busy
-                                            ? CircularProgressIndicator()
+                                            ? CircularProgressIndicator(valueColor:  new AlwaysStoppedAnimation<Color>(CustomColors.mainColor),)
                                             : DropdownButton<UserAddress>(
                                                 value:
                                                     cartModel.selectedAddress,

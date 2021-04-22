@@ -119,8 +119,7 @@ class AppViewModel extends BaseViewModel {
   Future getUserAddresses() async {
     try {
       setBusy(true);
-      List<UserAddress> result =
-          await _userRepository.serverGetUserAddress(_user.sId);
+      List<UserAddress> result = await _userRepository.serverGetUserAddress(_user.sId);
       _addressesInfo = result;
       notifyListeners();
       setBusy(false);

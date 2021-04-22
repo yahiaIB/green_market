@@ -58,7 +58,6 @@
   "Status": "الحالة",
   "Delivery Date": "تاريخ التوصيل",
   "Delivery Time": "وقت التوصيل",
-  "Total": "الحساب",
   "Address": "العنوان",
 
 
@@ -75,7 +74,6 @@
   "Confirm Order": "تأكيد الطلب",
 
   "L.E": "جنية",
-  "Address Name": "أسم العنوان",
   "Select Address": "أختار عنوان",
   "Subtotal": "المجموع الفرعي",
   "Delivery": "التوصيل",
@@ -85,5 +83,6 @@
   "Are you sure to remove this item ?": "هل أنت متأكد من إزالة هذه السلعة ؟",
   "YES": "نعم",
   "NO": "لا",
-  "Login": "تسجيل الدخول"
+  "Login": "تسجيل الدخول",
+  "Your cart has been deleted": "تم حذف سلة التسوق الخاصة بك"
 }

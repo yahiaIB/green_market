@@ -181,7 +181,7 @@ class _LoginWithoutSkipState extends State<LoginWithoutSkip> {
                         builder: (context, authViewModel, child) =>
                             authViewModel.busy
                                 ? Center(
-                                    child: CircularProgressIndicator(),
+                                    child: CircularProgressIndicator(valueColor:  new AlwaysStoppedAnimation<Color>(CustomColors.mainColor),)
                                   )
                                 : Material(
                                     elevation: 5.0,

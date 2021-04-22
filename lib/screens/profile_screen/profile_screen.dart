@@ -1,11 +1,13 @@
 import 'package:Vio_Telehealth/config/auth/auth_visibility_widget.dart';
 import 'package:Vio_Telehealth/config/auth/authorization.dart';
 import 'package:Vio_Telehealth/config/auth/roles.dart';
+import 'package:Vio_Telehealth/config/constants.dart';
 import 'package:Vio_Telehealth/helpers/app_localizations.dart';
 import 'package:Vio_Telehealth/screens/authentication_screen/authentication_model.dart';
 import 'package:Vio_Telehealth/screens/profile_screen/constants/profile_constants.dart';
 import 'package:Vio_Telehealth/screens/profile_screen/widgets/profile_list_item.dart';
 import 'package:Vio_Telehealth/theme/custom_colors.dart';
+import 'package:Vio_Telehealth/utils/utils_functions.dart';
 import 'package:Vio_Telehealth/view_models/app_lang.dart';
 import 'package:Vio_Telehealth/view_models/app_status_model.dart';
 import 'package:Vio_Telehealth/view_models/cart_view_model.dart';
@@ -17,6 +19,7 @@ import 'package:Vio_Telehealth/app/routes.dart';
 import 'package:provider/provider.dart';
 import 'package:Vio_Telehealth/view_models/app_model.dart';
 import 'package:Vio_Telehealth/utils/preference_utils.dart';
+import 'package:toast/toast.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -171,32 +174,32 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 Expanded(
                                   child: DropdownButtonFormField<String>(
                                       style: CustomColors.kTitleTextStyle.copyWith(
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.black),
+                                          fontWeight: FontWeight.w500, color: Colors.black),
                                       decoration: InputDecoration(
                                           enabledBorder: UnderlineInputBorder(
-                                              borderSide: BorderSide(
-                                                  color:
-                                                  CustomColors.kLightSecondaryColor))),
+                                              borderSide: BorderSide(color: CustomColors.kLightSecondaryColor)
+                                          )
+                                      ),
                                       icon: Icon(LineAwesomeIcons.angle_down),
                                       value: languageModel.appLocal.toString(),
-                                      items: buildDropDownMenuLanguage(
-                                          _dropdownLanguage),
+                                      items: buildDropDownMenuLanguage(_dropdownLanguage),
                                       validator: (value) => value == null
-                                          ? AppLocalizations.of(context)
-                                              .translate('Choose language')
+                                          ? AppLocalizations.of(context).translate('Choose language')
                                           : null,
-                                      onChanged: (value) {
-                                        ProductViewModel productViewModel =
-                                            Provider.of<ProductViewModel>(
-                                                context,
-                                                listen: false);
-                                        CartViewModel cartViewModel =
-                                            Provider.of<CartViewModel>(context,
-                                                listen: false);
-                                        productViewModel
-                                            .fetchProductsAndCategories();
-                                        cartViewModel.removeAllCartItems();
+                                      onChanged: (value) async{
+                                        ProductViewModel productViewModel = Provider.of<ProductViewModel>(context, listen: false);
+                                        CartViewModel cartViewModel = Provider.of<CartViewModel>(context, listen: false);
+                                        productViewModel.fetchProductsAndCategories();
+                                        if(!cartViewModel.isCartEmpty) {
+                                          cartViewModel.removeAllCartItems();
+                                          Toast.show(
+                                              AppLocalizations.of(context).translate("Your cart has been deleted"),
+                                              context,
+                                              duration: Toast.LENGTH_LONG,
+                                              gravity: Toast.BOTTOM,
+                                              backgroundColor: Colors.redAccent
+                                          );
+                                        }
                                         languageModel.changeLanguage(value);
                                       }),
                                 ),
