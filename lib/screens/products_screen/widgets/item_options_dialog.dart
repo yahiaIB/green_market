@@ -68,53 +68,55 @@ class _ItemOptionsDialogState extends State<ItemOptionsDialog> {
                     ),
                   ],
                 ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min, // To make the card compact
-                  children: <Widget>[
-                    Text(
-                      widget.name,
-                      style: TextStyle(
-                        fontSize: 24.0,
-                        fontWeight: FontWeight.w700,
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min, // To make the card compact
+                    children: <Widget>[
+                      Text(
+                        widget.name,
+                        style: TextStyle(
+                          fontSize: 24.0,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 15.0),
-                    Column(
-                        children: widget.options
-                            .map((option) => new RadioListTile(
-                            value: option.name,
-                            title: Text.rich(TextSpan(
-                                text: '${option.name} ',
-                                children: <InlineSpan>[
-                                  TextSpan(
-                                    text: " ${option.pricePerUnit} " + "${AppLocalizations.of(context).translate("L.E")}/${option.unit}",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold),
-                                  )
-                                ])),
-                            groupValue: groupValue,
-                            onChanged: (value) {
-                              print(value);
-                              setState(() {
-                                selectedOptionDialogIndex = widget.options.indexOf(option);
-                                groupValue = value;
-                              });
-                            }))
-                            .toList()),
-                    SizedBox(height: 25.0),
-                    Align(
-                      alignment: Alignment.bottomRight,
-                      child: FlatButton(
-                        onPressed: () {
+                      SizedBox(height: 15.0),
+                      Column(
+                          children: widget.options
+                              .map((option) => new RadioListTile(
+                              value: option.name,
+                              title: Text.rich(TextSpan(
+                                  text: '${option.name} ',
+                                  children: <InlineSpan>[
+                                    TextSpan(
+                                      text: " ${option.pricePerUnit} " + "${AppLocalizations.of(context).translate("L.E")}/${option.unit}",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  ])),
+                              groupValue: groupValue,
+                              onChanged: (value) {
+                                print(value);
+                                setState(() {
+                                  selectedOptionDialogIndex = widget.options.indexOf(option);
+                                  groupValue = value;
+                                });
+                              }))
+                              .toList()),
+                      SizedBox(height: 25.0),
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: FlatButton(
+                          onPressed: () {
 
-                          itemVM.setSelectedOptionIndex(optionIndex: selectedOptionDialogIndex,itemIndex:widget.itemIndex,categoryIndex: widget.categoryIndex );
+                            itemVM.setSelectedOptionIndex(optionIndex: selectedOptionDialogIndex,itemIndex:widget.itemIndex,categoryIndex: widget.categoryIndex );
 
-                          Navigator.of(context).pop(); // To close the dialog
-                        },
-                        child: Text(widget.buttonText),
+                            Navigator.of(context).pop(); // To close the dialog
+                          },
+                          child: Text(widget.buttonText),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               Positioned(
@@ -124,7 +126,6 @@ class _ItemOptionsDialogState extends State<ItemOptionsDialog> {
                   backgroundColor: Colors.white,
                   radius: Consts.avatarRadius,
                   child: widget.image,
-
                 ),
               ),
             ],

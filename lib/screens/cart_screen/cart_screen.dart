@@ -108,9 +108,9 @@ class _CartScreenState extends State<CartScreen> {
                               child: PrimaryButton(
                                 () {
                                   authenticationModel.authenticate(() {
-                                    controller.animateToPage(1,
-                                        duration: Duration(milliseconds: 100),
-                                        curve: Curves.easeIn);
+                                    if(cartModel.subTotalPrice > 0){
+                                      controller.animateToPage(1, duration: Duration(milliseconds: 100), curve: Curves.easeIn);
+                                    }
                                   }, context);
                                 },
                                 AppLocalizations.of(context)

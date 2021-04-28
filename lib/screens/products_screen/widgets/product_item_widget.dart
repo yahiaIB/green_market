@@ -38,94 +38,113 @@ class _ProductItemState extends State<ProductItem> {
             elevation: 8,
             color: Colors.white,
             borderRadius: BorderRadius.circular(30),
-            child: Padding(
-              padding: EdgeInsets.all(15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    widget.item.options[widget.item.selectedOptionIndex].name,
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    "${(widget.item.options[widget.item.selectedOptionIndex].pricePerUnit * widget.item.amount).toStringAsFixed(2)} "+"${AppLocalizations.of(context).translate("L.E")}",
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                      color: CustomColors.unselectedItemColor.withOpacity(0.3),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      UnitButton(
-                        icon: Icons.remove,
-                        onTapped: () {
-                          if (widget.item.amount > widget.item.options[widget.item.selectedOptionIndex].increasingAmount) {
-                            double newAmount =
-                                widget.item.amount - widget.item.options[widget.item.selectedOptionIndex].increasingAmount;
-                            productVM.setAmount(
-                              value: newAmount,
-                              itemIndex: widget.itemIndex,
-                              categoryIndex: widget.categoryIndex,
-                            );
-                          }
-                        },
-                      ),
-                      Text(
-                        "${widget.item.amount.toStringAsFixed(2)} "+"${widget.item.options[widget.item.selectedOptionIndex].unit}",
-                      ),
-                      UnitButton(
-                        icon: Icons.add,
-                        onTapped: () {
-                          double newAmount = widget.item.amount + widget.item.options[widget.item.selectedOptionIndex].increasingAmount;
-                          productVM.setAmount(value: newAmount,itemIndex:  widget.itemIndex, categoryIndex: widget.categoryIndex);
-                        },
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  InkWell(
-                      onTap: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) => ItemOptionsDialog(
-                            name: widget.item
-                                .options[widget.item.selectedOptionIndex].name,
-                            buttonText: "Okay",
-                            options: widget.item.options,
-                            optionIndex: widget.item.selectedOptionIndex,
-                            itemIndex: widget.itemIndex,
-                            categoryIndex: widget.categoryIndex,
-                            image: widget.item.image != null ?
-                            Image.network(
-                              widget.item.image,
-                              width: 100,
-                              height: 100,
-                            )
-                            :Image.asset("res/assets/images/basket.png",height: 100,width: 100),
-                          ),
-                        );
-                      },
-                      child: widget.item.image != null ?
-                      CachedNetworkImage(
-                        imageUrl: widget.item.image,
-                        width: (MediaQuery.of(context).size.width - 40)/2,
-                        height: 100,
-                      )
-                        :Image.asset("res/assets/images/basket.png",height: 100,width: (MediaQuery.of(context).size.width - 40)/2,),
-                  )
+            child: InkWell(
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) => ItemOptionsDialog(
+                      name: widget.item
+                          .options[widget.item.selectedOptionIndex].name,
+                      buttonText: "Okay",
+                      options: widget.item.options,
+                      optionIndex: widget.item.selectedOptionIndex,
+                      itemIndex: widget.itemIndex,
+                      categoryIndex: widget.categoryIndex,
+                      image: Container(
+                        height: 120,
+                        width: 120,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            image: DecorationImage(
+                                image: widget.item.image != null ?
+                                NetworkImage(
+                                  widget.item.image,
+                                )
+                                    :
+                                AssetImage("res/assets/images/basket.png",),
+                                fit: BoxFit.fill
+                            ),
+                            shape: BoxShape.circle
 
-                ],
+                        ),
+                      )
+                    // image: widget.item.image
+                    // image: widget.item.image != null ?
+                    // Image.network(
+                    //   widget.item.image,
+                    //   width: 100,
+                    //   height: 100,
+                    //   fit: BoxFit.fill,
+                    // )
+                    // :Image.asset("res/assets/images/basket.png",height: 100,width: 100),
+                  ),
+                );
+              },
+              child: Padding(
+                padding: EdgeInsets.all(15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      widget.item.options[widget.item.selectedOptionIndex].name,
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      "${(widget.item.options[widget.item.selectedOptionIndex].pricePerUnit * widget.item.amount).toStringAsFixed(2)} "+"${AppLocalizations.of(context).translate("L.E")}",
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: CustomColors.unselectedItemColor.withOpacity(0.3),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        UnitButton(
+                          icon: Icons.remove,
+                          onTapped: () {
+                            if (widget.item.amount > widget.item.options[widget.item.selectedOptionIndex].increasingAmount) {
+                              double newAmount = widget.item.amount - widget.item.options[widget.item.selectedOptionIndex].increasingAmount;
+                              productVM.setAmount(
+                                value: newAmount,
+                                itemIndex: widget.itemIndex,
+                                categoryIndex: widget.categoryIndex,
+                              );
+                            }
+                          },
+                        ),
+                        Text(
+                          "${widget.item.amount.toStringAsFixed(2)} "+"${widget.item.options[widget.item.selectedOptionIndex].unit}",
+                        ),
+                        UnitButton(
+                          icon: Icons.add,
+                          onTapped: () {
+                            double newAmount = widget.item.amount + widget.item.options[widget.item.selectedOptionIndex].increasingAmount;
+                            productVM.setAmount(value: newAmount,itemIndex:  widget.itemIndex, categoryIndex: widget.categoryIndex);
+                          },
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    widget.item.image != null ?
+                    CachedNetworkImage(
+                      imageUrl: widget.item.image,
+                      width: (MediaQuery.of(context).size.width - 40)/2,
+                      height: 100,
+                    )
+                      :Image.asset("res/assets/images/basket.png",height: 100,width: (MediaQuery.of(context).size.width - 40)/2,)
+
+                  ],
+                ),
               ),
             ),
           ),

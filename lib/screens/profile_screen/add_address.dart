@@ -145,9 +145,8 @@ class _AddAddressState extends State<AddAddress> {
                         keyboardType: TextInputType.text,
                         validator: (value) => UtilsFunctions.validation(
                             value,
-                            Validators.isValidUserName(value),
-                            AppLocalizations.of(context)
-                                .translate("please enter your address name")),
+                            Validators.isValidString(value),
+                            AppLocalizations.of(context).translate("please enter your address name")),
                       ),
                       SizedBox(
                         height: 10,

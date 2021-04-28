@@ -55,7 +55,7 @@ class CartViewModel extends BaseViewModel {
         return currentTotal +
             (nextProduct.option.pricePerUnit * nextProduct.amount);
       });
-  double get totalPrice =>subTotalPrice + selectedAddress.region.deliveryFees;
+  double get totalPrice => subTotalPrice + selectedAddress.region.deliveryFees;
 
   bool get isCartEmpty => _items.isEmpty;
 
