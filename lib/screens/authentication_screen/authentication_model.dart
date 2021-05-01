@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:Vio_Telehealth/config/auth/roles.dart';
+import 'package:Vio_Telehealth/helpers/string_translation.dart';
 import 'package:Vio_Telehealth/screens/authentication_screen/login.dart';
 import 'package:Vio_Telehealth/screens/authentication_screen/loginScreenWithoutSkip.dart';
 import 'package:Vio_Telehealth/utils/preference_utils.dart';
@@ -25,14 +26,14 @@ class AuthenticationViewModel extends BaseViewModel {
       return user;
     } catch (err) {
       setBusy(false);
-      throw handelError(e);
+      rethrow;
     }
   }
 
   Future signUp({@required userData}) async {
 //    status = AppStatus.Authenticating;
-    setBusy(true);
     try {
+      setBusy(true);
       User user = await _repository.serverSignUp(userData);
       setBusy(false);
       return user;
@@ -54,16 +55,29 @@ class AuthenticationViewModel extends BaseViewModel {
     }
   }
 
-  Future<User> verify({@required String userId, @required String token}) async {
-    setBusy(true);
+  Future forgetPassword({@required String email}) async {
     try {
-      User user = await _repository.verify(token: token, userId: userId);
+      setBusy(true);
+      var data = await _repository.serverForgetPassword(email: email);
+      setBusy(false);
+      return data;
+    } catch (err) {
+      setBusy(false);
+      print(err);
+      rethrow;
+    }
+  }
+
+  Future verify({@required String userId, @required String token}) async {
+    try {
+      setBusy(true);
+      var user = await _repository.verify(token: token, userId: userId);
       setBusy(false);
       return user;
     } catch (err) {
       setBusy(false);
       print(err);
-      throw err;
+      rethrow;
     }
   }
 
@@ -98,10 +112,10 @@ class AuthenticationViewModel extends BaseViewModel {
             builder: (BuildContext context) {
               return Container(
                 child: new AlertDialog(
-                  title: new Text("You have to login first"),
+                  title: new Text(translate("You have to login first")),
                   actions: <Widget>[
                     new FlatButton(
-                      child: const Text('Go to login'),
+                      child: Text(translate('Go to login')),
                       onPressed: () async {
                         bool isLoggedIn = await Navigator.push(
                             context,
@@ -114,7 +128,7 @@ class AuthenticationViewModel extends BaseViewModel {
                       },
                     ),
                     new FlatButton(
-                      child: const Text('NO'),
+                      child: Text(translate('NO')),
                       onPressed: () {
                         Navigator.of(context).pop(false);
                       },

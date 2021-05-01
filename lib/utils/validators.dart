@@ -42,4 +42,7 @@ class Validators {
   static isValidPassword(String password) {
     return password.length >= 8;
   }
+  static isValidVerificationCode({String pinCode, int number}) {
+    return pinCode.length == number;
+  }
 }

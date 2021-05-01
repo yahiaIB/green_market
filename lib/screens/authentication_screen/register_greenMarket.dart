@@ -1,6 +1,7 @@
 import 'package:Vio_Telehealth/app/app_keys.dart';
 import 'package:Vio_Telehealth/app/routes.dart';
 import 'package:Vio_Telehealth/helpers/app_localizations.dart';
+import 'package:Vio_Telehealth/helpers/string_translation.dart';
 import 'package:Vio_Telehealth/models/user.dart';
 import 'package:Vio_Telehealth/view_models/app_model.dart';
 import 'package:Vio_Telehealth/view_models/app_status_model.dart';
@@ -63,8 +64,16 @@ class _RegisterGreenMarketState extends State<RegisterGreenMarket> {
       appStatusViewModel.setStatus(AppStatus.Authenticated);
       Navigator.pop(context,true);
     } catch (e) {
-      UtilsFunctions.showSnackBarWithScaffoldKey(
-          scaffoldKey: AppKeys.registerScreenScaffoldKey, text: e.toString());
+      UtilsFunctions.showSnackBarWithScaffoldKey(scaffoldKey: AppKeys.registerScreenScaffoldKey,
+          text: e.toString() == "userWithThisEmailExists" ?
+          translate("User With This Email Exists")
+              :
+          e.toString() == "userWithThisMobileExists" ?
+            translate("User With This Mobile Exists")
+                :
+            e.toString()
+
+      );
     }
   }
 
@@ -182,8 +191,7 @@ class _RegisterGreenMarketState extends State<RegisterGreenMarket> {
                         decoration: new InputDecoration(
                             focusedBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(color: Colors.black54)),
-                            labelText: AppLocalizations.of(context)
-                                .translate("Enter Password"),
+                            labelText: AppLocalizations.of(context).translate("Enter Password"),
                             labelStyle: TextStyle(color: Colors.black54),
                             suffixIcon: IconButton(
                                 onPressed: () {
@@ -210,8 +218,7 @@ class _RegisterGreenMarketState extends State<RegisterGreenMarket> {
                         validator: (value) => UtilsFunctions.validation(
                             value,
                             Validators.isValidPassword(value),
-                            AppLocalizations.of(context)
-                                .translate("please enter your password")),
+                            AppLocalizations.of(context).translate("please enter your password")),
                       ),
                       SizedBox(
                         height: 60,
@@ -219,7 +226,7 @@ class _RegisterGreenMarketState extends State<RegisterGreenMarket> {
                       Consumer<AuthenticationViewModel>(
                         builder: (context, authViewModel, child) =>
                             authViewModel.busy
-                                ? Center(child: CircularProgressIndicator())
+                                ? Center(child: CircularProgressIndicator(valueColor:  new AlwaysStoppedAnimation<Color>(CustomColors.mainColor),))
                                 : Material(
                                     elevation: 5.0,
                                     borderRadius: BorderRadius.circular(30.0),

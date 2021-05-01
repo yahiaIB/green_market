@@ -11,6 +11,19 @@
   "Don't you have account?": "لا تمتلك حسابا؟",
   "Skip": "تخطي",
 
+  "Request Cancelled": "تم إلغاء الطلب",
+  "Unknown Error": "خطأ غير معروف",
+  "Request Timeout":"مهلة الطلب",
+  "No Internet Connection":"لا يوجد اتصال بالإنترنت",
+  "Send Timeout": "مهلة الإرسال",
+  "Unauthorised Request":"طلب غير مصرح به",
+  "Not Found":"غير موجود",
+  "Conflict":"صراع",
+  "Internal Server Error":"خطأ في الخادم الداخلي",
+  "Service Unavailable":"الخدمة غير متوفرة",
+  "Gateway Time-out":"حدث خطأ بالنظام",
+  "Received invalid status code":"تلقيت رمز حالة غير صالح",
+
 
   "Sign Up": "انشاء حساب",
   "Full Name": "الاسم بالكامل",
@@ -58,7 +71,6 @@
   "Status": "الحالة",
   "Delivery Date": "تاريخ التوصيل",
   "Delivery Time": "وقت التوصيل",
-  "Total": "الحساب",
   "Address": "العنوان",
 
 
@@ -75,7 +87,6 @@
   "Confirm Order": "تأكيد الطلب",
 
   "L.E": "جنية",
-  "Address Name": "أسم العنوان",
   "Select Address": "أختار عنوان",
   "Subtotal": "المجموع الفرعي",
   "Delivery": "التوصيل",
@@ -85,5 +96,18 @@
   "Are you sure to remove this item ?": "هل أنت متأكد من إزالة هذه السلعة ؟",
   "YES": "نعم",
   "NO": "لا",
-  "Login": "تسجيل الدخول"
+  "Login": "تسجيل الدخول",
+  "Your cart has been deleted": "تم حذف سلة التسوق الخاصة بك",
+  "please enter right value": "الرجاء إدخال القيمة الصحيحة",
+  "Enter your new password": "ادخل كلمة مرورك الجديدة",
+  "please enter your new password" : "الرجاءإدخال كلمة مرورك الجديدة",
+  "Please enter your pin code": "الرجاءإدخال رمز التحقق",
+  "Verification Code": "رمز التحقق",
+  "New Password": "كلمة السر الجديدة",
+  "Wrong Username Or Password": "اسم المستخدم أو كلمة المرور خاطئة",
+  "User With This Email Exists": "المستخدم مع هذا البريد الإلكتروني موجود",
+  "User With This Mobile Exists": "المستخدم مع هذا رقم الهاتف موجود",
+  "You have to login first": "يجب عليك تسجيل الدخول أولا",
+  "Go to login": "انتقل إلى تسجيل الدخول",
+  "User With This Email Does Not Exist" : "المستخدم مع هذا البريد الإلكتروني ليس موجود"
 }

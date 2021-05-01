@@ -3,6 +3,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '../helpers/string_translation.dart';
+
 class UtilsFunctions {
   static validation(value, bool valid, String message) {
     if (value.isEmpty) {
@@ -11,7 +13,7 @@ class UtilsFunctions {
       if (valid == true) {
         return null;
       } else {
-        return "wrong data";
+        return translate("please enter right value");
       }
     }
   }
@@ -22,6 +24,26 @@ class UtilsFunctions {
       ..hideCurrentSnackBar()
       ..showSnackBar(
         SnackBar(
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                text,
+                style: TextStyle(fontSize: 12.0),
+              )
+            ],
+          ),
+          backgroundColor: color,
+        ),
+      );
+  }
+  static showRoundedSnackBar(
+      {String text, Color color = Colors.red, @required BuildContext context}) {
+    Scaffold.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(
+        SnackBar(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)) ,
           content: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

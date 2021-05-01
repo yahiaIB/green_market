@@ -108,9 +108,9 @@ class _CartScreenState extends State<CartScreen> {
                               child: PrimaryButton(
                                 () {
                                   authenticationModel.authenticate(() {
-                                    controller.animateToPage(1,
-                                        duration: Duration(milliseconds: 100),
-                                        curve: Curves.easeIn);
+                                    if(cartModel.subTotalPrice > 0){
+                                      controller.animateToPage(1, duration: Duration(milliseconds: 100), curve: Curves.easeIn);
+                                    }
                                   }, context);
                                 },
                                 AppLocalizations.of(context)
@@ -156,7 +156,7 @@ class _CartScreenState extends State<CartScreen> {
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 10),
                                         child: appModel.busy
-                                            ? CircularProgressIndicator()
+                                            ? CircularProgressIndicator(valueColor:  new AlwaysStoppedAnimation<Color>(CustomColors.mainColor),)
                                             : DropdownButton<UserAddress>(
                                                 value:
                                                     cartModel.selectedAddress,

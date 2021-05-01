@@ -107,6 +107,25 @@ class AppViewModel extends BaseViewModel {
     }
 
   }
+  Future updatePassword({String userId,String password}) async {
+    try{
+      setBusy(true);
+      var data = {
+        "password": password,
+      };
+      User updateUser = await _userRepository.updatePassword(userId: userId, password: password);
+      print("updatePassword");
+      print(updateUser.name);
+      preferenceUtils.saveStringData(PreferenceUtils.UserKey, json.encode(updateUser.toJson()));
+      _user = updateUser;
+      setBusy(false);
+      notifyListeners();
+    }catch(e){
+      setBusy(false);
+      throw handelError(e);
+    }
+
+  }
 
   Future addAddress(Map address) async {
     try {
@@ -119,8 +138,7 @@ class AppViewModel extends BaseViewModel {
   Future getUserAddresses() async {
     try {
       setBusy(true);
-      List<UserAddress> result =
-          await _userRepository.serverGetUserAddress(_user.sId);
+      List<UserAddress> result = await _userRepository.serverGetUserAddress(_user.sId);
       _addressesInfo = result;
       notifyListeners();
       setBusy(false);

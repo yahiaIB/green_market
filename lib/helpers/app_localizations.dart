@@ -5,6 +5,8 @@ import '../config/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'string_translation.dart';
+
 class AppLocalizations {
   final Locale locale;
 
@@ -18,26 +20,25 @@ class AppLocalizations {
 
   // Static member to have a simple access to the delegate from the MaterialApp
   static const LocalizationsDelegate<AppLocalizations> delegate =
-      _AppLocalizationsDelegate();
+  _AppLocalizationsDelegate();
 
   Map<String, String> _localizedStrings;
 
   Future<bool> load() async {
     // Load the language JSON file from the "lang" folder
     String jsonString =
-        await rootBundle.loadString('res/i18n/${locale.languageCode}.json');
+    await rootBundle.loadString('res/i18n/${locale.languageCode}.json');
     Map<String, dynamic> jsonMap = json.decode(jsonString);
 
     _localizedStrings = jsonMap.map((key, value) {
       return MapEntry(key, value.toString());
     });
-
+    StringsLocation.configure(this);
     return true;
   }
 
   // This method will be called from every widget which needs a localized text
   String translate(String key) {
-    if(_localizedStrings[key] ==null) return key;
     return _localizedStrings[key];
   }
 }

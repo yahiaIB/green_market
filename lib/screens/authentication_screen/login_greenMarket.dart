@@ -1,6 +1,7 @@
 import 'package:Vio_Telehealth/app/app_keys.dart';
 import 'package:Vio_Telehealth/app/routes.dart';
 import 'package:Vio_Telehealth/helpers/app_localizations.dart';
+import 'package:Vio_Telehealth/helpers/string_translation.dart';
 import 'package:Vio_Telehealth/models/user.dart';
 import 'package:Vio_Telehealth/view_models/app_model.dart';
 import 'package:Vio_Telehealth/view_models/app_status_model.dart';
@@ -39,26 +40,19 @@ class _LoginGreenMarketState extends State<LoginGreenMarket> {
     });
   }
 
-  void login() async {
+  void login() async{
     AppViewModel appModel = Provider.of<AppViewModel>(context, listen: false);
     AuthenticationViewModel authenticationModel = Provider.of<AuthenticationViewModel>(context, listen: false);
     AppStatusViewModel appStatusViewModel = Provider.of<AppStatusViewModel>(context, listen: false);
-
-    Map data = {
-      "username":emailController.text,
-      "password":passwordController.text,
-    };
+    Map data = {"username":emailController.text, "password":passwordController.text,};
     try{
       User user = await authenticationModel.signIn(data :data);
       appModel.setUser(user);
       appModel.getUserAddresses();
       appStatusViewModel.setStatus(AppStatus.Authenticated);
-
     }catch(e){
-      UtilsFunctions.showSnackBarWithScaffoldKey(
-          scaffoldKey: AppKeys.loginScreenScaffoldKey, text: e.toString());
+      UtilsFunctions.showSnackBarWithScaffoldKey(scaffoldKey: AppKeys.loginScreenScaffoldKey, text: e.message == "wrongUsernameOrPassword"? translate("Wrong Username Or Password") : e.message);
     }
-
   }
 
   @override
@@ -113,8 +107,7 @@ class _LoginGreenMarketState extends State<LoginGreenMarket> {
                         validator: (value) => UtilsFunctions.validation(
                             value,
                             Validators.isValidEmail(value),
-                            AppLocalizations.of(context)
-                                .translate("please enter your Email")),
+                            AppLocalizations.of(context).translate("please enter your Email")),
                       ),
                       SizedBox(
                         height: 20,
@@ -177,7 +170,10 @@ class _LoginGreenMarketState extends State<LoginGreenMarket> {
                         height: 80,
                       ),
                       Consumer<AuthenticationViewModel>(
-                        builder:(context,authViewModel,child)=> authViewModel.busy ? Center(child: CircularProgressIndicator(),) :Material(
+                        builder:(context,authViewModel,child)=> authViewModel.busy ?
+                        Center(child: CircularProgressIndicator(valueColor:  new AlwaysStoppedAnimation<Color>(CustomColors.mainColor),),)
+                            :
+                        Material(
                           elevation: 5.0,
                           borderRadius: BorderRadius.circular(30.0),
                           color: CustomColors.buttonColor,

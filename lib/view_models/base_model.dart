@@ -1,3 +1,4 @@
+import 'package:Vio_Telehealth/helpers/string_translation.dart';
 import 'package:Vio_Telehealth/utils/utils_functions.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -10,67 +11,67 @@ abstract class BaseViewModel with ChangeNotifier {
 
   String get error => _error;
 
-  handelErrorMessage(e) {
-    String error_message = "";
-    print(e.runtimeType);
-    if (e.runtimeType == DioError) {
-      switch (e.type) {
+  handelErrorMessage(err) {
+    String eMsg = translate("Unknown Error");
+    print(err.runtimeType);
+    if (err is DioError) {
+      switch (err.type) {
         case DioErrorType.CANCEL:
-          error_message = "Request Cancelled";
+          eMsg = translate("Request Cancelled");
           break;
         case DioErrorType.CONNECT_TIMEOUT:
-          error_message = "Request Timeout";
+          eMsg = translate("Request Timeout");
           break;
         case DioErrorType.DEFAULT:
-          error_message = "No Internet Connection";
+          eMsg = translate("No Internet Connection");
           break;
         case DioErrorType.RECEIVE_TIMEOUT:
-          error_message = "Send Timeout";
+          eMsg = translate("Send Timeout");
           break;
         case DioErrorType.RESPONSE:
-          switch (e.response.statusCode) {
+          switch (err.response.statusCode) {
             case 400:
-              error_message = e.response.data['message'];
+              eMsg = err.response.data['message'];
               break;
             case 401:
-              error_message = "Unauthorised Request";
+              eMsg = translate("Unauthorised Request");
               break;
             case 403:
-              error_message = "Unauthorised Request";
+              eMsg = translate("Unauthorised Request");
               break;
             case 404:
-              error_message = "Not Found";
+              eMsg = translate("Not Found");
               break;
             case 409:
-              error_message = "Conflict";
+              eMsg = translate("Conflict");
               break;
             case 408:
-              error_message = "Request Timeout";
+              eMsg = translate("Request Timeout");
               break;
             case 500:
-              error_message = "Internal Server Error";
+              eMsg = translate("Internal Server Error");
               break;
             case 503:
-              error_message = "Service Unavailable";
+              eMsg = translate("Service Unavailable");
               break;
             case 504:
-              error_message = "Gateway Time-out";
+              eMsg = translate("Gateway Time-out");
               break;
             default:
-              var responseCode = e.response.statusCode;
-              error_message = "Received invalid status code: $responseCode";
+              var responseCode = err.response.statusCode;
+              eMsg = "${translate("Received invalid status code")}: $responseCode";
           }
           break;
         case DioErrorType.SEND_TIMEOUT:
-          error_message = "Send Timeout";
+          eMsg = translate("Send Timeout");
           break;
       }
     } else {
-      error_message = "Internal Server Error";
+      eMsg = translate("Internal Server Error");
     }
-    print(error_message);
-    error = error_message;
-    return error_message;
+    print(eMsg);
+    error = eMsg;
+    return eMsg;
   }
 
   handelError(e, {BuildContext context , scaffoldKey }) {
