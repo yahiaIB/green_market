@@ -1,11 +1,11 @@
-import 'package:Vio_Telehealth/config/constants.dart';
-import 'package:Vio_Telehealth/theme/custom_colors.dart';
+import 'package:Blwahda/config/constants.dart';
+import 'package:Blwahda/theme/custom_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import '../constants/profile_constants.dart';
-import 'package:Vio_Telehealth/view_models/app_lang.dart';
+import 'package:Blwahda/view_models/app_lang.dart';
 
 class ProfileListItem extends StatelessWidget {
   final IconData icon;

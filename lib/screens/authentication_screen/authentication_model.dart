@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'dart:math';
 
-import 'package:Vio_Telehealth/config/auth/roles.dart';
-import 'package:Vio_Telehealth/helpers/string_translation.dart';
-import 'package:Vio_Telehealth/screens/authentication_screen/login.dart';
-import 'package:Vio_Telehealth/screens/authentication_screen/loginScreenWithoutSkip.dart';
-import 'package:Vio_Telehealth/utils/preference_utils.dart';
+import 'package:Blwahda/config/auth/roles.dart';
+import 'package:Blwahda/helpers/string_translation.dart';
+import 'package:Blwahda/screens/authentication_screen/login.dart';
+import 'package:Blwahda/screens/authentication_screen/loginScreenWithoutSkip.dart';
+import 'package:Blwahda/utils/preference_utils.dart';
 
 import '../../models/user.dart';
 

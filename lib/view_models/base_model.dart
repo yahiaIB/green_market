@@ -1,5 +1,5 @@
-import 'package:Vio_Telehealth/helpers/string_translation.dart';
-import 'package:Vio_Telehealth/utils/utils_functions.dart';
+import 'package:Blwahda/helpers/string_translation.dart';
+import 'package:Blwahda/utils/utils_functions.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 

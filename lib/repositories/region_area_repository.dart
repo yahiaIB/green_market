@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:Vio_Telehealth/models/area.dart';
-import 'package:Vio_Telehealth/models/region.dart';
+import 'package:Blwahda/models/area.dart';
+import 'package:Blwahda/models/region.dart';
 import '../web_services/endpoints.dart';
 import '../web_services/http_client.dart';
 

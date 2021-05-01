@@ -1,5 +1,5 @@
-import 'package:Vio_Telehealth/config/constants.dart';
-import 'package:Vio_Telehealth/utils/preference_utils.dart';
+import 'package:Blwahda/config/constants.dart';
+import 'package:Blwahda/utils/preference_utils.dart';
 
 import '../config/config.dart';
 import 'package:dio/dio.dart';

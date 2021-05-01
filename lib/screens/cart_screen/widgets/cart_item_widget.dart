@@ -1,10 +1,10 @@
-import 'package:Vio_Telehealth/helpers/app_localizations.dart';
-import 'package:Vio_Telehealth/models/cart_item.dart';
-import 'package:Vio_Telehealth/screens/products_screen/widgets/unit_button_widget.dart';
-import 'package:Vio_Telehealth/theme/custom_colors.dart';
-import 'package:Vio_Telehealth/utils/dialogs.dart';
-import 'package:Vio_Telehealth/view_models/cart_view_model.dart';
-import 'package:Vio_Telehealth/view_models/product_view_model.dart';
+import 'package:Blwahda/helpers/app_localizations.dart';
+import 'package:Blwahda/models/cart_item.dart';
+import 'package:Blwahda/screens/products_screen/widgets/unit_button_widget.dart';
+import 'package:Blwahda/theme/custom_colors.dart';
+import 'package:Blwahda/utils/dialogs.dart';
+import 'package:Blwahda/view_models/cart_view_model.dart';
+import 'package:Blwahda/view_models/product_view_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';

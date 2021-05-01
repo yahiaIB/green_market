@@ -1,13 +1,13 @@
-import 'package:Vio_Telehealth/helpers/app_localizations.dart';
-import 'package:Vio_Telehealth/models/cart_item.dart';
-import 'package:Vio_Telehealth/models/order_entity.dart';
-import 'package:Vio_Telehealth/models/product_entity.dart';
-import 'package:Vio_Telehealth/models/user.dart';
-import 'package:Vio_Telehealth/repositories/order_repository.dart';
-import 'package:Vio_Telehealth/repositories/user_repository.dart';
-import 'package:Vio_Telehealth/utils/dialogs.dart';
-import 'package:Vio_Telehealth/view_models/base_model.dart';
-import 'package:Vio_Telehealth/view_models/product_view_model.dart';
+import 'package:Blwahda/helpers/app_localizations.dart';
+import 'package:Blwahda/models/cart_item.dart';
+import 'package:Blwahda/models/order_entity.dart';
+import 'package:Blwahda/models/product_entity.dart';
+import 'package:Blwahda/models/user.dart';
+import 'package:Blwahda/repositories/order_repository.dart';
+import 'package:Blwahda/repositories/user_repository.dart';
+import 'package:Blwahda/utils/dialogs.dart';
+import 'package:Blwahda/view_models/base_model.dart';
+import 'package:Blwahda/view_models/product_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

@@ -1,4 +1,4 @@
-import 'package:Vio_Telehealth/helpers/string_translation.dart';
+import 'package:Blwahda/helpers/string_translation.dart';
 import 'package:dio/dio.dart';
 
 class ExceptionHelper implements Exception {

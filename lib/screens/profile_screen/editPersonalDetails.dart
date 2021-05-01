@@ -1,16 +1,16 @@
 import 'dart:io';
-import 'package:Vio_Telehealth/app/app_keys.dart';
-import 'package:Vio_Telehealth/helpers/app_localizations.dart';
-import 'package:Vio_Telehealth/view_models/app_model.dart';
+import 'package:Blwahda/app/app_keys.dart';
+import 'package:Blwahda/helpers/app_localizations.dart';
+import 'package:Blwahda/view_models/app_model.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'constants/profile_constants.dart';
-import 'package:Vio_Telehealth/utils/validators.dart';
-import 'package:Vio_Telehealth/utils/utils_functions.dart';
-import 'package:Vio_Telehealth/theme/custom_colors.dart';
+import 'package:Blwahda/utils/validators.dart';
+import 'package:Blwahda/utils/utils_functions.dart';
+import 'package:Blwahda/theme/custom_colors.dart';
 
 class EditPersonalDetails extends StatefulWidget {
   String fullName, mobile, image;

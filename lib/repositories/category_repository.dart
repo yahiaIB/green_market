@@ -1,7 +1,7 @@
 
-import 'package:Vio_Telehealth/models/category_entity.dart';
-import 'package:Vio_Telehealth/web_services/endpoints.dart';
-import 'package:Vio_Telehealth/web_services/http_client.dart';
+import 'package:Blwahda/models/category_entity.dart';
+import 'package:Blwahda/web_services/endpoints.dart';
+import 'package:Blwahda/web_services/http_client.dart';
 
 class CategoryRepository{
 

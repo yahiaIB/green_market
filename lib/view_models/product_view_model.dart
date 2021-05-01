@@ -1,8 +1,8 @@
-import 'package:Vio_Telehealth/models/category_entity.dart';
-import 'package:Vio_Telehealth/models/product_entity.dart';
-import 'package:Vio_Telehealth/repositories/category_repository.dart';
-import 'package:Vio_Telehealth/repositories/product_repository.dart';
-import 'package:Vio_Telehealth/view_models/base_model.dart';
+import 'package:Blwahda/models/category_entity.dart';
+import 'package:Blwahda/models/product_entity.dart';
+import 'package:Blwahda/repositories/category_repository.dart';
+import 'package:Blwahda/repositories/product_repository.dart';
+import 'package:Blwahda/view_models/base_model.dart';
 
 
 class ProductViewModel extends BaseViewModel {

@@ -1,5 +1,5 @@
-import 'package:Vio_Telehealth/models/order_entity.dart';
-import 'package:Vio_Telehealth/models/user.dart';
+import 'package:Blwahda/models/order_entity.dart';
+import 'package:Blwahda/models/user.dart';
 
 orderEntityFromJson(OrderEntity data, Map<String, dynamic> json) {
 	if (json['products'] != null) {

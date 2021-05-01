@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:Vio_Telehealth/models/order_entity.dart';
-import 'package:Vio_Telehealth/models/user_orders_entity.dart';
+import 'package:Blwahda/models/order_entity.dart';
+import 'package:Blwahda/models/user_orders_entity.dart';
 import 'package:dio/dio.dart';
 
 import '../web_services/endpoints.dart';

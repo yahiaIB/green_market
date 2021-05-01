@@ -1,8 +1,7 @@
-import 'package:Vio_Telehealth/models/cart.dart';
-import 'package:Vio_Telehealth/view_models/app_model.dart';
-import 'package:Vio_Telehealth/view_models/cart_view_model.dart';
-import 'package:Vio_Telehealth/view_models/region_area_view_model.dart';
-import 'package:Vio_Telehealth/view_models/product_view_model.dart';
+import 'package:Blwahda/view_models/app_model.dart';
+import 'package:Blwahda/view_models/cart_view_model.dart';
+import 'package:Blwahda/view_models/product_view_model.dart';
+import 'package:Blwahda/view_models/region_area_view_model.dart';
 import '../screens/authentication_screen/authentication_model.dart';
 import '../view_models/app_lang.dart';
 import '../view_models/app_theme.dart';

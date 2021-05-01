@@ -1,7 +1,7 @@
-import 'package:Vio_Telehealth/models/area.dart';
-import 'package:Vio_Telehealth/models/region.dart';
-import 'package:Vio_Telehealth/repositories/region_area_repository.dart';
-import 'package:Vio_Telehealth/view_models/base_model.dart';
+import 'package:Blwahda/models/area.dart';
+import 'package:Blwahda/models/region.dart';
+import 'package:Blwahda/repositories/region_area_repository.dart';
+import 'package:Blwahda/view_models/base_model.dart';
 import 'package:flutter/cupertino.dart';
 
 class RegionAreaViewModel extends BaseViewModel {

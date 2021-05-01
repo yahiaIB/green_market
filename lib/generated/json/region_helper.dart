@@ -1,5 +1,5 @@
-import 'package:Vio_Telehealth/models/region.dart';
-import 'package:Vio_Telehealth/generated/json/base/json_filed.dart';
+import 'package:Blwahda/models/region.dart';
+import 'package:Blwahda/generated/json/base/json_filed.dart';
 
 regionFromJson(Region data, Map<String, dynamic> json) {
 	if (json['_id'] != null) {

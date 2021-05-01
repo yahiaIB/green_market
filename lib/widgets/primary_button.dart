@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:Vio_Telehealth/theme/custom_colors.dart';
+import 'package:Blwahda/theme/custom_colors.dart';
 
 class PrimaryButton extends StatelessWidget {
   final Function buttonAction;

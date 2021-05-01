@@ -105,5 +105,8 @@
   "Region - Area": "المنطقة - المنطقة",
   "Products": "المنتجات",
   "Sub Total": "المجموع الفرعي",
-  "Delivery Fees": "رسوم التوصيل"
+  "Delivery Fees": "رسوم التوصيل",
+  "Amount": "الكمية",
+  "Price": "السعر",
+  "Name": "الاسم"
 }

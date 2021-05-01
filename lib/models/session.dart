@@ -1,6 +1,6 @@
-import 'package:Vio_Telehealth/generated/json/base/json_convert_content.dart';
-import 'package:Vio_Telehealth/generated/json/base/json_filed.dart';
-import 'package:Vio_Telehealth/models/user.dart';
+import 'package:Blwahda/generated/json/base/json_convert_content.dart';
+import 'package:Blwahda/generated/json/base/json_filed.dart';
+import 'package:Blwahda/models/user.dart';
 
 class Session with JsonConvert<Session> {
 	@JSONField(name: "session_details")

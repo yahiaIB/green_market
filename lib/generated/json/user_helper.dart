@@ -1,6 +1,6 @@
-import 'package:Vio_Telehealth/models/area.dart';
-import 'package:Vio_Telehealth/models/user.dart';
-import 'package:Vio_Telehealth/models/region.dart';
+import 'package:Blwahda/models/area.dart';
+import 'package:Blwahda/models/user.dart';
+import 'package:Blwahda/models/region.dart';
 
 userFromJson(User data, Map<String, dynamic> json) {
 	if (json['_id'] != null) {

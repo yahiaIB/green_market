@@ -1,4 +1,4 @@
-import 'package:Vio_Telehealth/models/product_entity.dart';
+import 'package:Blwahda/models/product_entity.dart';
 
 productEntityFromJson(ProductEntity data, Map<String, dynamic> json) {
 	if (json['_id'] != null) {

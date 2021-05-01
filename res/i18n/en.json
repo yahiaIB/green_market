@@ -97,7 +97,7 @@
   "received": "Received",
   "out": "Out for delivery",
   "completed": "Completed",
-  "canceled": "Canceled"
+  "canceled": "Canceled",
   "Order details": "Order details",
   "Order number": "Order number",
   "Order status": "Order status",
@@ -105,5 +105,8 @@
   "Region - Area": "Region - Area",
   "Products": "Products",
   "Sub Total": "Sub Total",
-  "Delivery Fees": "Delivery Fees"
+  "Delivery Fees": "Delivery Fees",
+  "Amount": "Amount",
+  "Price": "Price",
+  "Name": "Name"
 }

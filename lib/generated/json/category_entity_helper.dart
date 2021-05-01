@@ -1,4 +1,4 @@
-import 'package:Vio_Telehealth/models/category_entity.dart';
+import 'package:Blwahda/models/category_entity.dart';
 
 categoryEntityFromJson(CategoryEntity data, Map<String, dynamic> json) {
 	if (json['_id'] != null) {

@@ -1,10 +1,10 @@
-import 'package:Vio_Telehealth/helpers/app_localizations.dart';
-import 'package:Vio_Telehealth/screens/common_screens/blueAppBar_screen.dart';
-import 'package:Vio_Telehealth/theme/custom_assets.dart';
-import 'package:Vio_Telehealth/widgets/circle_image_widget.dart';
-import 'package:Vio_Telehealth/widgets/descWidget.dart';
-import 'package:Vio_Telehealth/widgets/primary_button.dart';
-import 'package:Vio_Telehealth/widgets/title_widget.dart';
+import 'package:Blwahda/helpers/app_localizations.dart';
+import 'package:Blwahda/screens/common_screens/blueAppBar_screen.dart';
+import 'package:Blwahda/theme/custom_assets.dart';
+import 'package:Blwahda/widgets/circle_image_widget.dart';
+import 'package:Blwahda/widgets/descWidget.dart';
+import 'package:Blwahda/widgets/primary_button.dart';
+import 'package:Blwahda/widgets/title_widget.dart';
 import 'package:flutter/material.dart';
 
 class BlockedScreen extends StatelessWidget {

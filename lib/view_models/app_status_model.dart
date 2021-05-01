@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:Vio_Telehealth/models/user.dart';
-import 'package:Vio_Telehealth/repositories/user_repository.dart';
+import 'package:Blwahda/models/user.dart';
+import 'package:Blwahda/repositories/user_repository.dart';
 
 import '../utils/preference_utils.dart';
 

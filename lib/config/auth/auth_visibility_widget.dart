@@ -1,6 +1,6 @@
 import 'dart:convert';
-import 'package:Vio_Telehealth/config/auth/authorization.dart';
-import 'package:Vio_Telehealth/utils/preference_utils.dart';
+import 'package:Blwahda/config/auth/authorization.dart';
+import 'package:Blwahda/utils/preference_utils.dart';
 import 'package:flutter/material.dart';
 
 class AuthVisibilityWidget extends StatefulWidget {

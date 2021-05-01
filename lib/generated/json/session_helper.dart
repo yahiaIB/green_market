@@ -1,6 +1,6 @@
-import 'package:Vio_Telehealth/models/session.dart';
-import 'package:Vio_Telehealth/generated/json/base/json_filed.dart';
-import 'package:Vio_Telehealth/models/user.dart';
+import 'package:Blwahda/models/session.dart';
+import 'package:Blwahda/generated/json/base/json_filed.dart';
+import 'package:Blwahda/models/user.dart';
 
 sessionFromJson(Session data, Map<String, dynamic> json) {
 	if (json['session_details'] != null) {

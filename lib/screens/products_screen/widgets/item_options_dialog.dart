@@ -1,6 +1,6 @@
-import 'package:Vio_Telehealth/helpers/app_localizations.dart';
-import 'package:Vio_Telehealth/models/product_entity.dart';
-import 'package:Vio_Telehealth/view_models/product_view_model.dart';
+import 'package:Blwahda/helpers/app_localizations.dart';
+import 'package:Blwahda/models/product_entity.dart';
+import 'package:Blwahda/view_models/product_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

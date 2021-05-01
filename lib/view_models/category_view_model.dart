@@ -1,4 +1,4 @@
-import 'package:Vio_Telehealth/models/category_entity.dart';
+import 'package:Blwahda/models/category_entity.dart';
 
 
 class CategoryViewModel {

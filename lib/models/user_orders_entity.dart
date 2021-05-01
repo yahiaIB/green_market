@@ -1,5 +1,5 @@
-import 'package:Vio_Telehealth/generated/json/base/json_convert_content.dart';
-import 'package:Vio_Telehealth/generated/json/base/json_field.dart';
+import 'package:Blwahda/generated/json/base/json_convert_content.dart';
+import 'package:Blwahda/generated/json/base/json_field.dart';
 
 class UserOrdersEntity with JsonConvert<UserOrdersEntity> {
 	@JSONField(name: "_id")

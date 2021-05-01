@@ -1,5 +1,5 @@
-import 'package:Vio_Telehealth/models/profit_transfer_entity.dart';
-import 'package:Vio_Telehealth/generated/json/base/json_filed.dart';
+import 'package:Blwahda/models/profit_transfer_entity.dart';
+import 'package:Blwahda/generated/json/base/json_filed.dart';
 
 profitTransferEntityFromJson(ProfitTransferEntity data, Map<String, dynamic> json) {
 	if (json['_id'] != null) {

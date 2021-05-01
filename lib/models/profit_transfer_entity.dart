@@ -1,5 +1,5 @@
-import 'package:Vio_Telehealth/generated/json/base/json_convert_content.dart';
-import 'package:Vio_Telehealth/generated/json/base/json_filed.dart';
+import 'package:Blwahda/generated/json/base/json_convert_content.dart';
+import 'package:Blwahda/generated/json/base/json_filed.dart';
 
 class ProfitTransferEntity with JsonConvert<ProfitTransferEntity> {
 	@JSONField(name: "_id")

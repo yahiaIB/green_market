@@ -1,6 +1,6 @@
 
-import 'package:Vio_Telehealth/screens/authentication_screen/login.dart';
-import 'package:Vio_Telehealth/screens/home_screen/home.dart';
+import 'package:Blwahda/screens/authentication_screen/login.dart';
+import 'package:Blwahda/screens/home_screen/home.dart';
 import '../../screens/splash_screen/widgets/splash_widget.dart';
 import '../../view_models/app_status_model.dart';
 import 'package:flutter/material.dart';

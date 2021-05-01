@@ -1,6 +1,6 @@
-import 'package:Vio_Telehealth/models/order_entity.dart';
-import 'package:Vio_Telehealth/web_services/endpoints.dart';
-import 'package:Vio_Telehealth/web_services/http_client.dart';
+import 'package:Blwahda/models/order_entity.dart';
+import 'package:Blwahda/web_services/endpoints.dart';
+import 'package:Blwahda/web_services/http_client.dart';
 
 class OrderRepository {
 
