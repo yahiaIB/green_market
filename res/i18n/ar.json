@@ -10,7 +10,6 @@
   "Forget Password?": "هل نسيت كلمه السر؟",
   "Don't you have account?": "لا تمتلك حسابا؟",
   "Skip": "تخطي",
-
   "Request Cancelled": "تم إلغاء الطلب",
   "Unknown Error": "خطأ غير معروف",
   "Request Timeout":"مهلة الطلب",
@@ -23,38 +22,28 @@
   "Service Unavailable":"الخدمة غير متوفرة",
   "Gateway Time-out":"حدث خطأ بالنظام",
   "Received invalid status code":"تلقيت رمز حالة غير صالح",
-
-
   "Sign Up": "انشاء حساب",
   "Full Name": "الاسم بالكامل",
   "please enter your name": "من فضلك قم بادخال اسمك",
   "Enter Mobile Number": "ادخل رقم الهاتف",
   "please enter your mobile number": "من فضلك قم بادخال رقم الهاتف",
   "Do you have account?": "هل تمتلك حسابا؟",
-
-
   "Personal Details": "المعلومات الشخصية",
   "Addresses": "العناوين",
   "My orders": "طلباتي",
   "Help & Support": "الدعم والمساعده",
   "Choose language": "اختار لغة",
   "Logout": "تسجيل الخروج",
-
-
   "Edit personal details": "تعديل المعلومات الشخصية",
   "Phone number": "رقم الهاتف",
   "Save": "حفظ",
   "Photo Library": "معرض الصور",
   "Camera": "الكاميرا",
-
-
   "My addresses": "عناويني",
   "City : ": "المدينة : ",
   "Region : ": "المنطقة : ",
   "Apartment : ": "رقم الشقه : ",
   "Address : ": "العنوان : ",
-
-
   "Add address": "اضافه عنوان",
   "Edit address":"تعديل العنوان",
   "Address Name": "اسم العنوان",
@@ -65,19 +54,14 @@
   "please enter your apartment number": "من فضلك ادخل رقم الشقة",
   "Description" : "العنوان بالتفصيل",
   "please enter your address description": "من فضلك قم بادخال العنوان بالتفصيل",
-
-
   "Order Number": "رقم الطلب",
   "Status": "الحالة",
   "Delivery Date": "تاريخ التوصيل",
   "Delivery Time": "وقت التوصيل",
   "Address": "العنوان",
-
-
   "Home": "الصفحة الرئيسية",
   "Cart": "عربة التسوق",
   "Profile": "الصفحة الشخصية",
-
   "Enter your email": "ادخل بريدك الالكتروني",
   "Continue": "متابعة",
   "Enter verification code":"قم بادخال الكود",
@@ -85,7 +69,6 @@
   "Forget Password": "نسيت كلمة المرور",
   "Checkout":"الدفع",
   "Confirm Order": "تأكيد الطلب",
-
   "L.E": "جنية",
   "Select Address": "أختار عنوان",
   "Subtotal": "المجموع الفرعي",
@@ -111,10 +94,16 @@
   "Go to login": "انتقل إلى تسجيل الدخول",
   "User With This Email Does Not Exist" : "المستخدم مع هذا البريد الإلكتروني ليس موجود",
   "Wrong Token": "رمز خاطئ",
-
   "received": "تم استلام الطلب",
   "out": "خارج للتوصيل",
   "completed": "اكتمل الطلب",
-  "canceled": "تم إلغاء الطلب"
-
+  "canceled": "تم إلغاء الطلب",
+  "Order details": "تفاصيل الطلب",
+  "Order number": "رقم الأمر",
+  "Order status": "حالة الطلب",
+  "Delivery to": "تسليم الى",
+  "Region - Area": "المنطقة - المنطقة",
+  "Products": "المنتجات",
+  "Sub Total": "المجموع الفرعي",
+  "Delivery Fees": "رسوم التوصيل"
 }

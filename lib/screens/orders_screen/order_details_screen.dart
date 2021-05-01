@@ -40,7 +40,7 @@ class OrderDetailsScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(translate("Order status")),
-                Text(order.status[0].text.toString()),
+                Text(translate(order.status[0].text.toString())),
               ],
             ),
             SizedBox(

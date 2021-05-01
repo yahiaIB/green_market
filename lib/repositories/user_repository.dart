@@ -92,7 +92,7 @@ class UserRepository {
   }
   Future<List<UserOrdersEntity>> serverGetUserOrder(userId) async {
     try {
-      var response = await HttpClient.getInstance().get(EndPoints.ordersEndpoint(userId));
+      var response = await HttpClient.getInstance().get(EndPoints.ordersEndpoint(userId),queryParameters: {"sort":"-created_at"});
       return response.data.map<UserOrdersEntity>((order)=> UserOrdersEntity().fromJson(order)).toList();
     } catch (e) {
       throw e;

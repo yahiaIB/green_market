@@ -10,7 +10,6 @@
   "Forget Password?": "Forget Password?",
   "Don't you have account?": "Don't you have account?",
   "Skip": "Skip",
-
   "Request Cancelled": "Request Cancelled",
   "Unknown Error": "Unknown Error",
   "Request Timeout":"Request Timeout",
@@ -23,38 +22,28 @@
   "Service Unavailable":"Service Unavailable",
   "Gateway Time-out":"Gateway Time-out",
   "Received invalid status code":"Received invalid status code",
-
-
   "Sign Up": "Sign Up",
   "Full Name": "Full Name",
   "please enter your name": "please enter your name",
   "Enter Mobile Number": "Enter Mobile Number",
   "please enter your mobile number": "please enter your mobile number",
   "Do you have account?": "Do you have account?",
-
-
   "Personal Details": "Personal Details",
   "Addresses": "Addresses",
   "My orders": "My orders",
   "Help & Support": "Help & Support",
   "Choose language": "Choose language",
   "Logout": "Logout",
-
-
   "Edit personal details": "Edit personal details",
   "Phone number": "Phone number",
   "Save": "Save",
   "Photo Library": "Photo Library",
   "Camera": "Camera",
-
-
   "My addresses": "My addresses",
   "City : ": "City : ",
   "Region : ": "Region : ",
   "Apartment : ": "Apartment : ",
   "Address : ": "Address : ",
-
-
   "Add address": "Add address",
   "Edit address":"Edit address",
   "Address Name": "Address Name",
@@ -65,29 +54,22 @@
   "please enter your apartment number": "please enter your apartment number",
   "Description" : "Description",
   "please enter your address description": "please enter your address description",
-
-
   "Order Number": "Order Number",
   "Status": "Status",
   "Delivery Date": "Delivery Date",
   "Delivery Time": "Delivery Time",
   "Address":"Address",
-
-
   "Home": "Home",
   "Cart": "Cart",
   "Profile": "Profile",
-
   "Enter your email": "Enter your email",
   "Continue": "Continue",
   "Enter verification code": "Enter verification code",
-
   "Your cart is empty" : "Your cart is empty",
   "Forget Password":"Forget Password",
   "Checkout":"Checkout",
   "Confirm Order": "Confirm Order",
   "L.E": "L.E",
-
   "Select Address": "Select Address",
   "Subtotal": "Subtotal",
   "Delivery": "Delivery",
@@ -112,10 +94,16 @@
   "Go to login": "Go to login",
   "User With This Email Does Not Exist" : "User With This Email Does Not Exist",
   "Wrong Token": "Wrong Token",
-
   "received": "Received",
   "out": "Out for delivery",
   "completed": "Completed",
   "canceled": "Canceled"
-
+  "Order details": "Order details",
+  "Order number": "Order number",
+  "Order status": "Order status",
+  "Delivery to": "Delivery to",
+  "Region - Area": "Region - Area",
+  "Products": "Products",
+  "Sub Total": "Sub Total",
+  "Delivery Fees": "Delivery Fees"
 }
