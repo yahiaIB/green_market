@@ -110,5 +110,13 @@
   "You have to login first": "يجب عليك تسجيل الدخول أولا",
   "Go to login": "انتقل إلى تسجيل الدخول",
   "User With This Email Does Not Exist" : "المستخدم مع هذا البريد الإلكتروني ليس موجود",
-  "Wrong Token": "رمز خاطئ"
+  "Wrong Token": "رمز خاطئ",
+  "Order details": "تفاصيل الطلب",
+  "Order number": "رقم الأمر",
+  "Order status": "حالة الطلب",
+  "Delivery to": "تسليم الى",
+  "Region - Area": "المنطقة - المنطقة",
+  "Products": "المنتجات",
+  "Sub Total": "المجموع الفرعي",
+  "Delivery Fees": "رسوم التوصيل"
 }

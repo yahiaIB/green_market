@@ -111,5 +111,14 @@
   "You have to login first": "You have to login first",
   "Go to login": "Go to login",
   "User With This Email Does Not Exist" : "User With This Email Does Not Exist",
-  "Wrong Token": "Wrong Token"
+  "Wrong Token": "Wrong Token",
+
+  "Order details": "Order details",
+  "Order number": "Order number",
+  "Order status": "Order status",
+  "Delivery to": "Delivery to",
+  "Region - Area": "Region - Area",
+  "Products": "Products",
+  "Sub Total": "Sub Total",
+  "Delivery Fees": "Delivery Fees"
 }
