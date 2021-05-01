@@ -15,7 +15,9 @@ import 'package:provider/provider.dart';
 
 class NewPasswordScreen extends StatefulWidget {
   User user;
+
   NewPasswordScreen({this.user});
+
   @override
   _NewPasswordScreenState createState() => _NewPasswordScreenState();
 }
@@ -35,13 +37,15 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
 
   void updatePassword() async {
     AppViewModel appModel = Provider.of<AppViewModel>(context, listen: false);
-    try{
-      await appModel.updatePassword(userId: widget.user.sId,password: passwordController.text);
-      Navigator.pushNamedAndRemoveUntil(context, Routes.home, (route) => false);
-    }catch(e){
-      UtilsFunctions.showSnackBarWithScaffoldKey(scaffoldKey: AppKeys.newPasswordScreenScaffoldKey,text: e.toString());
+    try {
+      await appModel.updatePassword(
+          userId: widget.user.sId, password: passwordController.text);
+      Navigator.popUntil(context, (route) => route.isFirst);
+    } catch (e) {
+      UtilsFunctions.showSnackBarWithScaffoldKey(
+          scaffoldKey: AppKeys.newPasswordScreenScaffoldKey,
+          text: e.toString());
     }
-
   }
 
   @override
@@ -63,7 +67,8 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              padding: EdgeInsets.only(left: 50, right: 50, top: 20, bottom: 20),
+              padding:
+                  EdgeInsets.only(left: 50, right: 50, top: 20, bottom: 20),
               child: Form(
                 key: _formkey,
                 child: Column(
@@ -89,7 +94,7 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
                         icon: const Padding(
                           padding: const EdgeInsets.only(top: 15.0),
                           child: const Icon(
-                            Icons.email,
+                            Icons.lock,
                             color: Colors.black54,
                           ),
                         ),
@@ -98,7 +103,8 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
                       validator: (value) => UtilsFunctions.validation(
                           value,
                           Validators.isValidPassword(value),
-                          AppLocalizations.of(context).translate("please enter your new password")),
+                          AppLocalizations.of(context)
+                              .translate("please enter your new password")),
                     ),
                     SizedBox(
                       height: 60,
@@ -115,8 +121,7 @@ class _NewPasswordScreenState extends State<NewPasswordScreen> {
                             updatePassword();
                           }
                         },
-                        child: Text(
-                            translate("Save"),
+                        child: Text(translate("Save"),
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 fontSize: 20,

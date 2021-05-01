@@ -109,5 +109,6 @@
   "User With This Mobile Exists": "المستخدم مع هذا رقم الهاتف موجود",
   "You have to login first": "يجب عليك تسجيل الدخول أولا",
   "Go to login": "انتقل إلى تسجيل الدخول",
-  "User With This Email Does Not Exist" : "المستخدم مع هذا البريد الإلكتروني ليس موجود"
+  "User With This Email Does Not Exist" : "المستخدم مع هذا البريد الإلكتروني ليس موجود",
+  "Wrong Token": "رمز خاطئ"
 }

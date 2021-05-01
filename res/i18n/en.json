@@ -110,5 +110,6 @@
   "User With This Mobile Exists": "User With This Mobile Exists",
   "You have to login first": "You have to login first",
   "Go to login": "Go to login",
-  "User With This Email Does Not Exist" : "User With This Email Does Not Exist"
+  "User With This Email Does Not Exist" : "User With This Email Does Not Exist",
+  "Wrong Token": "Wrong Token"
 }

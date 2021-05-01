@@ -30,29 +30,22 @@ class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
   void dispose() {
     // Clean up the controller when the widget is removed from the
     // widget tree.
-    codeController.dispose();
+//    codeController.dispose();
     super.dispose();
   }
 
   Future<User> verify() async{
-    print("verify token");
-    print(codeController.text);
-    print("widget.token");
-    print(widget.token);
-
     AppViewModel appModel = Provider.of<AppViewModel>(context, listen: false);
     AuthenticationViewModel authenticationModel = Provider.of<AuthenticationViewModel>(context, listen: false);
     AppStatusViewModel appStatusViewModel = Provider.of<AppStatusViewModel>(context, listen: false);
     try{
       User user = await authenticationModel.verify(userId: widget.id,token: codeController.text);
-      print("verify screen");
-      print(user.name);
       appModel.setUser(user);
       appModel.getUserAddresses();
       appStatusViewModel.setStatus(AppStatus.Authenticated);
       return user;
     }catch(e){
-      UtilsFunctions.showSnackBarWithScaffoldKey(scaffoldKey: AppKeys.verificationCodeScreenScaffoldKey, text: e.message);
+      UtilsFunctions.showSnackBarWithScaffoldKey(scaffoldKey: AppKeys.verificationCodeScreenScaffoldKey, text: translate(e.message));
     }
   }
 
@@ -125,7 +118,7 @@ class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
                               if(user != null){
                                 print("user.name");
                                 print(user.name);
-                                Navigator.pushNamedAndRemoveUntil(context, Routes.newPasswordScreen,(route) => false,arguments: user);
+                                Navigator.pushNamedAndRemoveUntil(context, Routes.newPasswordScreen,(route) => route.isFirst ,arguments: user);
                               }
                             }
                           },
