@@ -238,6 +238,9 @@ class _CartScreenState extends State<CartScreen> {
                                           ),
                                         ],
                                       ),
+                                      cartModel.busy ?
+                                      Center(child: CircularProgressIndicator(valueColor:  new AlwaysStoppedAnimation<Color>(CustomColors.mainColor),),)
+                                          :
                                       PrimaryButton(
                                         () async {
                                           try {

@@ -26,6 +26,7 @@ class CartViewModel extends BaseViewModel {
   List<CartItem> get cartItems => _items;
 
   Future<void> createOrder() async {
+    setBusy(true);
     List<OrderProduct> products = [];
     _items.forEach((cItem) {
       products.add(
@@ -45,9 +46,12 @@ class CartViewModel extends BaseViewModel {
       await _userRepository.serverCreateOrder(order);
       _items = [];
       notifyListeners();
+      setBusy(false);
     } catch (e) {
+      setBusy(false);
       throw handelError(e);
     }
+
   }
 
   double get subTotalPrice =>

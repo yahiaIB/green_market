@@ -110,5 +110,11 @@
   "You have to login first": "يجب عليك تسجيل الدخول أولا",
   "Go to login": "انتقل إلى تسجيل الدخول",
   "User With This Email Does Not Exist" : "المستخدم مع هذا البريد الإلكتروني ليس موجود",
-  "Wrong Token": "رمز خاطئ"
+  "Wrong Token": "رمز خاطئ",
+
+  "received": "تم استلام الطلب",
+  "out": "خارج للتوصيل",
+  "completed": "اكتمل الطلب",
+  "canceled": "تم إلغاء الطلب"
+
 }

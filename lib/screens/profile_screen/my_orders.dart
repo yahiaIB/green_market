@@ -66,7 +66,7 @@ class _MyOrdersState extends State<MyOrders> {
                               TextStyle(fontWeight: FontWeight.bold, height: 1.5),
                         ),
                         Text(
-                          "New",
+                          AppLocalizations.of(context).translate(appModel.orderList[index].status[0].text),
                           style: TextStyle(),
                         )
                       ],

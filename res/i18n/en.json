@@ -111,5 +111,11 @@
   "You have to login first": "You have to login first",
   "Go to login": "Go to login",
   "User With This Email Does Not Exist" : "User With This Email Does Not Exist",
-  "Wrong Token": "Wrong Token"
+  "Wrong Token": "Wrong Token",
+
+  "received": "Received",
+  "out": "Out for delivery",
+  "completed": "Completed",
+  "canceled": "Canceled"
+
 }

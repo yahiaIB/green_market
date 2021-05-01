@@ -1,5 +1,6 @@
 import 'package:Vio_Telehealth/app/routes.dart';
 import 'package:Vio_Telehealth/helpers/app_localizations.dart';
+import 'package:Vio_Telehealth/helpers/string_translation.dart';
 import 'package:Vio_Telehealth/models/user_orders_entity.dart';
 import 'package:Vio_Telehealth/theme/custom_colors.dart';
 import 'package:Vio_Telehealth/widgets/container_box_shadow.dart';
@@ -43,7 +44,7 @@ class OrderItemWidget extends StatelessWidget {
                   TextStyle(fontWeight: FontWeight.bold, height: 1.5),
                 ),
                 Text(
-                  order.status[0].text,
+                  translate(order.status[0].text),
                   style: TextStyle(),
                 )
               ],
