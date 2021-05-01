@@ -1,5 +1,4 @@
-
-import 'package:Vio_Telehealth/helpers/app_localizations.dart';
+import 'package:Vio_Telehealth/helpers/string_translation.dart';
 import 'package:Vio_Telehealth/models/user_orders_entity.dart';
 import 'package:Vio_Telehealth/theme/custom_colors.dart';
 import 'package:flutter/material.dart';
@@ -16,10 +15,11 @@ class OrderDetailsScreen extends StatelessWidget {
     Widget quarterWidget(Widget child) {
       return Container(width: widthSpace, child: child);
     }
+    print(order.toJson());
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context).translate("Order details")),
+        title: Text(translate("Order details")),
       ),
       body: Container(
         padding: EdgeInsets.all(10),
@@ -29,7 +29,7 @@ class OrderDetailsScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(AppLocalizations.of(context).translate("Order number")),
+                Text(translate("Order number")),
                 Text("${order.number}"),
               ],
             ),
@@ -39,8 +39,8 @@ class OrderDetailsScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(AppLocalizations.of(context).translate("Order status")),
-                Text(order.status[0].text),
+                Text(translate("Order status")),
+                Text(order.status[0].text.toString()),
               ],
             ),
             SizedBox(
@@ -54,7 +54,7 @@ class OrderDetailsScreen extends StatelessWidget {
               height: 10,
             ),
             Text(
-              AppLocalizations.of(context).translate("Delivery to"),
+              translate("Delivery to"),
               style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500),
             ),
             SizedBox(
@@ -63,21 +63,21 @@ class OrderDetailsScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(AppLocalizations.of(context).translate("Address Name")),
+                Text(translate("Address Name")),
                 Text(order.address.name),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(AppLocalizations.of(context).translate("Region - Area")),
-                Text(order.address.region.name + " , " + order.address.area.name),
+                Text(translate("Region - Area")),
+                Text(order.address.region.name.toString() + " , " + order.address.area.name.toString()),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(AppLocalizations.of(context).translate("Description")),
+                Text(translate("Description")),
                 Text(order.address.description),
               ],
             ),
@@ -92,7 +92,7 @@ class OrderDetailsScreen extends StatelessWidget {
               height: 10,
             ),
             Text(
-              AppLocalizations.of(context).translate("Products"),
+              translate("Products"),
               style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500),
             ),
             SizedBox(
@@ -117,19 +117,19 @@ class OrderDetailsScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       quarterWidget(Text(
-                          AppLocalizations.of(context).translate("Name"),
+                        translate("Name"),
                         style: TextStyle(color: CustomColors.blue),
                       )),
                       quarterWidget(Text(
-                          AppLocalizations.of(context).translate("Price"),
+                        translate("Price"),
                         style: TextStyle(color: CustomColors.blue),
                       )),
                       quarterWidget(Text(
-                          AppLocalizations.of(context).translate("Amount"),
+                        translate("Amount"),
                         style: TextStyle(color: CustomColors.blue),
                       )),
                       quarterWidget(Text(
-                          AppLocalizations.of(context).translate("Total"),
+                        translate("Total"),
                         style: TextStyle(color: CustomColors.blue),
                       )),
                     ],
@@ -147,21 +147,21 @@ class OrderDetailsScreen extends StatelessWidget {
                   Column(
                     children: order.products
                         .map<Widget>((UserOrdersProduct product) => Container(
-                            padding: EdgeInsets.only(bottom: 4),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                quarterWidget(
-                                    Text(product.selectedOption.name)),
-                                quarterWidget(
-                                    Text("${product.priceInfo.pricePerUnit}")),
-                                quarterWidget(
-                                    Text("${product.priceInfo.amount}")),
-                                quarterWidget(
-                                    Text("${product.priceInfo.total}")),
-                              ],
-                            )))
+                        padding: EdgeInsets.only(bottom: 4),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            quarterWidget(
+                                Text(product.selectedOption.name)),
+                            quarterWidget(
+                                Text("${product.priceInfo.pricePerUnit}")),
+                            quarterWidget(
+                                Text("${product.priceInfo.amount}")),
+                            quarterWidget(
+                                Text("${product.priceInfo.total}")),
+                          ],
+                        )))
                         .toList(),
                   ),
                   SizedBox(
@@ -177,7 +177,7 @@ class OrderDetailsScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(AppLocalizations.of(context).translate("Sub Total")),
+                      Text(translate("Sub Total")),
                       quarterWidget(Text("${order.priceInfo.subTotal}")),
                     ],
                   ),
@@ -187,7 +187,7 @@ class OrderDetailsScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(AppLocalizations.of(context).translate("Delivery Fees")),
+                      Text(translate("Delivery Fees")),
                       quarterWidget(Text("${order.priceInfo.deliveryFees}")),
                     ],
                   ),
@@ -197,7 +197,7 @@ class OrderDetailsScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(AppLocalizations.of(context).translate("Total")),
+                      Text(translate("Total")),
                       quarterWidget(Text(
                         "${order.priceInfo.total}",
                         style: TextStyle(
