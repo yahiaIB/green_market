@@ -49,10 +49,14 @@ class CartItemWidget extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    item.option.name,
-                    style: TextStyle(
-                        fontSize: 20, fontWeight: FontWeight.bold),
+                  Container(
+                    width: (MediaQuery.of(context).size.width - 200),
+                    child: Text(
+                      item.option.name,
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,),
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                   SizedBox(
                     height: 5,
