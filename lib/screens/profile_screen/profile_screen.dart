@@ -1,13 +1,9 @@
 import 'package:Blwahda/config/auth/auth_visibility_widget.dart';
 import 'package:Blwahda/config/auth/authorization.dart';
-import 'package:Blwahda/config/auth/roles.dart';
-import 'package:Blwahda/config/constants.dart';
 import 'package:Blwahda/helpers/app_localizations.dart';
 import 'package:Blwahda/screens/authentication_screen/authentication_model.dart';
-import 'package:Blwahda/screens/profile_screen/constants/profile_constants.dart';
 import 'package:Blwahda/screens/profile_screen/widgets/profile_list_item.dart';
 import 'package:Blwahda/theme/custom_colors.dart';
-import 'package:Blwahda/utils/utils_functions.dart';
 import 'package:Blwahda/view_models/app_lang.dart';
 import 'package:Blwahda/view_models/app_status_model.dart';
 import 'package:Blwahda/view_models/cart_view_model.dart';
@@ -20,6 +16,7 @@ import 'package:provider/provider.dart';
 import 'package:Blwahda/view_models/app_model.dart';
 import 'package:Blwahda/utils/preference_utils.dart';
 import 'package:toast/toast.dart';
+
 
 class ProfileScreen extends StatefulWidget {
   @override

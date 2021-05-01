@@ -26,6 +26,7 @@ class _RegisterGreenMarketState extends State<RegisterGreenMarket> {
   final passwordController = TextEditingController();
   final fullNameController = TextEditingController();
   final phoneNumberController = TextEditingController();
+  final usherCodeController = TextEditingController();
 
   @override
   void dispose() {
@@ -35,6 +36,7 @@ class _RegisterGreenMarketState extends State<RegisterGreenMarket> {
     passwordController.dispose();
     fullNameController.dispose();
     phoneNumberController.dispose();
+    usherCodeController.dispose();
     super.dispose();
   }
 
@@ -182,6 +184,27 @@ class _RegisterGreenMarketState extends State<RegisterGreenMarket> {
                             Validators.isValidEmail(value),
                             AppLocalizations.of(context)
                                 .translate("please enter your Email")),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      TextFormField(
+                        controller: usherCodeController,
+                        decoration: new InputDecoration(
+                          focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.black54)),
+                          labelText: AppLocalizations.of(context)
+                              .translate("Enter Usher Code"),
+                          labelStyle: TextStyle(color: Colors.black54),
+                          icon: const Padding(
+                            padding: const EdgeInsets.only(top: 15.0),
+                            child: const Icon(
+                              Icons.account_box,
+                              color: Colors.black54,
+                            ),
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
                       ),
                       SizedBox(
                         height: 10,

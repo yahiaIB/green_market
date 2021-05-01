@@ -4,7 +4,6 @@ import 'package:Blwahda/helpers/app_localizations.dart';
 import 'package:Blwahda/helpers/string_translation.dart';
 import 'package:Blwahda/models/user.dart';
 import 'package:Blwahda/screens/authentication_screen/authentication_model.dart';
-import 'package:Blwahda/screens/profile_screen/constants/profile_constants.dart';
 import 'package:Blwahda/utils/utils_functions.dart';
 import 'package:Blwahda/utils/validators.dart';
 import 'package:Blwahda/view_models/app_model.dart';

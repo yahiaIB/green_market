@@ -1,11 +1,9 @@
-import 'package:Blwahda/helpers/app_localizations.dart';
 import 'package:Blwahda/models/cart_item.dart';
 import 'package:Blwahda/models/order_entity.dart';
 import 'package:Blwahda/models/product_entity.dart';
 import 'package:Blwahda/models/user.dart';
 import 'package:Blwahda/repositories/order_repository.dart';
 import 'package:Blwahda/repositories/user_repository.dart';
-import 'package:Blwahda/utils/dialogs.dart';
 import 'package:Blwahda/view_models/base_model.dart';
 import 'package:Blwahda/view_models/product_view_model.dart';
 import 'package:flutter/material.dart';

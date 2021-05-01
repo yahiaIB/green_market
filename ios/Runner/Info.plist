@@ -25,11 +25,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>$(PRODUCT_NAME) Camera Usage!</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>$(PRODUCT_NAME) Microphone Usage!</string>
+	<string>Camera usage to be able to upload your profile picture</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>$(PRODUCT_NAME) PhotoLibrary Usage!</string>
+	<string>PhotoLibrary Usage to upload your profile picture</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>

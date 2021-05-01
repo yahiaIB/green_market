@@ -39,8 +39,7 @@ class UserRepository {
       var data = FormData.fromMap({
         "data": jsonEncode(userData),
       });
-
-//      var response = await HttpClient.getInstance().put(EndPoints.updateUserProfile(userId), data: data);
+      var response = await HttpClient.getInstance().put(EndPoints.updateUserEndpoint(userId), data: data);
       return true;
     } catch (e) {
       throw e;

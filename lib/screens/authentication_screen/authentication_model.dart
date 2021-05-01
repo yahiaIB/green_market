@@ -1,14 +1,11 @@
 import 'dart:convert';
 import 'dart:math';
-
 import 'package:Blwahda/config/auth/roles.dart';
 import 'package:Blwahda/helpers/string_translation.dart';
 import 'package:Blwahda/screens/authentication_screen/login.dart';
 import 'package:Blwahda/screens/authentication_screen/loginScreenWithoutSkip.dart';
 import 'package:Blwahda/utils/preference_utils.dart';
-
 import '../../models/user.dart';
-
 import '../../repositories/authentication_repository.dart';
 import '../../view_models/base_model.dart';
 import 'package:flutter/material.dart';

@@ -3,21 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>422461192815-eumglm1ml524pg7moclb1gci6kj3t102.apps.googleusercontent.com</string>
+	<string>503666408165-0d1ksjho7von3s8v72sk3k3rinr473oq.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.422461192815-eumglm1ml524pg7moclb1gci6kj3t102</string>
+	<string>com.googleusercontent.apps.503666408165-0d1ksjho7von3s8v72sk3k3rinr473oq</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>503666408165-pojmtngemr5glsrvos451jn14k2vfoo3.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDcdNgPXXlAe_nuya6rFp3ED232kOvNG4w</string>
+	<string>AIzaSyCoDyDVlwCH-QXtBP_rw75e7Gzba5muQqk</string>
 	<key>GCM_SENDER_ID</key>
-	<string>422461192815</string>
+	<string>503666408165</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.belwahda</string>
+	<string>com.blwahdaa</string>
 	<key>PROJECT_ID</key>
-	<string>Belwa7da</string>
+	<string>blwahda-6a522</string>
 	<key>STORAGE_BUCKET</key>
-	<string>vio-telehealth.appspot.com</string>
+	<string>blwahda-6a522.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +31,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:422461192815:ios:a94dd3af390bd42fadeb9a</string>
+	<string>1:503666408165:ios:f73f10ce8661d455c0b20c</string>
 	<key>DATABASE_URL</key>
-	<string>https://vio-telehealth.firebaseio.com</string>
+	<string>https://blwahda-6a522.firebaseio.com</string>
 </dict>
 </plist>

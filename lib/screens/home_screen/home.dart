@@ -6,6 +6,7 @@ import 'package:Blwahda/screens/cart_screen/cart_screen.dart';
 import 'package:Blwahda/screens/products_screen/products_screen.dart';
 import 'package:Blwahda/screens/profile_screen/profile_screen.dart';
 import 'package:Blwahda/theme/custom_colors.dart';
+import 'package:Blwahda/view_models/app_model.dart';
 import 'package:Blwahda/view_models/cart_view_model.dart';
 import 'package:fcm_config/fcm_config.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +34,21 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin , FCMNo
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+    });
+  }
+
+  @override
+  void initState() {
+    updateFcmToken();
+//    FirebaseLocalNotifications().setUpFirebase(context);
+    super.initState();
+  }
+
+  updateFcmToken() async {
+    AppViewModel userViewModel = Provider.of<AppViewModel>(context, listen: false);
+    userViewModel.updateFCMToken(userData: {'fcm_token':  await FCMConfig.getToken()}).then((response) {
+      print(response);
+      print('updated fcm token');
     });
   }
 

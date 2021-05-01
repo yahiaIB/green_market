@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Constants {
-  static const appTitle = "Blwa7da";
+  static const appTitle = "Blwahda";
 
   static final langCodeKey = 'language_code';
   static final enLangCode = 'en';
@@ -47,69 +47,6 @@ class Constants {
       "cost": 1200
     }
   ];
- //
- //
- //  static List tomatoOptions = [
- //    {"name": "tomato","price":10.0,"unit": "KG" ,"unitChange": 0.25},
- //    {"name": "tomato juice","price":15.0,"unit": "Litre" ,"unitChange": 0.25},
- //    {"name": "tomato Pieces","price":12.0,"unit": "KG" ,"unitChange": 0.25},
- //  ];
- //
- //  static List bananaOptions = [
- //    {"name": "banana","price":10.0,"unit": "KG" ,"unitChange": 0.25},
- //    {"name": "banana juice","price":15.0,"unit": "Litre" ,"unitChange": 0.25},
- //    {"name": "banana Pieces","price":12.0,"unit": "KG" ,"unitChange": 0.25},
- //  ];
- //
- //  static List cucumberOptions = [
- //    {"name": "cucumber","price":10.0,"unit": "KG" ,"unitChange": 0.25},
- //    {"name": "cucumber juice","price":15.0,"unit": "Litre" ,"unitChange": 0.25},
- //    {"name": "cucumber Pieces","price":12.0,"unit": "KG" ,"unitChange": 0.25},
- //  ];
- //  static List orangeOptions = [
- //    {"name": "orange","price":10.0,"unit": "KG" ,"unitChange": 0.25},
- //    {"name": "orange juice","price":15.0,"unit": "Litre" ,"unitChange": 0.25},
- //    {"name": "orange Pieces","price":12.0,"unit": "KG" ,"unitChange": 0.25},
- //  ];
- //  static List potatoOptions = [
- //    {"name": "potato","price":10.0,"unit": "KG" ,"unitChange": 0.25},
- //    {"name": "potato juice","price":15.0,"unit": "Litre" ,"unitChange": 0.25},
- //    {"name": "potato Pieces","price":12.0,"unit": "KG" ,"unitChange": 0.25},
- //  ];
- //
- // static List<Item> items() => [
- //    new Item.fromJson({
- //      'image': "res/assets/images/tomato.png",
- //      'amount': 1.0,
- //      'category_name': "Vegetables",
- //      'options': tomatoOptions
- //    }),
- //    new Item.fromJson({
- //      'image': "res/assets/images/banana.png",
- //      'amount': 1.0,
- //      'category_name': "Fruits",
- //      'options': bananaOptions
- //    }),
- //   new Item.fromJson({
- //      'image': "res/assets/images/cucumber.png",
- //      'amount': 1.0,
- //     'category_name': "Vegetables",
- //      'options': cucumberOptions
- //    }),
- //   new Item.fromJson({
- //      'image': "res/assets/images/orange.png",
- //      'amount': 1.0,
- //     'category_name': "Fruits",
- //      'options': orangeOptions
- //    }),
- //   new Item.fromJson({
- //      'image': "res/assets/images/potato.png",
- //      'amount': 1.0,
- //     'category_name': "Vegetables",
- //      'options': potatoOptions
- //    }),
- //
- //  ];
 
  static String emptyCartImage() => "res/assets/images/empty_cart.png";
 }

@@ -36,6 +36,7 @@ class Routes {
   static const String newPasswordScreen = '/newPasswordScreen';
   static const String orderDetails = '/order_details';
 
+
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case initRoute:
@@ -75,6 +76,10 @@ class Routes {
         String image = personalData != null ? personalData["image"] : null;
         return MaterialPageRoute(
             builder: (_) => EditPersonalDetails(fullName, mobile,image));
+      case orderDetails:
+        UserOrdersEntity order = settings.arguments as UserOrdersEntity;
+        return MaterialPageRoute(
+            builder: (_) => OrderDetailsScreen(order: order,));
       case addAddress:
         var data = settings.arguments as Map;
         int index = data != null ? data["index"] : null;

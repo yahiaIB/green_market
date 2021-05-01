@@ -98,7 +98,6 @@
   "out": "خارج للتوصيل",
   "completed": "اكتمل الطلب",
   "canceled": "تم إلغاء الطلب",
-  "Order details": "تفاصيل الطلب",
   "Order number": "رقم الأمر",
   "Order status": "حالة الطلب",
   "Delivery to": "تسليم الى",
@@ -108,5 +107,8 @@
   "Delivery Fees": "رسوم التوصيل",
   "Amount": "الكمية",
   "Price": "السعر",
-  "Name": "الاسم"
+  "Name": "الاسم",
+  "Enter Usher Code": "أدخل كود حاجب",
+  "please enter your valid string": "الرجاء إدخال القيمة الصحيحة الخاصة بك",
+  "Order details": "تفاصيل الطلب"
 }

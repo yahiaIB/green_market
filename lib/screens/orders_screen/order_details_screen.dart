@@ -1,4 +1,5 @@
 import 'package:Blwahda/helpers/string_translation.dart';
+import 'package:Blwahda/helpers/app_localizations.dart';
 import 'package:Blwahda/models/user_orders_entity.dart';
 import 'package:Blwahda/theme/custom_colors.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,6 @@ class OrderDetailsScreen extends StatelessWidget {
     Widget quarterWidget(Widget child) {
       return Container(width: widthSpace, child: child);
     }
-    print(order.toJson());
 
     return Scaffold(
       appBar: AppBar(

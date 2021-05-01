@@ -7,7 +7,8 @@ description: A new Flutter application.
 # Both the version and the builder number may be overridden in flutter
 # build by specifying --build-name and --build-number, respectively.
 # Read more about versioning at semver.org.
-version: 1.0.1+100050
+version: 1.0.3+100050
+
 
 environment:
   sdk: ">=2.2.0 <3.0.0"
@@ -67,8 +68,8 @@ dev_dependencies:
 
 flutter_icons:
   android: "launcher_icon"
-  ios: true
-  image_path: "assets/blwa7da_512.jpg"
+  ios: "launcher_icon"
+  image_path: "assets/blwahda_logo_new5.jpg"
 
 
 # For information on the generic Dart part of this file, see the
@@ -85,8 +86,7 @@ flutter:
     - res/i18n/en.json
     - res/i18n/ar.json
     - res/assets/
-    - assets/avatar.png
-    - assets/3681093.jpg
+    - assets/
     - res/assets/images/
     
     

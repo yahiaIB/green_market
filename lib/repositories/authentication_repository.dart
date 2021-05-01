@@ -1,11 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
-
 import 'package:Blwahda/models/user.dart';
 import 'package:Blwahda/web_services/error_helper.dart';
 import 'package:dio/dio.dart';
-
 import '../utils/preference_utils.dart';
 import '../web_services/endpoints.dart';
 import '../web_services/http_client.dart';

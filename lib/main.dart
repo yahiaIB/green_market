@@ -12,9 +12,9 @@ void main() async {
 
   FCMConfig.init(
       onBackgroundMessage: _firebaseMessagingBackgroundHandler,
-      androidChannelName: "",
-      androidChannelId: "",
-      androidChannelDescription: "",
+      androidChannelName: "blwahda",
+      androidChannelId: "blwahda",
+      androidChannelDescription: "blwahda is pos application",
       appAndroidIcon: "launcher_icon")
       .then((value) {
     FirebaseMessaging.instance.getToken().then((value) {

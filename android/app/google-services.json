@@ -1,14 +1,14 @@
 {
   "project_info": {
-    "project_number": "422461192815",
-    "firebase_url": "https://vio-telehealth.firebaseio.com",
-    "project_id": "vio-telehealth",
-    "storage_bucket": "vio-telehealth.appspot.com"
+    "project_number": "503666408165",
+    "firebase_url": "https://blwahda-6a522.firebaseio.com",
+    "project_id": "blwahda-6a522",
+    "storage_bucket": "blwahda-6a522.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:422461192815:android:e0f9dd4f407a3280adeb9a",
+        "mobilesdk_app_id": "1:503666408165:android:f77fa056feda50b9c0b20c",
         "android_client_info": {
           "package_name": "com.belwahda"
         }
@@ -51,20 +51,20 @@
       },
       "oauth_client": [
         {
-          "client_id": "422461192815-pdb4k69vfcbgv55br51ac27efnioshb0.apps.googleusercontent.com",
+          "client_id": "503666408165-6ptikachl631qpsg4km73fr8kcpo655e.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCLE_Nd2G2zvE8RbhxDx0xqYDiak4-2hOA"
+          "current_key": "AIzaSyBTM1eUqoHLMz1kPRVZEH5tWzbamcCZJdc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "422461192815-pdb4k69vfcbgv55br51ac27efnioshb0.apps.googleusercontent.com",
+              "client_id": "503666408165-6ptikachl631qpsg4km73fr8kcpo655e.apps.googleusercontent.com",
               "client_type": 3
             },
             {
@@ -73,6 +73,7 @@
               "ios_info": {
                 "bundle_id": "com.belwahda"
               }
+
             }
           ]
         }

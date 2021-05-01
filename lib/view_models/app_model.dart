@@ -48,8 +48,6 @@ class AppViewModel extends BaseViewModel {
   Future updateFCMToken({userData}) async {
     try {
       String userId = preferenceUtils.getData(PreferenceUtils.UserId);
-      String language = preferenceUtils.getData(Constants.langCodeKey);
-      userData['default_language'] = language;
       await _userRepository.serverUpdateUserFCMToken(userData, userId);
       return true;
     } catch (e) {
