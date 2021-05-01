@@ -1,14 +1,16 @@
 import 'package:Vio_Telehealth/models/user.dart';
+import 'package:Vio_Telehealth/models/user_orders_entity.dart';
 import 'package:Vio_Telehealth/screens/authentication_screen/newPasswordScreen.dart';
 import 'package:Vio_Telehealth/screens/authentication_screen/register_greenMarket.dart';
 import 'package:Vio_Telehealth/screens/home_screen/home.dart';
 import 'package:Vio_Telehealth/screens/home_screen/main_home_screen.dart';
+import 'package:Vio_Telehealth/screens/orders_screen/my_orders.dart';
+import 'package:Vio_Telehealth/screens/orders_screen/order_details_screen.dart';
 import '../screens/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import '../screens/authentication_screen/login_greenMarket.dart';
 import 'package:Vio_Telehealth/screens/profile_screen/Personal_details.dart';
 import 'package:Vio_Telehealth/screens/profile_screen/address.dart';
-import 'package:Vio_Telehealth/screens/profile_screen/my_orders.dart';
 import 'package:Vio_Telehealth/screens/profile_screen/add_address.dart';
 import 'package:Vio_Telehealth/screens/profile_screen/editPersonalDetails.dart';
 import 'package:Vio_Telehealth/models/address.dart';
@@ -32,6 +34,7 @@ class Routes {
   static const String forgetPasswordScreen = '/forgetPasswordScreen';
   static const String verificationCodeScreen = '/verificationCodeScreen';
   static const String newPasswordScreen = '/newPasswordScreen';
+  static const String orderDetails = '/order_details';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -55,6 +58,9 @@ class Routes {
       case newPasswordScreen:
         var user = settings.arguments as User;
         return MaterialPageRoute(builder: (_) => NewPasswordScreen(user: user,));
+      case orderDetails:
+        var order = settings.arguments as UserOrdersEntity;
+        return MaterialPageRoute(builder: (_) => OrderDetailsScreen(order: order));
       case addresses:
         return MaterialPageRoute(builder: (_) => Addresses());
       case personalDetails:
