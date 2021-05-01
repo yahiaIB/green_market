@@ -19,7 +19,13 @@ class OrderDetailsScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(translate("Order details")),
+        shadowColor: CustomColors.mainColor.withOpacity(0.3),
+        title: Text(
+          translate("Order details"),
+          style: TextStyle(
+            color: CustomColors.mainColor,
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -106,7 +112,7 @@ class OrderDetailsScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(7),
                     boxShadow: [
                       BoxShadow(
-                        color: CustomColors.blue,
+                        color: CustomColors.mainColor,
                         blurRadius: 2,
                         spreadRadius: .2,
                       )
@@ -119,19 +125,19 @@ class OrderDetailsScreen extends StatelessWidget {
                       children: [
                         quarterWidget(Text(
                           translate("Name"),
-                          style: TextStyle(color: CustomColors.blue),
+                          style: TextStyle(color: CustomColors.mainColor),
                         )),
                         quarterWidget(Text(
                           translate("Price"),
-                          style: TextStyle(color: CustomColors.blue),
+                          style: TextStyle(color: CustomColors.mainColor),
                         )),
                         quarterWidget(Text(
                           translate("Amount"),
-                          style: TextStyle(color: CustomColors.blue),
+                          style: TextStyle(color: CustomColors.mainColor),
                         )),
                         quarterWidget(Text(
                           translate("Total"),
-                          style: TextStyle(color: CustomColors.blue),
+                          style: TextStyle(color: CustomColors.mainColor),
                         )),
                       ],
                     ),
@@ -146,8 +152,8 @@ class OrderDetailsScreen extends StatelessWidget {
                       height: 5,
                     ),
                     Column(
-                      children: order.products
-                          .map<Widget>((UserOrdersProduct product) => Container(
+                      children: order.products.map<Widget>((UserOrdersProduct product) =>
+                        Container(
                           padding: EdgeInsets.only(bottom: 4),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -202,7 +208,7 @@ class OrderDetailsScreen extends StatelessWidget {
                         quarterWidget(Text(
                           "${order.priceInfo.total}",
                           style: TextStyle(
-                              color: CustomColors.accentColor,
+                              color: CustomColors.mainColor,
                               fontWeight: FontWeight.w900),
                         )),
                       ],
