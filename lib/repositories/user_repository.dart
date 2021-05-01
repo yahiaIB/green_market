@@ -27,6 +27,12 @@ class UserRepository {
     User user = User().fromJson(response.data);
     return user;
   }
+  Future<User> updatePassword({String userId,String password}) async {
+
+    final response = await HttpClient.getInstance().put(EndPoints.updateUserEndpoint(userId),data: {"password":password});
+    User user = User().fromJson(response.data);
+    return user;
+  }
 
   Future<void> serverUpdateUserFCMToken(userData,userId) async {
     try {

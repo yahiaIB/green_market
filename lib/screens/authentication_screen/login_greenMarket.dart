@@ -1,6 +1,7 @@
 import 'package:Vio_Telehealth/app/app_keys.dart';
 import 'package:Vio_Telehealth/app/routes.dart';
 import 'package:Vio_Telehealth/helpers/app_localizations.dart';
+import 'package:Vio_Telehealth/helpers/string_translation.dart';
 import 'package:Vio_Telehealth/models/user.dart';
 import 'package:Vio_Telehealth/view_models/app_model.dart';
 import 'package:Vio_Telehealth/view_models/app_status_model.dart';
@@ -50,7 +51,7 @@ class _LoginGreenMarketState extends State<LoginGreenMarket> {
       appModel.getUserAddresses();
       appStatusViewModel.setStatus(AppStatus.Authenticated);
     }catch(e){
-      UtilsFunctions.showSnackBarWithScaffoldKey(scaffoldKey: AppKeys.loginScreenScaffoldKey, text: e.message);
+      UtilsFunctions.showSnackBarWithScaffoldKey(scaffoldKey: AppKeys.loginScreenScaffoldKey, text: e.message == "wrongUsernameOrPassword"? translate("Wrong Username Or Password") : e.message);
     }
   }
 
@@ -106,8 +107,7 @@ class _LoginGreenMarketState extends State<LoginGreenMarket> {
                         validator: (value) => UtilsFunctions.validation(
                             value,
                             Validators.isValidEmail(value),
-                            AppLocalizations.of(context)
-                                .translate("please enter your Email")),
+                            AppLocalizations.of(context).translate("please enter your Email")),
                       ),
                       SizedBox(
                         height: 20,
@@ -172,7 +172,8 @@ class _LoginGreenMarketState extends State<LoginGreenMarket> {
                       Consumer<AuthenticationViewModel>(
                         builder:(context,authViewModel,child)=> authViewModel.busy ?
                         Center(child: CircularProgressIndicator(valueColor:  new AlwaysStoppedAnimation<Color>(CustomColors.mainColor),),)
-                            :Material(
+                            :
+                        Material(
                           elevation: 5.0,
                           borderRadius: BorderRadius.circular(30.0),
                           color: CustomColors.buttonColor,

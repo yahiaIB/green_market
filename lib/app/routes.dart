@@ -1,6 +1,7 @@
 import 'package:Vio_Telehealth/models/user.dart';
 import 'package:Vio_Telehealth/screens/authentication_screen/newPasswordScreen.dart';
 import 'package:Vio_Telehealth/screens/authentication_screen/register_greenMarket.dart';
+import 'package:Vio_Telehealth/screens/home_screen/home.dart';
 import 'package:Vio_Telehealth/screens/home_screen/main_home_screen.dart';
 import '../screens/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -20,9 +21,10 @@ class Routes {
   //static variables
   static const String initRoute = '/';
   static const String login = '/login';
+  static const String home = '/home';
   static const String main = '/main';
   static const String register = '/register';
-  static const String addresses = '/adresses';
+  static const String addresses = '/addresses';
   static const String personalDetails = '/personalDetails';
   static const String myOrders = '/myOrders';
   static const String addAddress = '/addAddress';
@@ -37,6 +39,8 @@ class Routes {
         return MaterialPageRoute(builder: (_) => SplashScreen());
       case main:
         return MaterialPageRoute(builder: (_) => MainHomeScreen());
+      case home:
+        return MaterialPageRoute(builder: (_) => Home());
       case login:
         return MaterialPageRoute(builder: (_) => LoginGreenMarket());
       case register:
@@ -44,9 +48,13 @@ class Routes {
       case forgetPasswordScreen:
         return MaterialPageRoute(builder: (_) => ForgetPassword());
       case verificationCodeScreen:
-        return MaterialPageRoute(builder: (_) => VerificationCodeScreen());
+        var data = settings.arguments as Map;
+        String id = data != null ? data["_id"] : null;
+        String token = data != null ? data["token"] : null;
+        return MaterialPageRoute(builder: (_) => VerificationCodeScreen(id: id,token: token,));
       case newPasswordScreen:
-        return MaterialPageRoute(builder: (_) => NewPasswordScreen());
+        var user = settings.arguments as User;
+        return MaterialPageRoute(builder: (_) => NewPasswordScreen(user: user,));
       case addresses:
         return MaterialPageRoute(builder: (_) => Addresses());
       case personalDetails:

@@ -3,6 +3,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '../helpers/string_translation.dart';
+
 class UtilsFunctions {
   static validation(value, bool valid, String message) {
     if (value.isEmpty) {
@@ -11,7 +13,7 @@ class UtilsFunctions {
       if (valid == true) {
         return null;
       } else {
-        return "wrong data";
+        return translate("please enter right value");
       }
     }
   }

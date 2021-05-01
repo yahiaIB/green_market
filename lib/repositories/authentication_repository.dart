@@ -24,13 +24,35 @@ class AuthenticationRepository {
     }
   }
 
-  Future<User> verify({String userId, String token}) async {
-    final data = {'id': userId, 'token': token};
-    final response = await HttpClient.getInstance().post(EndPoints.verifyEndpoint, data: data);
-    User user = User().fromJson(response.data);
-    return user;
+  Future serverForgetPassword({String email}) async {
+    try{
+      final data = {'email': email};
+      final response = await HttpClient.getInstance().post(EndPoints.forgetPasswordEndpoint, data: data);
+      return response.data;
+    }catch(e){
+      throw ExceptionHelper.parse(err: e);
+    }
   }
 
+  Future<User> verify({String userId, String token}) async {
+    try{
+      final data = {'id': userId, 'token': token};
+      final response = await HttpClient.getInstance().post(EndPoints.verifyEndpoint, data: data);
+      return await serverSaveUser(response.data);
+    }catch(e){
+      throw ExceptionHelper.parse(err: e);
+    }
+  }
+
+  // Future<User> verify({String userId, String token}) async {
+  //   try{
+  //     final data = {'id': userId, 'token': token};
+  //     final response = await HttpClient.getInstance().post(EndPoints.verifyEndpoint, data: data);
+  //     return await serverSaveUser(response.data);
+  //   }catch(e){
+  //     throw ExceptionHelper.parse(err: e);
+  //   }
+  // }
   Future<User> serverSignUp(userData) async {
     try {
       print("sign up");
@@ -52,6 +74,10 @@ class AuthenticationRepository {
     prefs.saveStringData(PreferenceUtils.UserToken, data["token"]);
     prefs.saveStringData(PreferenceUtils.UserRoles, user.roles[0]);
     return user;
+  }
+  serverSaveUserToken(String token) {
+    var prefs = PreferenceUtils.getInstance();
+    prefs.saveStringData(PreferenceUtils.UserToken, token);
   }
 
 
