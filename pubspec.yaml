@@ -40,7 +40,7 @@ dependencies:
   flutter_verification_code_input:
     git:
       url: git://github.com/tinylife-io/flutter_verification_code_input.git
-  flutter_form_builder: 3.14.0-alpha.1
+  flutter_form_builder: 3.10.1
   firebase_messaging: ^8.0.0-dev.3
   flutter_local_notifications: ^3.0.1+2
   fcm_config: ^2.0.0-dev.6
